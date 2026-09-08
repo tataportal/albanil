@@ -1,0 +1,491 @@
+{
+  "date": "2026-09-08",
+  "public_products": 612,
+  "categories": {
+    "2": "FIERROS Y ALAMBRES",
+    "1": "LADRILLOS",
+    "16": "ACCESORIOS ELÉCTRICOS",
+    "7": "ADITIVOS",
+    "12": "AGUA Y ALCANTARILLADO",
+    "11": "ALUMBRADO PUBLICO",
+    "25": "BAÑOS Y ACCESORIOS",
+    "8": "BOMBAS Y TANQUES",
+    "5": "CABLES",
+    "3": "CEMENTO Y SIMILARES",
+    "10": "DADOS DE CONCRETO",
+    "15": "EQUIPO DE PROTECCION PERSONAL - EPP",
+    "19": "FOCOS Y PANELES",
+    "17": "GRIFERIAS",
+    "6": "HERRAMIENTAS",
+    "27": "LIJAS Y ABRASIVOS",
+    "23": "MADERAS Y TRIPLAY",
+    "18": "PINTURAS",
+    "9": "POZO A TIERRA / SOLDADURA EXOTÉRMICA",
+    "13": "TECHOS",
+    "14": "TECNOPOR",
+    "4": "TUBOS Y CONEXIONES"
+  },
+  "pages": 635,
+  "missing_assets": [
+    {
+      "asset": "images/productos/135.jpg",
+      "error": "HTTPError"
+    },
+    {
+      "asset": "images/productos/157.jpg",
+      "error": "HTTPError"
+    },
+    {
+      "asset": "images/productos/180.jpg",
+      "error": "HTTPError"
+    },
+    {
+      "asset": "images/productos/181.jpg",
+      "error": "HTTPError"
+    },
+    {
+      "asset": "images/productos/182.jpg",
+      "error": "HTTPError"
+    },
+    {
+      "asset": "images/productos/183.jpg",
+      "error": "HTTPError"
+    },
+    {
+      "asset": "images/productos/184.jpg",
+      "error": "HTTPError"
+    },
+    {
+      "asset": "images/productos/186.jpg",
+      "error": "HTTPError"
+    },
+    {
+      "asset": "images/productos/185.jpg",
+      "error": "HTTPError"
+    },
+    {
+      "asset": "images/productos/187.jpg",
+      "error": "HTTPError"
+    },
+    {
+      "asset": "images/productos/188.jpg",
+      "error": "HTTPError"
+    },
+    {
+      "asset": "images/productos/189.jpg",
+      "error": "HTTPError"
+    },
+    {
+      "asset": "images/productos/190.jpg",
+      "error": "HTTPError"
+    },
+    {
+      "asset": "images/productos/191.jpg",
+      "error": "HTTPError"
+    },
+    {
+      "asset": "images/productos/192.jpg",
+      "error": "HTTPError"
+    },
+    {
+      "asset": "images/productos/193.jpg",
+      "error": "HTTPError"
+    },
+    {
+      "asset": "images/productos/194.jpg",
+      "error": "HTTPError"
+    },
+    {
+      "asset": "images/productos/196.jpg",
+      "error": "HTTPError"
+    },
+    {
+      "asset": "images/productos/195.jpg",
+      "error": "HTTPError"
+    },
+    {
+      "asset": "images/productos/244.jpg",
+      "error": "HTTPError"
+    },
+    {
+      "asset": "images/productos/340.jpg",
+      "error": "HTTPError"
+    },
+    {
+      "asset": "images/productos/354.jpg",
+      "error": "HTTPError"
+    },
+    {
+      "asset": "images/productos/355.jpg",
+      "error": "HTTPError"
+    },
+    {
+      "asset": "images/productos/356.jpg",
+      "error": "HTTPError"
+    },
+    {
+      "asset": "images/productos/357.jpg",
+      "error": "HTTPError"
+    },
+    {
+      "asset": "images/productos/358.jpg",
+      "error": "HTTPError"
+    },
+    {
+      "asset": "images/productos/359.jpg",
+      "error": "HTTPError"
+    },
+    {
+      "asset": "images/productos/361.jpg",
+      "error": "HTTPError"
+    },
+    {
+      "asset": "images/productos/360.jpg",
+      "error": "HTTPError"
+    },
+    {
+      "asset": "images/productos/362.jpg",
+      "error": "HTTPError"
+    },
+    {
+      "asset": "images/productos/363.jpg",
+      "error": "HTTPError"
+    },
+    {
+      "asset": "images/productos/364.jpg",
+      "error": "HTTPError"
+    },
+    {
+      "asset": "images/productos/365.jpg",
+      "error": "HTTPError"
+    },
+    {
+      "asset": "images/productos/366.jpg",
+      "error": "HTTPError"
+    },
+    {
+      "asset": "images/productos/367.jpg",
+      "error": "HTTPError"
+    },
+    {
+      "asset": "images/productos/368.jpg",
+      "error": "HTTPError"
+    },
+    {
+      "asset": "images/productos/369.jpg",
+      "error": "HTTPError"
+    },
+    {
+      "asset": "images/productos/370.jpg",
+      "error": "HTTPError"
+    },
+    {
+      "asset": "images/productos/371.jpg",
+      "error": "HTTPError"
+    },
+    {
+      "asset": "images/productos/372.jpg",
+      "error": "HTTPError"
+    },
+    {
+      "asset": "images/productos/373.jpg",
+      "error": "HTTPError"
+    },
+    {
+      "asset": "images/productos/374.jpg",
+      "error": "HTTPError"
+    },
+    {
+      "asset": "images/productos/385.jpg",
+      "error": "HTTPError"
+    },
+    {
+      "asset": "images/productos/388.jpg",
+      "error": "HTTPError"
+    },
+    {
+      "asset": "images/productos/389.jpg",
+      "error": "HTTPError"
+    },
+    {
+      "asset": "images/productos/421.jpg",
+      "error": "HTTPError"
+    },
+    {
+      "asset": "images/productos/422.jpg",
+      "error": "HTTPError"
+    },
+    {
+      "asset": "images/productos/423.jpg",
+      "error": "HTTPError"
+    },
+    {
+      "asset": "images/productos/424.jpg",
+      "error": "HTTPError"
+    },
+    {
+      "asset": "images/productos/425.jpg",
+      "error": "HTTPError"
+    },
+    {
+      "asset": "images/productos/426.jpg",
+      "error": "HTTPError"
+    },
+    {
+      "asset": "images/productos/427.jpg",
+      "error": "HTTPError"
+    },
+    {
+      "asset": "images/productos/428.jpg",
+      "error": "HTTPError"
+    },
+    {
+      "asset": "images/productos/429.jpg",
+      "error": "HTTPError"
+    },
+    {
+      "asset": "images/productos/430.jpg",
+      "error": "HTTPError"
+    },
+    {
+      "asset": "images/productos/431.jpg",
+      "error": "HTTPError"
+    },
+    {
+      "asset": "images/productos/432.jpg",
+      "error": "HTTPError"
+    },
+    {
+      "asset": "images/productos/433.jpg",
+      "error": "HTTPError"
+    },
+    {
+      "asset": "images/productos/434.jpg",
+      "error": "HTTPError"
+    },
+    {
+      "asset": "images/productos/435.jpg",
+      "error": "HTTPError"
+    },
+    {
+      "asset": "images/productos/436.jpg",
+      "error": "HTTPError"
+    },
+    {
+      "asset": "images/productos/437.jpg",
+      "error": "HTTPError"
+    },
+    {
+      "asset": "images/productos/438.jpg",
+      "error": "HTTPError"
+    },
+    {
+      "asset": "images/productos/439.jpg",
+      "error": "HTTPError"
+    },
+    {
+      "asset": "images/productos/440.jpg",
+      "error": "HTTPError"
+    },
+    {
+      "asset": "images/productos/441.jpg",
+      "error": "HTTPError"
+    },
+    {
+      "asset": "images/productos/442.jpg",
+      "error": "HTTPError"
+    },
+    {
+      "asset": "images/productos/443.jpg",
+      "error": "HTTPError"
+    },
+    {
+      "asset": "images/productos/444.jpg",
+      "error": "HTTPError"
+    },
+    {
+      "asset": "images/productos/445.jpg",
+      "error": "HTTPError"
+    },
+    {
+      "asset": "images/productos/446.jpg",
+      "error": "HTTPError"
+    },
+    {
+      "asset": "images/productos/447.jpg",
+      "error": "HTTPError"
+    },
+    {
+      "asset": "images/productos/448.jpg",
+      "error": "HTTPError"
+    },
+    {
+      "asset": "images/productos/449.jpg",
+      "error": "HTTPError"
+    },
+    {
+      "asset": "images/productos/450.jpg",
+      "error": "HTTPError"
+    },
+    {
+      "asset": "images/productos/451.jpg",
+      "error": "HTTPError"
+    },
+    {
+      "asset": "images/productos/452.jpg",
+      "error": "HTTPError"
+    },
+    {
+      "asset": "images/productos/453.jpg",
+      "error": "HTTPError"
+    },
+    {
+      "asset": "images/productos/454.jpg",
+      "error": "HTTPError"
+    },
+    {
+      "asset": "images/productos/455.jpg",
+      "error": "HTTPError"
+    },
+    {
+      "asset": "images/productos/456.jpg",
+      "error": "HTTPError"
+    },
+    {
+      "asset": "images/productos/457.jpg",
+      "error": "HTTPError"
+    },
+    {
+      "asset": "images/productos/458.jpg",
+      "error": "HTTPError"
+    },
+    {
+      "asset": "images/productos/459.jpg",
+      "error": "HTTPError"
+    },
+    {
+      "asset": "images/productos/460.jpg",
+      "error": "HTTPError"
+    },
+    {
+      "asset": "images/productos/461.jpg",
+      "error": "HTTPError"
+    },
+    {
+      "asset": "images/productos/462.jpg",
+      "error": "HTTPError"
+    },
+    {
+      "asset": "images/productos/463.jpg",
+      "error": "HTTPError"
+    },
+    {
+      "asset": "images/productos/464.jpg",
+      "error": "HTTPError"
+    },
+    {
+      "asset": "images/productos/465.jpg",
+      "error": "HTTPError"
+    },
+    {
+      "asset": "images/productos/533.jpg",
+      "error": "HTTPError"
+    },
+    {
+      "asset": "images/productos/534.jpg",
+      "error": "HTTPError"
+    },
+    {
+      "asset": "images/productos/535.jpg",
+      "error": "HTTPError"
+    },
+    {
+      "asset": "images/productos/536.jpg",
+      "error": "HTTPError"
+    },
+    {
+      "asset": "images/productos/537.jpg",
+      "error": "HTTPError"
+    },
+    {
+      "asset": "images/productos/538.jpg",
+      "error": "HTTPError"
+    },
+    {
+      "asset": "images/productos/539.jpg",
+      "error": "HTTPError"
+    },
+    {
+      "asset": "images/productos/540.jpg",
+      "error": "HTTPError"
+    },
+    {
+      "asset": "images/productos/541.jpg",
+      "error": "HTTPError"
+    },
+    {
+      "asset": "images/productos/542.jpg",
+      "error": "HTTPError"
+    },
+    {
+      "asset": "images/productos/543.jpg",
+      "error": "HTTPError"
+    },
+    {
+      "asset": "images/productos/544.jpg",
+      "error": "HTTPError"
+    },
+    {
+      "asset": "images/productos/545.jpg",
+      "error": "HTTPError"
+    },
+    {
+      "asset": "images/productos/546.jpg",
+      "error": "HTTPError"
+    },
+    {
+      "asset": "images/productos/548.jpg",
+      "error": "HTTPError"
+    },
+    {
+      "asset": "images/productos/549.jpg",
+      "error": "HTTPError"
+    },
+    {
+      "asset": "images/productos/550.jpg",
+      "error": "HTTPError"
+    },
+    {
+      "asset": "images/productos/551.jpg",
+      "error": "HTTPError"
+    },
+    {
+      "asset": "images/productos/552.jpg",
+      "error": "HTTPError"
+    },
+    {
+      "asset": "images/productos/553.jpg",
+      "error": "HTTPError"
+    },
+    {
+      "asset": "images/productos/554.jpg",
+      "error": "HTTPError"
+    },
+    {
+      "asset": "images/productos/555.jpg",
+      "error": "HTTPError"
+    },
+    {
+      "asset": "images/productos/556.jpg",
+      "error": "HTTPError"
+    },
+    {
+      "asset": "images/productos/557.jpg",
+      "error": "HTTPError"
+    },
+    {
+      "asset": "images/productos/624.jpg",
+      "error": "HTTPError"
+    }
+  ]
+}

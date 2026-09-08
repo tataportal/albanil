@@ -1,0 +1,16 @@
+# Publish only the static, sanitized preview and documentation.
+*
+!.gitignore
+!README.md
+!docs/
+!docs/**
+!scripts/
+!scripts/**
+*.php
+*.sql
+.env*
+*credentials*
+*secret*
+*token*
+error_log
+.DS_Store
