@@ -9,10 +9,10 @@
   <title>Albañil | Materiales para tu obra</title>
   <link rel="icon" href="../favicon.png">
   <link rel="preload" href="assets/fonts/barlow-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="home.css?v=a8391a96cf">
+  <link rel="stylesheet" href="home.css?v=096ca8982a">
   <script src="list-parser.js?v=b8fee7056c" defer></script>
   <script src="list-builder.js?v=4960a521ef" defer></script>
-  <script src="home.js?v=1a9838e4a5" defer></script>
+  <script src="home.js?v=503d5547dc" defer></script>
   <script src="featured-carousel.js?v=1cc33fa806" defer></script>
 </head>
 <body>
@@ -54,7 +54,7 @@
       <div class="category-strip"><button class="category-scroll" id="categories-prev" aria-label="Ver categorías anteriores" aria-controls="category-chips" disabled><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#chevron-right"></use></svg></button><nav id="category-chips" class="category-chips" aria-labelledby="category-strip-label"></nav><button class="category-scroll" id="categories-next" aria-label="Ver más categorías" aria-controls="category-chips"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#chevron-right"></use></svg></button></div>
       <div class="product-grid" id="results"></div>
       <div id="empty-search" class="empty-state" hidden><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#search"></use></svg><h2>No encontramos ese producto.</h2><p>Prueba con menos palabras, otra medida o el nombre de la marca.</p><a class="primary-button" href="?ver=todo">Explorar el catálogo</a></div>
-      <div class="load-more"><button class="secondary-button" id="load-more" hidden>Ver más productos</button></div>
+      <div class="load-more"><p id="catalog-progress" role="status" aria-live="polite" aria-atomic="true" hidden></p><button class="secondary-button" id="load-more" aria-describedby="catalog-progress" hidden>Ver más productos</button></div>
     </section>
     <section id="list-view" class="list-view" hidden aria-labelledby="list-title">
       <a class="back-link" href="./">← Volver al inicio</a>

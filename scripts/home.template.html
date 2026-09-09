@@ -54,7 +54,7 @@
       <div class="category-strip"><button class="category-scroll" id="categories-prev" aria-label="Ver categorías anteriores" aria-controls="category-chips" disabled><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#chevron-right"></use></svg></button><nav id="category-chips" class="category-chips" aria-labelledby="category-strip-label"></nav><button class="category-scroll" id="categories-next" aria-label="Ver más categorías" aria-controls="category-chips"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#chevron-right"></use></svg></button></div>
       <div class="product-grid" id="results"></div>
       <div id="empty-search" class="empty-state" hidden><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#search"></use></svg><h2>No encontramos ese producto.</h2><p>Prueba con menos palabras, otra medida o el nombre de la marca.</p><a class="primary-button" href="?ver=todo">Explorar el catálogo</a></div>
-      <div class="load-more"><button class="secondary-button" id="load-more" hidden>Ver más productos</button></div>
+      <div class="load-more"><p id="catalog-progress" role="status" aria-live="polite" aria-atomic="true" hidden></p><button class="secondary-button" id="load-more" aria-describedby="catalog-progress" hidden>Ver más productos</button></div>
     </section>
     <section id="list-view" class="list-view" hidden aria-labelledby="list-title">
       <a class="back-link" href="./">← Volver al inicio</a>

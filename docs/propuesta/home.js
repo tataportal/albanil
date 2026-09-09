@@ -117,7 +117,15 @@
   }
   function renderResults() {
     $('#results').innerHTML = filtered.slice(0, shown).map(card).join('');
-    $('#load-more').hidden = shown >= filtered.length;
+    const displayed = Math.min(shown, filtered.length);
+    const remaining = filtered.length - displayed;
+    const next = Math.min(PAGE_SIZE, remaining);
+    $('#load-more').hidden = remaining === 0;
+    $('#load-more').textContent = `Ver ${next} ${next === 1 ? 'producto más' : 'productos más'}`;
+    $('#catalog-progress').hidden = filtered.length === 0;
+    $('#catalog-progress').textContent = remaining
+      ? `Mostrando ${displayed} de ${filtered.length} productos · ${remaining === 1 ? 'Queda 1 por ver' : `Quedan ${remaining} por ver`}`
+      : `Mostrando ${displayed} de ${filtered.length} ${filtered.length === 1 ? 'producto' : 'productos'}`;
     $('#empty-search').hidden = filtered.length > 0;
     const categoryOnly = new URLSearchParams(location.search).has('categoria') && !new URLSearchParams(location.search).get('q');
     $('#empty-search h2').textContent = categoryOnly ? 'Aún no hay productos para mostrar.' : 'No encontramos ese producto.';
