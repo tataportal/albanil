@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="es" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex,nofollow">
+  <meta name="description" content="Explora materiales, herramientas y suministros de Ferreterías Albañil. Arma tu lista para cotizar.">
+  <meta name="theme-color" content="#b3d527">
+  <title>Albañil | Materiales para tu obra</title>
+  <link rel="icon" href="../favicon.png">
+  <link rel="preload" href="assets/fonts/barlow-latin-600-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="home.css">
+  <script src="list-parser.js" defer></script>
+  <script src="list-builder.js" defer></script>
+  <script src="home.js" defer></script>
+  <script src="featured-carousel.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#contenido">Ir al contenido</a>
+  <div class="preview-bar"><div class="wrap"><span>Propuesta de diseño <span class="preview-detail">· Lista de prueba · Contacto por WhatsApp</span></span></div></div>
+  <header class="site-header">
+    <div class="wrap header-main">
+      <a class="brand" href="./" aria-label="Albañil, inicio"><img src="../logo_pro.jpg" alt="Albañil Ferreterías Pro" width="466" height="158"></a>
+      <form class="search" role="search" id="search-form">
+        <label class="sr-only" for="search-input">Buscar productos</label>
+        <input id="search-input" name="q" type="search" placeholder="¿Qué necesitas para tu obra?" autocomplete="off" maxlength="160">
+        <button type="submit" aria-label="Buscar"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#search"></use></svg></button>
+      </form>
+      <button class="quote-trigger" data-open="quote"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#clipboard-list"></use></svg><span>Mi cotización</span><span class="quote-count" aria-label="0 productos">0</span></button>
+    </div>
+  </header>
+  <nav class="main-nav" aria-label="Navegación principal"><div class="wrap nav-inner">
+    <button class="all-categories" data-open="categories"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#menu-2"></use></svg> Todas las categorías</button>
+    <a href="?lista=1">Arma tu lista</a>
+    <a href="./#destacados">Productos destacados</a>
+    <a href="./#por-rubro">Explora por rubro</a>
+    <a class="nav-help" href="./#como-cotizar">Cómo cotizar <svg class="icon" aria-hidden="true"><use href="assets/icons.svg#arrow-right"></use></svg></a>
+  </div></nav>
+  <main id="contenido" class="wrap">
+    <div id="home-content">
+      <section class="order-hero" aria-labelledby="home-title"><div class="hero-copy"><span class="intro-kicker">Arma tu pedido con Albañil</span><h1 id="home-title">Los materiales de tu obra,<br>en una sola lista.</h1><p>Pega lo que necesitas o elige tus productos.<br>Arma tu pedido y cotiza con Albañil.</p><div class="hero-actions"><a class="order-start" href="?lista=1">Armar mi pedido <svg class="icon" aria-hidden="true"><use href="assets/icons.svg#arrow-right"></use></svg></a><a class="text-link" href="?ver=todo">Explorar productos <span aria-hidden="true">→</span></a></div><span class="hero-caption">Venta al por mayor y menor · Huancayo y región central</span></div><div class="hero-list" aria-label="Ejemplo de una lista de materiales"><div class="hero-list-heading"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#clipboard-list"></use></svg><strong>Tu lista de materiales</strong><span>Ejemplo</span></div><!--HERO-LIST--><div class="hero-list-footer"><span>Tú eliges. Confirmamos precio y disponibilidad.</span><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#check"></use></svg></div></div></section>
+      <section class="home-categories" aria-labelledby="home-categories-title"><div class="section-heading"><h2 id="home-categories-title">Explora por categoría</h2><a class="text-link" href="?ver=todo">Ver todo el catálogo <span aria-hidden="true">→</span></a></div><div class="departments"><!--CATEGORIES--></div></section>
+      <section class="featured section" id="destacados" aria-labelledby="featured-title" aria-roledescription="carrusel">
+        <div class="section-heading"><h2 id="featured-title">Productos destacados</h2><a class="text-link" href="?ver=todo">Ver catálogo <svg class="icon" aria-hidden="true"><use href="assets/icons.svg#arrow-right"></use></svg></a></div>
+        <div class="featured-viewport" id="featured-viewport"><!--PRODUCTS--></div><div class="featured-controls" hidden><button class="icon-button" id="featured-prev" aria-label="Ver seis productos anteriores" aria-controls="featured-viewport"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#chevron-right"></use></svg></button><span id="featured-position" aria-hidden="true">1 / 3</span><button class="icon-button" id="featured-next" aria-label="Ver seis productos siguientes" aria-controls="featured-viewport"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#chevron-right"></use></svg></button><button class="icon-button" id="featured-toggle" aria-label="Pausar rotación automática" title="Pausar rotación automática"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#player-pause"></use></svg></button></div><p class="sr-only" id="featured-status" role="status" aria-atomic="true"></p>
+      </section>
+      <section class="rubro-section section" id="por-rubro" aria-labelledby="rubro-title"><div class="section-heading"><div><h2 id="rubro-title">Encuentra materiales para tu rubro</h2><p class="section-description">Una selección para el trabajo que tienes por delante.</p></div></div><div class="sector-grid"><!--SECTORS--></div></section>
+      <section class="how-to section" id="como-cotizar" aria-labelledby="how-title"><div class="how-heading"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#clipboard-list"></use></svg><h2 id="how-title">Arma tu pedido.<br>Lo cotizamos contigo.</h2><p>Para una reparación o una obra completa.</p></div><ol class="steps"><li><span class="step-number">1</span><div><h3>Elige tus productos</h3><p>Agrega los materiales y las cantidades que necesitas.</p></div></li><li><span class="step-number">2</span><div><h3>Revisamos tu solicitud</h3><p>Confirmamos precio, disponibilidad y transporte.</p></div></li><li><span class="step-number">3</span><div><h3>Coordinamos contigo</h3><p>Recibe tu cotización y acuerda el pago y la entrega con la tienda.</p></div></li></ol></section>
+    </div>
+    <section id="catalog-view" class="catalog-view" hidden aria-labelledby="catalog-title">
+      <a class="back-link" href="./">← Volver al inicio</a>
+      <div class="section-heading"><div><h1 id="catalog-title" tabindex="-1">Catálogo</h1><p id="result-count" role="status"></p><p class="catalog-guide">Arma tu pedido: agrega productos y ajusta las cantidades en <button class="text-link" data-open="quote">Mi cotización</button>.</p></div></div>
+      <div class="catalog-controls"><span id="category-strip-label">Categorías</span><label>Ordenar <select id="sort-filter"><option value="relevance">Orden del catálogo</option><option value="name">Nombre: A a Z</option></select></label></div>
+      <div class="category-strip"><button class="category-scroll" id="categories-prev" aria-label="Ver categorías anteriores" aria-controls="category-chips" disabled><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#chevron-right"></use></svg></button><nav id="category-chips" class="category-chips" aria-labelledby="category-strip-label"></nav><button class="category-scroll" id="categories-next" aria-label="Ver más categorías" aria-controls="category-chips"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#chevron-right"></use></svg></button></div>
+      <div class="product-grid" id="results"></div>
+      <div id="empty-search" class="empty-state" hidden><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#search"></use></svg><h2>No encontramos ese producto.</h2><p>Prueba con menos palabras, otra medida o el nombre de la marca.</p><a class="primary-button" href="?ver=todo">Explorar el catálogo</a></div>
+      <div class="load-more"><button class="secondary-button" id="load-more" hidden>Ver más productos</button></div>
+    </section>
+    <section id="list-view" class="list-view" hidden aria-labelledby="list-title">
+      <a class="back-link" href="./">← Volver al inicio</a>
+      <div class="list-heading"><span class="intro-kicker">Tu lista de materiales</span><h1 id="list-title" tabindex="-1">Del papel a tu pedido.</h1><p>Pega la lista que ya tienes o busca los productos uno por uno.</p></div>
+      <div class="builder-layout"><div class="builder-main"><nav class="builder-modes" aria-label="Cómo armar tu lista"><a href="?lista=1" data-builder-mode="pegar" aria-current="page">Pegar mi lista</a><a href="?lista=1&amp;modo=buscar" data-builder-mode="buscar">Buscar productos</a></nav>
+      <div id="paste-mode"><form id="paste-form"><label for="paste-list">¿Qué materiales necesitas?</label><p id="paste-help">Un material por renglón. Incluye cantidad, medida y marca si las tienes.</p><textarea id="paste-list" rows="7" maxlength="20000" aria-describedby="paste-help" placeholder="10 bolsas de cemento Andino&#10;50 m de cable THW90 14&#10;4 tubos para agua de 1/2&quot;"></textarea><div class="paste-actions"><button class="primary-button" id="parse-list" type="submit" disabled>Buscar coincidencias <svg class="icon" aria-hidden="true"><use href="assets/icons.svg#arrow-right"></use></svg></button><span>Después podrás revisar cada producto.</span></div></form>
+      <p id="builder-error" class="inline-error" role="alert" hidden></p>
+      <section id="paste-review" class="paste-review" hidden aria-labelledby="paste-review-title"><div class="review-heading"><div><h2 id="paste-review-title" tabindex="-1">Revisa tu lista</h2><p id="draft-count"></p></div><button class="text-link" id="discard-draft" type="button">Descartar revisión</button></div><form id="confirm-draft-form"><div id="draft-rows"></div><button class="primary-button" id="add-draft" type="submit">Agregar a mi cotización <svg class="icon" aria-hidden="true"><use href="assets/icons.svg#plus"></use></svg></button></form></section></div>
+      <div id="manual-mode" hidden><form id="builder-search-form"><label for="builder-search">Encuentra tu próximo material</label><div class="builder-search-box"><input id="builder-search" type="search" maxlength="160" placeholder="Ej. cemento Andino, cable 14, tubo 1/2"><button class="primary-button" type="submit">Buscar</button></div></form><p id="manual-count" role="status">Busca por producto, marca o medida.</p><div id="manual-results"></div><a class="text-link" href="?ver=todo">Explorar el catálogo completo <span aria-hidden="true">→</span></a></div>
+      </div><aside class="builder-summary" aria-labelledby="builder-summary-title"><div class="summary-heading"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#clipboard-list"></use></svg><h2 id="builder-summary-title">Tu cotización</h2></div><p id="builder-summary-count" role="status">0 renglones</p><p id="builder-summary-empty">Los materiales que confirmes aparecerán aquí, junto a los que agregues desde el catálogo.</p><ul id="builder-summary-items"></ul><p id="builder-summary-more"></p><button class="primary-button" id="builder-summary-review" data-open="quote" disabled>Revisar mi cotización</button><p class="summary-note">Tu lista se guarda en este navegador. Precio y disponibilidad por confirmar.</p></aside></div>
+    </section>
+    <p id="load-error" class="inline-error" role="alert" hidden>No pudimos cargar el catálogo. <button id="retry-catalog" class="text-link">Volver a intentar</button></p>
+    <noscript><p class="inline-error">Activa JavaScript para buscar y armar tu lista. También puedes <a href="../buscar.html">consultar las fichas de referencia</a>.</p></noscript>
+  </main>
+  <footer class="site-footer"><div class="wrap footer-main"><div><strong>FERRETERÍAS ALBAÑIL</strong><p>Venta al por mayor y menor · Huancayo y toda la región central.</p><a class="footer-email" href="mailto:gpacheco@albanil.pe">gpacheco@albanil.pe</a></div><a href="https://wa.me/51968406042" target="_blank" rel="noopener noreferrer" aria-label="Consultar por WhatsApp al +51 968 406 042">+51 968 406 042 <svg class="icon" aria-hidden="true"><use href="assets/icons.svg#brand-whatsapp"></use></svg></a></div><div class="wrap footer-note"><span>Vista de prueba. La selección de productos es ilustrativa; precios y disponibilidad pendientes de confirmar.</span><button id="theme-toggle" class="theme-toggle" aria-pressed="false">Tema oscuro</button></div></footer>
+  <dialog id="categories-dialog" class="categories-dialog" aria-labelledby="categories-title"><div class="dialog-heading"><h2 id="categories-title">Encuentra lo que necesitas</h2><button class="icon-button" data-close aria-label="Cerrar categorías"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#x"></use></svg></button></div><div class="category-list"><!--CATEGORIES--></div><a class="text-link" href="?ver=todo">Ver todo el catálogo <span aria-hidden="true">→</span></a></dialog>
+  <dialog id="product-dialog" class="product-dialog" aria-labelledby="product-title"><button class="icon-button dialog-close" data-close aria-label="Cerrar producto"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#x"></use></svg></button><div id="product-detail"></div></dialog>
+  <dialog id="quote-dialog" class="quote-dialog" aria-labelledby="quote-title"><div class="dialog-heading"><div><span class="dialog-kicker">Tu lista de materiales</span><h2 id="quote-title">Mi cotización</h2></div><button class="icon-button" data-close aria-label="Cerrar cotización"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#x"></use></svg></button></div><p class="quote-notice">Lista de prueba guardada en este navegador. No se envía a la tienda.</p><div id="quote-items"></div><div id="quote-imports"></div><div id="quote-empty" class="empty-state"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#clipboard-list"></use></svg><h3>Tu lista empieza con un producto.</h3><p>Explora el catálogo y agrega los materiales que necesitas.</p><a class="primary-button" href="?lista=1">Armar mi lista</a></div><div id="quote-footer" hidden><p>El precio y la disponibilidad se confirman al revisar la solicitud.</p><button class="primary-button" id="review-quote">Revisar solicitud <svg class="icon" aria-hidden="true"><use href="assets/icons.svg#arrow-right"></use></svg></button><div id="quote-review" hidden><h3>Tu lista está lista para revisar.</h3><p>En la versión final podrás completar tus datos y enviarla a la tienda. Esta propuesta permite descargar tu lista de prueba.</p><section class="quote-delivery" aria-labelledby="quote-delivery-title"><h3 id="quote-delivery-title">Flete</h3><strong>Por calcular</strong><p>Se confirma según el destino, la cantidad y las condiciones de entrega. No está incluido en los precios de referencia.</p><div id="quote-delivery-conditions"></div></section><button class="secondary-button" id="download-quote"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#download"></use></svg> Descargar lista</button></div></div></dialog>
+  <a class="whatsapp-float" href="https://wa.me/51968406042" target="_blank" rel="noopener noreferrer" aria-label="Conversar con Ferreterías Albañil por WhatsApp" title="Escríbenos por WhatsApp"><svg class="icon" aria-hidden="true"><use href="assets/icons.svg#brand-whatsapp"></use></svg></a>
+  <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+</body>
+</html>
