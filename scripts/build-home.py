@@ -111,7 +111,7 @@ featured_slides=''.join(f'<div class="product-grid featured-slide{" is-active" i
 hero_list=''.join(f'<div class="hero-list-row"><img src="{escape(by_id[i]["imageSmall"])}" width="52" height="52" alt=""><span>{escape(by_id[i]["title"])}</span><strong>{quantity}</strong></div>' for i,quantity in [(375,'10'),(348,'50 m'),(257,'4')])
 template=(ROOT/'scripts/home.template.html').read_text()
 rendered=template.replace('<!--PRODUCTS-->',featured_slides).replace('<!--CATEGORIES-->',categories).replace('<!--SECTORS-->',sectors).replace('<!--HERO-LIST-->',hero_list)
-for asset in ['home.css','home.js','list-parser.js','list-builder.js','featured-carousel.js']:
+for asset in ['home.css','home.js','list-parser.js','list-builder.js','featured-carousel.js','contact.js']:
     version=hashlib.sha256((OUT/asset).read_bytes()).hexdigest()[:10]
     rendered=rendered.replace(f'"{asset}"',f'"{asset}?v={version}"')
 (OUT/'index.html').write_text(rendered)
