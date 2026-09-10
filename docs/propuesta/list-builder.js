@@ -41,7 +41,7 @@
       $('#builder-summary-count').textContent=`${items.length} ${items.length===1?'renglón':'renglones'}`;
       $('#builder-summary-empty').hidden=items.length>0;
       $('#builder-summary-items').innerHTML=items.slice(0,5).map(item=>`<li><span>${escape(item.title)}</span><strong>${escape(item.quantity)}${item.unit?' '+escape(item.unit):''}</strong></li>`).join('');
-      $('#builder-summary-more').textContent=items.length>5?`Y ${items.length-5} más en tu cotización.`:'';
+      $('#builder-summary-more').textContent=items.length>5?`Y ${items.length-5} más en tu lista.`:'';
       $('#builder-summary-review').disabled=!items.length;
     }
     $('#paste-list').value=text;
@@ -80,7 +80,7 @@
       if(invalid!==-1){showError(`Revisa la cantidad y el producto del renglón ${invalid+1}.`);return;}
       addImported(rows.map(row=>({id:crypto.randomUUID(),productId:row.choice==='pending'?null:Number(row.choice),original:row.original,query:row.query,quantity:Number(row.quantity),unit:row.unit.trim()})));
       rows=[];text='';$('#paste-list').value='';save();renderRows();summary();
-      notify('Renglones agregados a tu cotización.');$('#builder-summary-review').focus();
+      notify('Renglones agregados a tu lista.');$('#builder-summary-review').focus();
     });
     function searchManual() {
       const query=$('#builder-search').value.trim();

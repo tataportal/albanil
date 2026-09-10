@@ -50,6 +50,7 @@
     const count = Object.keys(quote).length + imported.length;
     document.querySelectorAll('.quote-count').forEach((el) => {
       el.textContent = count;
+      el.hidden = count === 0;
       el.setAttribute('aria-label', `${count} ${count === 1 ? 'producto' : 'productos'}`);
     });
   }
@@ -73,10 +74,10 @@
     quote[id] = amount;
     persist();
     renderQuote();
-    notify('Producto agregado a tu cotización');
+    notify('Producto agregado a tu lista');
     if (button) {
-      const previous = `${icon('plus')} Agregar a mi cotización`;
-      const previousLabel = `Agregar a mi cotización: ${byId.get(id).title}`;
+      const previous = `${icon('plus')} Agregar a mi lista`;
+      const previousLabel = `Agregar a mi lista: ${byId.get(id).title}`;
       clearTimeout(buttonTimers.get(button));
       button.setAttribute('aria-label', `Agregado: ${byId.get(id).title}`);
       button.innerHTML = `${icon('check')} Agregado`;
@@ -88,12 +89,12 @@
     return true;
   }
   function card(product) {
-    return `<article class="product-card"><a class="product-image" href="?producto=${product.id}" data-product="${product.id}"><img src="${escape(product.image)}" alt="${escape(product.title)}" width="480" height="480" loading="lazy"></a><div class="product-body"><p class="product-brand">${escape(product.brand || 'Albañil')}</p><h3><a href="?producto=${product.id}" data-product="${product.id}">${escape(product.title)}</a></h3><p class="product-price">Precio a cotizar</p><button class="add-button" data-add="${product.id}" aria-label="Agregar a mi cotización: ${escape(product.title)}">${icon('plus')} Agregar a mi cotización</button></div></article>`;
+    return `<article class="product-card"><a class="product-image" href="?producto=${product.id}" data-product="${product.id}"><img src="${escape(product.image)}" alt="${escape(product.title)}" width="480" height="480" loading="lazy"></a><div class="product-body"><p class="product-brand">${escape(product.brand || 'Albañil')}</p><h3><a href="?producto=${product.id}" data-product="${product.id}">${escape(product.title)}</a></h3><p class="product-price">Precio a cotizar</p><button class="add-button" data-add="${product.id}" aria-label="Agregar a mi lista: ${escape(product.title)}">${icon('plus')} Agregar a mi lista</button></div></article>`;
   }
   function showProduct(id, askQuantity = false) {
     const product = byId.get(id);
     if (!product) { notify('No encontramos ese producto en la copia del catálogo.'); return; }
-    $('#product-detail').innerHTML = `<div class="detail-layout"><div class="detail-image"><img src="${escape(product.image)}" alt="${escape(product.title)}" width="480" height="480"></div><div><p class="product-brand">${escape(product.brand || 'Albañil')}</p><h2 id="product-title">${escape(product.title)}</h2><p class="detail-category">${escape(product.category)}</p><p class="detail-reference-price">${product.referencePriceCents ? `S/ ${(product.referencePriceCents/100).toFixed(2)} <span>Precio de referencia · copia del 8 sep. 2026</span>` : 'Precio a consultar'}</p>${product.specifications ? `<p class="detail-specifications">${escape(product.specifications)}</p>` : ''}<p class="detail-note">La unidad de venta y el precio final se confirman con la tienda. Agrega la cantidad que necesitas. La tienda confirmará precio, presentación y disponibilidad.</p><form id="detail-form" data-id="${id}"><label for="detail-quantity">Cantidad a agregar (entera)</label><input class="quantity-input" id="detail-quantity" name="quantity" type="number" inputmode="numeric" min="1" max="999999" step="1" value="1" required><button class="primary-button" type="submit">${icon('plus')} Agregar a mi cotización</button></form></div></div>`;
+    $('#product-detail').innerHTML = `<div class="detail-layout"><div class="detail-image"><img src="${escape(product.image)}" alt="${escape(product.title)}" width="480" height="480"></div><div><p class="product-brand">${escape(product.brand || 'Albañil')}</p><h2 id="product-title">${escape(product.title)}</h2><p class="detail-category">${escape(product.category)}</p><p class="detail-reference-price">${product.referencePriceCents ? `S/ ${(product.referencePriceCents/100).toFixed(2)} <span>Precio de referencia · copia del 8 sep. 2026</span>` : 'Precio a consultar'}</p>${product.specifications ? `<p class="detail-specifications">${escape(product.specifications)}</p>` : ''}<p class="detail-note">La unidad de venta y el precio final se confirman con la tienda. Agrega la cantidad que necesitas. La tienda confirmará precio, presentación y disponibilidad.</p><form id="detail-form" data-id="${id}"><label for="detail-quantity">Cantidad a agregar (entera)</label><input class="quantity-input" id="detail-quantity" name="quantity" type="number" inputmode="numeric" min="1" max="999999" step="1" value="1" required><button class="primary-button" type="submit">${icon('plus')} Agregar a mi lista</button></form></div></div>`;
     openDialog('product');
     if (askQuantity) { $('#detail-quantity').focus(); $('#detail-quantity').select(); }
   }
