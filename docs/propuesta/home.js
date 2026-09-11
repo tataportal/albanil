@@ -344,17 +344,26 @@
       if (!response.ok) throw new Error('Catalog unavailable');
       const data = await response.json();
       if (!Array.isArray(data.products) || !Array.isArray(data.groups) || !Array.isArray(data.categories) || !Array.isArray(data.sectors)) throw new Error('Invalid catalog');
-      let rate=data.exchangeRate?.rate??null;
+      let rate=data.exchangeRate?.rate??null,rateUpdatedAt=data.exchangeRate?.updated_at??null;
       if(fxDemo){
         const banner=document.querySelector('.preview-bar');
         banner.textContent='DEMOSTRACIÓN DE TIPO DE CAMBIO · Precios ficticios de prueba. No son una oferta comercial.';
         banner.style.padding='12px 24px';
         let preview=null;try{preview=JSON.parse(localStorage.getItem(AlbanilPricing.demoKey));}catch{}
         if(preview&&AlbanilPricing.validRate(preview.rate)&&Array.isArray(preview.products)){
-          rate=preview.rate;
+          rate=preview.rate;rateUpdatedAt=preview.updated_at??null;
           const demoProducts=new Map(preview.products.filter(p=>Number.isInteger(p.id)&&typeof p.price==='number'&&Number.isFinite(p.price)&&p.price>0&&p.price<=999999&&['PEN','USD'].includes(p.currency)).map(p=>[p.id,p]));
           data.products=data.products.filter(p=>demoProducts.has(p.id)).map(p=>({...p,...demoProducts.get(p.id)}));
-        }else{data.products=[];banner.textContent+=' Abre el panel, guarda el tipo de cambio y pulsa «Ver precios en la web».';}
+        }else{rate=null;rateUpdatedAt=null;data.products=[];banner.textContent+=' Abre el panel, guarda el tipo de cambio y pulsa «Ver precios en la web».';}
+      }
+      const rateKnown=AlbanilPricing.validRate(rate);
+      $('#home-fx-value').textContent=rateKnown?`US$ 1 = S/ ${Number(rate).toLocaleString('es-PE',{minimumFractionDigits:2,maximumFractionDigits:4,useGrouping:false})}`:'Por confirmar';
+      $('#home-fx-demo').hidden=!fxDemo||!rateKnown;
+      const rateDate=new Date(rateUpdatedAt||'');
+      $('#home-fx-date').hidden=!rateKnown||!Number.isFinite(rateDate.getTime());
+      if(!$('#home-fx-date').hidden){
+        $('#home-fx-date').dateTime=rateDate.toISOString();
+        $('#home-fx-date').textContent='Actualizado: '+rateDate.toLocaleString('es-PE',{timeZone:'America/Lima',day:'2-digit',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit'})+' (Perú)';
       }
       data.products=data.products.map(p=>AlbanilPricing.apply(p,rate));
       catalog = data;

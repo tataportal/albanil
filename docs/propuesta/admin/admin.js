@@ -30,12 +30,12 @@
  }
  function savePreview(){
   if(!demo)return;
-  try{localStorage.setItem(AlbanilPricing.demoKey,JSON.stringify({rate:exchangeRate.rate,products:products.filter(p=>p.price!=null).map(p=>({id:p.id,price:p.price,currency:p.currency,unit:p.unit,tax:p.tax}))}));}catch{throw Error('El navegador no permite guardar la vista de prueba.');}
+  try{localStorage.setItem(AlbanilPricing.demoKey,JSON.stringify({rate:exchangeRate.rate,updated_at:exchangeRate.updated_at,products:products.filter(p=>p.price!=null).map(p=>({id:p.id,price:p.price,currency:p.currency,unit:p.unit,tax:p.tax}))}));}catch{throw Error('El navegador no permite guardar la vista de prueba.');}
  }
  function renderFX(){
   $('#fx-current').textContent=exchangeRate.rate?`Actual: 1 US$ = S/ ${Number(exchangeRate.rate).toFixed(4)}${exchangeRate.updated_at?' · Actualizado '+new Date(exchangeRate.updated_at).toLocaleString('es-PE'):''}`:'Todavía no hay un tipo de cambio guardado.';
   $('#fx-rate').value=exchangeRate.rate??'';$('#fx-demo-note').hidden=!demo;
-  $('#fx-catalog-link').href=demo?'../?ver=todo&demo=tipo-cambio':'../?ver=todo';previewFX();
+  $('#fx-catalog-link').href=demo?'../?ver=todo&demo=tipo-cambio':'../?ver=todo';$('#fx-home-link').href=demo?'../?demo=tipo-cambio':'../';previewFX();
  }
  function previewFX(){
   const value=$('#fx-rate').value,valid=AlbanilPricing.validRate(value),affected=products.filter(p=>p.currency==='USD'&&p.price!=null);
@@ -43,7 +43,7 @@
   $('#fx-preview').innerHTML=affected.slice(0,5).map(p=>`<tr><td>${esc(p.title)}<small>${money(p)}</small></td><td>${AlbanilPricing.label(AlbanilPricing.apply(p,exchangeRate.rate))}</td><td>${valid?AlbanilPricing.label(AlbanilPricing.apply(p,value)):'—'}</td></tr>`).join('')||'<tr><td colspan="3">Selecciona USD al editar un producto para incluirlo en la conversión.</td></tr>';
  }
  $('#fx-rate').addEventListener('input',previewFX);
- $('#fx-catalog-link').addEventListener('click',e=>{try{savePreview();}catch(error){e.preventDefault();$('#fx-error').textContent=error.message;}});
+ [$('#fx-catalog-link'),$('#fx-home-link')].forEach(link=>link.addEventListener('click',e=>{try{savePreview();}catch(error){e.preventDefault();$('#fx-error').textContent=error.message;}}));
  $('#fx-form').addEventListener('submit',async e=>{
   e.preventDefault();const button=e.target.querySelector('button');button.disabled=true;$('#fx-error').textContent='';
   try{if(!AlbanilPricing.validRate($('#fx-rate').value))throw Error('Ingresa un tipo de cambio positivo con máximo 4 decimales.');
