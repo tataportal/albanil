@@ -34,7 +34,7 @@
  $('#intake-files').addEventListener('click',e=>{const b=e.target.closest('[data-file-remove]');if(!b||busy)return;files=files.filter(f=>f.id!==b.dataset.fileRemove);persist();renderFiles();});
  async function prepare(){
   if(busy||sending)return;await ready;const bridge=window.AlbanilIntakeBridge;if(!bridge){note('El catálogo todavía está cargando. Inténtalo nuevamente.');return;}
-  const raw=$('#paste-list').value.trim();let rows=bridge.summary().map(r=>({productId:r.productId??null,material:r.title,quantity:r.quantity,unit:r.unit||'',source:'Mi lista',status:'Producto seleccionado por el cliente'}));
+  const raw=$('#paste-list').value.trim();let rows=bridge.summary().map(r=>({productId:r.productId??null,material:r.title,quantity:r.quantity,unit:r.unit||'',source:'Mi lista',status:r.productId?'Producto seleccionado por el cliente':'Pendiente de identificar'}));
   const sources=[{name:'Texto escrito o pegado',text:raw,rows:bridge.draft?.()},...files.map(f=>({name:f.name,text:f.text}))];
   for(const source of sources){if(!source.text.trim())continue;const lines=source.rows?.length?source.rows:source.text.split(/\r?\n/).filter(s=>s.trim());for(const entry of lines){const original=typeof entry==='string'?entry:entry.original;const r=typeof entry==='string'?AlbanilListParser.parseLine(entry):entry,found=AlbanilListParser.search(r.query,bridge.products,3);rows.push({material:r.query||original,quantity:r.quantity,unit:r.unit,source:source.name,original,status:found.length?'Coincidencias sugeridas · confirmar':'Pendiente de identificar',suggestions:found.map(p=>({id:p.id,title:p.title,brand:p.brand}))});}}
   if(!rows.length&&!files.length){note('Escribe materiales, agrega productos o carga un archivo primero.');$('#paste-list').focus();return;}

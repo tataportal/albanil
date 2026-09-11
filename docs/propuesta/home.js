@@ -180,8 +180,8 @@
     const group = params.get('rubro') || '';
     const category = params.get('categoria') || '';
     const sector = catalog.sectors.find((item) => item.id === params.get('sector'));
-    const isRequest = params.has('solicitud');
-    const isList = params.has('lista') && !isRequest;
+    const isRequest = false; // Legacy URLs use the same list builder.
+    const isList = params.has('lista') || params.has('solicitud');
     const isCatalog = !isRequest && !isList && (params.has('q') || params.has('rubro') || params.has('categoria') || params.has('sector') || params.has('ver'));
     $('#home-content').hidden = isCatalog || isList || isRequest;
     $('#request-view').hidden = !isRequest;
@@ -317,10 +317,7 @@
     notify('Corrige la cantidad: usa enteros para productos por unidad y decimales solo para medidas.');
     invalid.focus(); invalid.reportValidity(); return false;
   }
-  $('#review-quote').addEventListener('click', () => {
-    if (!checkQuoteQuantities()) return;
-    navigate('?solicitud=1');
-  });
+  $('#review-quote').setAttribute('data-intake-prepare','');
   $('#download-quote').addEventListener('click', () => {
     if (!checkQuoteQuantities()) return;
     const lines = Object.entries(quote).map(([id, quantity]) => `${quantity} × ${byId.get(Number(id)).title} | Marca: ${byId.get(Number(id)).brand || 'Por confirmar'} | Ref. ${id}`);
