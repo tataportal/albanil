@@ -14,3 +14,12 @@
 *token*
 error_log
 .DS_Store
+
+# Local service source only; never private databases, files or passwords.
+!service/
+!service/*.py
+!service/README.md
+.local/
+__pycache__/
+*.sqlite3*
+*.private

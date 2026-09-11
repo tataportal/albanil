@@ -9,6 +9,8 @@
   let quote = {};
   let imported = [];
   let listBuilder = null;
+  let requestBuilder = null;
+  let service = false;
   let filtered = [];
   let shown = PAGE_SIZE;
   let toastTimer;
@@ -17,7 +19,7 @@
   const escape = (value) => String(value).replace(/[&<>"']/g, (c) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const icon = (name) => `<svg class="icon" aria-hidden="true"><use href="assets/icons.svg#${name}"></use></svg>`;
   const normalize = (value) => String(value).normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9/]+/g, ' ').trim();
-  const validQuantity = value => AlbanilListParser.validOrderQuantity(value);
+  const validQuantity = (value, unit = '') => AlbanilListParser.validOrderQuantity(value,unit);
   const roundQuantity = (value) => Math.round(Number(value) * 100) / 100;
 
   function notify(message) {
@@ -55,7 +57,7 @@
     });
   }
   function getQuoteSummary() {
-    return [...Object.entries(quote).map(([id,quantity])=>({title:byId.get(Number(id))?.title || '',quantity,unit:''})), ...imported.map(row=>({title:byId.get(row.productId)?.title || row.query,quantity:row.quantity,unit:row.unit}))];
+    return [...Object.entries(quote).map(([id,quantity])=>({productId:Number(id),title:byId.get(Number(id))?.title || '',quantity,unit:byId.get(Number(id))?.unit||''})), ...imported.map(row=>({productId:row.productId??null,title:byId.get(row.productId)?.title || row.query,quantity:row.quantity,unit:row.unit}))];
   }
   function openDialog(name) {
     const target = $(`#${name}-dialog`);
@@ -68,9 +70,9 @@
     if (openingElement?.isConnected) openingElement.focus();
   }
   function addProduct(id, quantity = 1, button = null) {
-    if (!byId.has(id) || !validQuantity(quantity)) return false;
+    if (!byId.has(id) || !validQuantity(quantity,byId.get(id).unit)) return false;
     const amount = roundQuantity(Number(quote[id] || 0) + Number(quantity));
-    if (!validQuantity(amount)) { notify('Revisa la cantidad: el máximo es 999999.'); return false; }
+    if (!validQuantity(amount,byId.get(id).unit)) { notify('Revisa la cantidad: el máximo es 999999.'); return false; }
     quote[id] = amount;
     persist();
     renderQuote();
@@ -88,13 +90,23 @@
     }
     return true;
   }
+  function productPrice(product) {
+    return product.price != null ? `${product.currency==='USD'?'US$':'S/'} ${Number(product.price).toFixed(2)}${product.unit?' / '+escape(product.unit):''}` : 'Precio a cotizar';
+  }
+  function quantityAttrs(unit='') {
+    const fraction=AlbanilListParser.fractionalUnit(unit);
+    return `inputmode="${fraction?'decimal':'numeric'}" min="${fraction?0.01:1}" max="999999" step="${fraction?0.01:1}"`;
+  }
+  function requestItems() {
+    return [...Object.entries(quote).map(([id,quantity])=>({productId:Number(id),title:byId.get(Number(id)).title,quantity,unit:byId.get(Number(id)).unit||'',original:''})), ...imported.map(row=>({productId:row.productId,title:byId.get(row.productId)?.title||row.query,quantity:row.quantity,unit:row.unit||byId.get(row.productId)?.unit||'',original:row.original}))];
+  }
   function card(product) {
-    return `<article class="product-card"><a class="product-image" href="?producto=${product.id}" data-product="${product.id}"><img src="${escape(product.image)}" alt="${escape(product.title)}" width="480" height="480" loading="lazy"></a><div class="product-body"><p class="product-brand">${escape(product.brand || 'Albañil')}</p><h3><a href="?producto=${product.id}" data-product="${product.id}">${escape(product.title)}</a></h3><p class="product-price">Precio a cotizar</p><button class="add-button" data-add="${product.id}" aria-label="Agregar a mi lista: ${escape(product.title)}">${icon('plus')} Agregar a mi lista</button></div></article>`;
+    return `<article class="product-card"><a class="product-image" href="?producto=${product.id}" data-product="${product.id}"><img src="${escape(product.image)}" alt="${escape(product.title)}" width="480" height="480" loading="lazy"></a><div class="product-body"><p class="product-brand">${escape(product.brand || 'Albañil')}</p><h3><a href="?producto=${product.id}" data-product="${product.id}">${escape(product.title)}</a></h3><p class="product-price">${productPrice(product)}</p>${service?`<p class="product-stock">${escape(product.availability)}</p>`:''}<button class="add-button" data-add="${product.id}" aria-label="Agregar a mi lista: ${escape(product.title)}">${icon('plus')} Agregar a mi lista</button></div></article>`;
   }
   function showProduct(id, askQuantity = false) {
     const product = byId.get(id);
     if (!product) { notify('No encontramos ese producto en la copia del catálogo.'); return; }
-    $('#product-detail').innerHTML = `<div class="detail-layout"><div class="detail-image"><img src="${escape(product.image)}" alt="${escape(product.title)}" width="480" height="480"></div><div><p class="product-brand">${escape(product.brand || 'Albañil')}</p><h2 id="product-title">${escape(product.title)}</h2><p class="detail-category">${escape(product.category)}</p><p class="detail-reference-price">${product.referencePriceCents ? `S/ ${(product.referencePriceCents/100).toFixed(2)} <span>Precio de referencia · copia del 8 sep. 2026</span>` : 'Precio a consultar'}</p>${product.specifications ? `<p class="detail-specifications">${escape(product.specifications)}</p>` : ''}<p class="detail-note">La unidad de venta y el precio final se confirman con la tienda. Agrega la cantidad que necesitas. La tienda confirmará precio, presentación y disponibilidad.</p><form id="detail-form" data-id="${id}"><label for="detail-quantity">Cantidad a agregar (entera)</label><input class="quantity-input" id="detail-quantity" name="quantity" type="number" inputmode="numeric" min="1" max="999999" step="1" value="1" required><button class="primary-button" type="submit">${icon('plus')} Agregar a mi lista</button></form></div></div>`;
+    $('#product-detail').innerHTML = `<div class="detail-layout"><div class="detail-image"><img src="${escape(product.image)}" alt="${escape(product.title)}" width="480" height="480"></div><div><p class="product-brand">${escape(product.brand || 'Albañil')}</p><h2 id="product-title">${escape(product.title)}</h2><p class="detail-category">${escape(product.category)}</p>${service?`<p class="product-stock">${escape(product.availability)}${product.stock!=null?` · ${escape(product.stock)} ${escape(product.unit)}`:''}</p>`:''}<p class="detail-reference-price">${product.price != null ? `${productPrice(product)} <span>IGV: ${product.tax==='incluido'?'incluido':product.tax==='no_incluido'?'no incluido':'por confirmar'}</span>` : product.referencePriceCents ? `S/ ${(product.referencePriceCents/100).toFixed(2)} <span>Precio de referencia · copia del 8 sep. 2026</span>` : 'Precio a consultar'}</p>${product.specifications ? `<p class="detail-specifications">${escape(product.specifications)}</p>` : ''}<p class="detail-note">La unidad de venta y el precio final se confirman con la tienda. Agrega la cantidad que necesitas. La tienda confirmará precio, presentación y disponibilidad.</p><form id="detail-form" data-id="${id}"><label for="detail-quantity">Cantidad a agregar${product.unit?' ('+escape(product.unit)+')':' (entera)'}</label><input class="quantity-input" id="detail-quantity" name="quantity" type="number" ${quantityAttrs(product.unit)} value="1" required><button class="primary-button" type="submit">${icon('plus')} Agregar a mi lista</button></form></div></div>`;
     openDialog('product');
     if (askQuantity) { $('#detail-quantity').focus(); $('#detail-quantity').select(); }
   }
@@ -102,7 +114,7 @@
     const entries = Object.entries(quote).filter(([id]) => byId.has(Number(id)));
     $('#quote-items').innerHTML = entries.map(([id, quantity]) => {
       const product = byId.get(Number(id));
-      return `<article class="quote-item"><img src="${escape(product.image)}" alt="${escape(product.title)}" width="70" height="70"><div><h3>${escape(product.title)}</h3><label for="quantity-${id}">Cantidad <input id="quantity-${id}" data-quantity="${id}" aria-label="Cantidad de ${escape(product.title)}" type="number" inputmode="numeric" min="1" max="999999" step="1" value="${quantity}" required></label></div><button class="icon-button" data-remove="${id}" aria-label="Quitar ${escape(product.title)}">${icon('trash')}</button></article>`;
+      return `<article class="quote-item"><img src="${escape(product.image)}" alt="${escape(product.title)}" width="70" height="70"><div><h3>${escape(product.title)}</h3><label for="quantity-${id}">Cantidad <input id="quantity-${id}" data-quantity="${id}" aria-label="Cantidad de ${escape(product.title)}" type="number" ${quantityAttrs(product.unit)} value="${quantity}" required></label></div><button class="icon-button" data-remove="${id}" aria-label="Quitar ${escape(product.title)}">${icon('trash')}</button></article>`;
     }).join('');
     $('#quote-imports').innerHTML = imported.map(row => {
       const product = byId.get(row.productId);
@@ -114,7 +126,7 @@
     $('#quote-review').hidden = true;
     $('#review-quote').hidden = false;
     updateCount();
-    listBuilder?.summary();
+    listBuilder?.summary(); requestBuilder?.render();
   }
   function renderResults() {
     $('#results').innerHTML = filtered.slice(0, shown).map(card).join('');
@@ -168,14 +180,19 @@
     const group = params.get('rubro') || '';
     const category = params.get('categoria') || '';
     const sector = catalog.sectors.find((item) => item.id === params.get('sector'));
-    const isList = params.has('lista');
-    const isCatalog = !isList && (params.has('q') || params.has('rubro') || params.has('categoria') || params.has('sector') || params.has('ver'));
-    $('#home-content').hidden = isCatalog || isList;
+    const isRequest = params.has('solicitud');
+    const isList = params.has('lista') && !isRequest;
+    const isCatalog = !isRequest && !isList && (params.has('q') || params.has('rubro') || params.has('categoria') || params.has('sector') || params.has('ver'));
+    $('#home-content').hidden = isCatalog || isList || isRequest;
+    $('#request-view').hidden = !isRequest;
     $('#catalog-view').hidden = !isCatalog;
     $('#list-view').hidden = !isList;
     $('#search-input').value = query;
     $('#sort-filter').value = params.get('orden') === 'nombre' ? 'name' : 'relevance';
-    if (isCatalog) {
+    if (isRequest) {
+      requestBuilder?.render(); document.title='Solicitud de cotización | Albañil';
+      if(focus){$('#request-page-title').focus({preventScroll:true});$('#request-view').scrollIntoView({behavior:'instant'});}
+    } else if (isCatalog) {
       const terms = normalize(query).split(/\s+/).filter(Boolean);
       const matches = catalog.products.filter((p) => (!group || p.group === group) && (!sector || sector.types.includes(p.category)) && terms.every((word) => p.search.includes(word)));
       filtered = matches.filter((p) => !category || p.category === category);
@@ -251,20 +268,20 @@
   document.addEventListener('change', (event) => {
     const input = event.target;
     if (input.dataset.quantity) {
-      if (!input.checkValidity() || !validQuantity(input.value)) {
+      if (!input.checkValidity() || !validQuantity(input.value,byId.get(Number(input.dataset.quantity))?.unit)) {
         input.reportValidity(); input.value = quote[input.dataset.quantity]; return;
       }
       quote[input.dataset.quantity] = roundQuantity(input.value);
       persist();
       $('#quote-review').hidden = true;
       $('#review-quote').hidden = false;
-      listBuilder?.summary();
+      listBuilder?.summary(); requestBuilder?.render();
     }
     if (input.dataset.importQuantity) {
       const row=imported.find(item=>item.id===input.dataset.importQuantity);
       if (!row) return;
       if (!input.checkValidity() || !AlbanilListParser.validOrderQuantity(input.value,row.unit)) { input.reportValidity(); input.value=row.quantity; return; }
-      row.quantity=roundQuantity(input.value); persist(); listBuilder?.summary();
+      row.quantity=roundQuantity(input.value); persist(); listBuilder?.summary(); requestBuilder?.render();
       $('#quote-review').hidden = true; $('#review-quote').hidden = false;
     }
   });
@@ -302,12 +319,7 @@
   }
   $('#review-quote').addEventListener('click', () => {
     if (!checkQuoteQuantities()) return;
-    const selectedIds = [...Object.keys(quote).map(Number), ...imported.map(row=>row.productId)];
-    const conditions = [...new Set(selectedIds.map(id=>byId.get(id)?.deliveryConditions).filter(Boolean))];
-    $('#quote-delivery-conditions').innerHTML = conditions.length ? `<details><summary>Condiciones de entrega del catálogo</summary>${conditions.map(note=>`<p>${escape(note)}</p>`).join('')}<p>Referencia de la copia del 8 sep. 2026. La tienda confirmará el flete aplicable.</p></details>` : '';
-    $('#quote-review').hidden = false;
-    $('#review-quote').hidden = true;
-    $('#download-quote').focus();
+    navigate('?solicitud=1');
   });
   $('#download-quote').addEventListener('click', () => {
     if (!checkQuoteQuantities()) return;
@@ -329,7 +341,8 @@
     $('#load-error').hidden = true;
     document.querySelectorAll('[data-add]').forEach((button) => { button.disabled = true; });
     try {
-      const response = await fetch('catalog.json', {cache:'no-store'});
+      service = ['127.0.0.1','localhost'].includes(location.hostname) && ['8092','8098'].includes(location.port);
+      const response = await fetch(service?'/api/catalog':'catalog.json', {cache:'no-store'});
       if (!response.ok) throw new Error('Catalog unavailable');
       const data = await response.json();
       if (!Array.isArray(data.products) || !Array.isArray(data.groups) || !Array.isArray(data.categories) || !Array.isArray(data.sectors)) throw new Error('Invalid catalog');
@@ -337,6 +350,8 @@
       catalog.products.forEach((p) => { p.search = normalize(`${p.title} ${p.brand} ${p.category}`); });
       byId = new Map(catalog.products.map((p) => [p.id, p]));
       if (!listBuilder) listBuilder = createAlbanilListBuilder({products:catalog.products,addProduct,escape,notify,getSummary:getQuoteSummary,addImported(rows){imported.push(...rows);persist();renderQuote();}});
+      if(!requestBuilder)requestBuilder=createAlbanilRequest({getItems:requestItems,service,escape,notify});
+      if(service && !document.querySelector('.featured-group'))document.querySelectorAll('.featured-slide').forEach((slide,index)=>{slide.innerHTML=catalog.featured.slice(index*6,index*6+6).map(id=>card(byId.get(id))).join('');});
       window.AlbanilIntakeBridge = {summary:getQuoteSummary,draft:()=>listBuilder.draft(),products:catalog.products};
       restore(); renderRoute();
       document.querySelectorAll('[data-add]').forEach((button) => { button.disabled = false; });
