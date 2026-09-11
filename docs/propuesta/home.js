@@ -11,7 +11,9 @@
   let listBuilder = null;
   let requestBuilder = null;
   let service = false;
-  const fxDemo=new URLSearchParams(location.search).get('demo')==='tipo-cambio';
+  const fxParams=new URLSearchParams(location.search);
+  const fxDemo=fxParams.get('precios')==='local'||fxParams.get('demo')==='tipo-cambio';
+  if(fxParams.has('demo')){fxParams.delete('demo');fxParams.set('precios','local');history.replaceState(null,'','?'+fxParams+location.hash);}
   let filtered = [];
   let shown = PAGE_SIZE;
   let toastTimer;
@@ -143,7 +145,7 @@
     $('#empty-search').hidden = filtered.length > 0;
     const categoryOnly = new URLSearchParams(location.search).has('categoria') && !new URLSearchParams(location.search).get('q');
     $('#empty-search h2').textContent = categoryOnly ? 'Aún no hay productos para mostrar.' : 'No encontramos ese producto.';
-    $('#empty-search p').textContent = categoryOnly ? 'Puedes seguir explorando las otras categorías del catálogo.' : 'Prueba con menos palabras, otra medida o el nombre de la marca.';
+    $('#empty-search p').textContent = categoryOnly ? 'Puedes seguir explorando las otras categorías del catálogo.' : 'Busca con menos palabras, otra medida o el nombre de la marca.';
     $('#result-count').textContent = `${filtered.length} ${filtered.length === 1 ? 'producto encontrado' : 'productos encontrados'}`;
   }
   function updateCategoryScroll() {
@@ -323,9 +325,9 @@
     if (!checkQuoteQuantities()) return;
     const lines = Object.entries(quote).map(([id, quantity]) => `${quantity} × ${byId.get(Number(id)).title} | Marca: ${byId.get(Number(id)).brand || 'Por confirmar'} | Ref. ${id}`);
     lines.push(...imported.map(row=>`${row.quantity}${row.unit?' '+row.unit:''} × ${byId.get(row.productId)?.title || row.query} | ${row.productId?'Ref. '+row.productId:'PENDIENTE DE IDENTIFICAR'}\n  Texto original: ${row.original}`));
-    const content = ['ALBAÑIL | LISTA DE PRUEBA', 'No enviada a la tienda. Precios, presentación y disponibilidad por confirmar.', '', ...lines, '', 'Flete: por calcular según destino, cantidad y condiciones de entrega. No incluido en los precios de referencia.'].join('\n');
+    const content = ['ALBAÑIL | SOLICITUD DE COTIZACIÓN', 'No enviada a la tienda. Precios, presentación y disponibilidad por confirmar.', '', ...lines, '', 'Flete: por calcular según destino, cantidad y condiciones de entrega. No incluido en los precios de referencia.'].join('\n');
     const url = URL.createObjectURL(new Blob([content], {type:'text/plain;charset=utf-8'}));
-    const link = document.createElement('a'); link.href = url; link.download = 'albanil-lista-de-prueba.txt'; link.click();
+    const link = document.createElement('a'); link.href = url; link.download = 'albanil-solicitud.txt'; link.click();
     setTimeout(() => URL.revokeObjectURL(url), 1000);
   });
   window.addEventListener('popstate', () => {
@@ -346,19 +348,15 @@
       if (!Array.isArray(data.products) || !Array.isArray(data.groups) || !Array.isArray(data.categories) || !Array.isArray(data.sectors)) throw new Error('Invalid catalog');
       let rate=data.exchangeRate?.rate??null,rateUpdatedAt=data.exchangeRate?.updated_at??null;
       if(fxDemo){
-        const banner=document.querySelector('.preview-bar');
-        banner.textContent='DEMOSTRACIÓN DE TIPO DE CAMBIO · Precios ficticios de prueba. No son una oferta comercial.';
-        banner.style.padding='12px 24px';
         let preview=null;try{preview=JSON.parse(localStorage.getItem(AlbanilPricing.demoKey));}catch{}
         if(preview&&AlbanilPricing.validRate(preview.rate)&&Array.isArray(preview.products)){
           rate=preview.rate;rateUpdatedAt=preview.updated_at??null;
           const demoProducts=new Map(preview.products.filter(p=>Number.isInteger(p.id)&&typeof p.price==='number'&&Number.isFinite(p.price)&&p.price>0&&p.price<=999999&&['PEN','USD'].includes(p.currency)).map(p=>[p.id,p]));
-          data.products=data.products.filter(p=>demoProducts.has(p.id)).map(p=>({...p,...demoProducts.get(p.id)}));
-        }else{rate=null;rateUpdatedAt=null;data.products=[];banner.textContent+=' Abre el panel, guarda el tipo de cambio y pulsa «Ver precios en la web».';}
+          data.products=data.products.map(p=>({...p,...(demoProducts.get(p.id)||{})}));
+        }
       }
       const rateKnown=AlbanilPricing.validRate(rate);
       $('#home-fx-value').textContent=rateKnown?`US$ 1 = S/ ${Number(rate).toLocaleString('es-PE',{minimumFractionDigits:2,maximumFractionDigits:4,useGrouping:false})}`:'Por confirmar';
-      $('#home-fx-demo').hidden=!fxDemo||!rateKnown;
       const rateDate=new Date(rateUpdatedAt||'');
       $('#home-fx-date').hidden=!rateKnown||!Number.isFinite(rateDate.getTime());
       if(!$('#home-fx-date').hidden){

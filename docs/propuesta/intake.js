@@ -73,7 +73,7 @@
    const response=await fetch('/api/requests',{method:'POST',headers:{'Content-Type':'application/json','Idempotency-Key':submission.key},body});
    const result=await response.json();if(!response.ok)throw Error(result.error||'No se confirmó el registro. Inténtalo nuevamente.');
    $('#intake-saved-reference').textContent=result.reference;$('#intake-saved-whatsapp').href='https://wa.me/51968406042?text='+encodeURIComponent(`Hola, quisiera cotizar mi solicitud ${result.reference}. Incluye ${items.length} materiales y ${attachments.length} archivos, ya guardados para el asesor.`);
-   register.hidden=true;$('#intake-saved').hidden=false;$('#intake-delivery-status').textContent='Guardada en el panel local. WhatsApp solo comunica el número.';$('#intake-saved').scrollIntoView({block:'nearest'});
+   register.hidden=true;$('#intake-saved').hidden=false;$('#intake-delivery-status').textContent='Solicitud guardada. Continúa por WhatsApp con el número de referencia.';$('#intake-saved').scrollIntoView({block:'nearest'});
   }catch(error){$('#intake-register-error').textContent=error.message;inputs.forEach(i=>i.disabled=false);}
   finally{sending=false;button.disabled=false;button.textContent='Guardar solicitud';}
  });

@@ -8,7 +8,7 @@ window.createAlbanilRequest = function ({getItems, service, notify, escape:esc})
   $('#request-item-count').textContent=`${items.length} ${items.length===1?'renglón':'renglones'}`;
   $('#request-submit').hidden=!service;$('#request-submit').disabled=!items.length;
   $('#request-download').disabled=!items.length;
-  $('#request-mode-note').textContent=service?'Piloto local: la solicitud se guardará en el panel de este equipo. No se envían mensajes automáticos.':'Esta publicación aún no recibe solicitudes. Puedes descargar la solicitud estructurada para compartirla con el vendedor.';
+  $('#request-mode-note').textContent=service?'La solicitud se guardará en el panel de este equipo.':'Esta publicación aún no recibe solicitudes. Puedes descargar la solicitud estructurada para compartirla con el vendedor.';
  }
  function delivery(){const pick=$('#customer-delivery').value==='retiro';$('#destination-field').hidden=pick;$('#customer-destination').required=!pick;$('#request-freight').textContent=pick?'No aplica por retiro':'Por calcular según destino y cantidad';}
  $('#customer-delivery').addEventListener('change',delivery);

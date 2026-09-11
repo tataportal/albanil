@@ -1,6 +1,6 @@
 /* USD is the stored currency; PEN is the customer-facing converted amount. */
 (function(root){
- const demoKey='albanil-fx-preview-v1';
+ const demoKey='albanil-price-settings-v2';
  const validRate=v=>v!==null&&v!==''&&typeof v!=='boolean'&&Number.isFinite(Number(v))&&Number(v)>0&&Number(v)<=100&&Math.abs(Number(v)*10000-Math.round(Number(v)*10000))<0.000001;
  function pen(p,rate){
   if(p.price==null||p.price===''||!Number.isFinite(Number(p.price)))return null;
