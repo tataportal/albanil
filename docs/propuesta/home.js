@@ -337,6 +337,7 @@
       catalog.products.forEach((p) => { p.search = normalize(`${p.title} ${p.brand} ${p.category}`); });
       byId = new Map(catalog.products.map((p) => [p.id, p]));
       if (!listBuilder) listBuilder = createAlbanilListBuilder({products:catalog.products,addProduct,escape,notify,getSummary:getQuoteSummary,addImported(rows){imported.push(...rows);persist();renderQuote();}});
+      window.AlbanilIntakeBridge = {summary:getQuoteSummary,draft:()=>listBuilder.draft(),products:catalog.products};
       restore(); renderRoute();
       document.querySelectorAll('[data-add]').forEach((button) => { button.disabled = false; });
     } catch {

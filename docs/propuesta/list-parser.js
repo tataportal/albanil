@@ -65,10 +65,10 @@
     return row;
   }
   function parse(text) {
-    if (text.length > 20000) throw new Error('Tu lista es muy larga. Pega hasta 20 000 caracteres por vez.');
+    if (text.length > 100000) throw new Error('Tu lista es muy larga. Pega hasta 100 000 caracteres por vez.');
     const lines = text.split(/\r?\n/).map(s=>s.trim()).filter(Boolean);
     if (!lines.length) throw new Error('Pega al menos un material para empezar.');
-    if (lines.length > 100) throw new Error('Puedes revisar hasta 100 renglones por vez. Divide tu lista en dos partes.');
+    if (lines.length > 500) throw new Error('Puedes revisar hasta 500 renglones por vez. Divide tu lista en dos partes.');
     return lines.map(parseLine);
   }
   function search(query, products, limit = 6) {

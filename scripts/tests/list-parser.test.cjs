@@ -20,7 +20,7 @@ assert.equal(parser.validQuantity(0),false);
 assert.equal(parser.validQuantity(0.001),false);
 assert.equal(parser.validQuantity(1000000),false);
 assert.throws(()=>parser.parse(' \n '));
-assert.throws(()=>parser.parse(Array(101).fill('1 cemento').join('\n')));
+assert.throws(()=>parser.parse(Array(501).fill('1 cemento').join('\n')));
 const candidates=[{id:1,title:'Tubo de 1/2',brand:'Nicoll',category:'TUBOS'},{id:2,title:'Tubo de 3/4',brand:'Nicoll',category:'TUBOS'}];
 assert.deepEqual(parser.search('tubo 1/2',candidates).map(p=>p.id),[1]);
 assert.deepEqual(parser.search('tubo 1/4',candidates),[]);
@@ -97,3 +97,5 @@ for(const unit of ['m','metros','m³','metro cúbico','kg','litros']) {
 }
 assert.equal(parser.validOrderQuantity(1000000),false);
 console.log('Order quantities: integer counts and explicitly measured decimals passed.');
+
+assert.equal(parser.parse(Array(200).fill('2 bolsas de cemento').join('\n')).length,200);

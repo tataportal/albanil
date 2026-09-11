@@ -9,8 +9,8 @@
     let text = '';
     try {
       const saved = JSON.parse(localStorage.getItem(STORE) || '{}');
-      text = typeof saved.text === 'string' ? saved.text.slice(0,20000) : '';
-      rows = Array.isArray(saved.rows) ? saved.rows.slice(0,100).filter(r=>r && typeof r.original==='string' && typeof r.query==='string').map(r=>({original:r.original,query:r.query,quantity:parser.validQuantity(r.quantity)?Number(r.quantity):'',unit:String(r.unit || '').slice(0,30),choice:r.choice==='pending' || byId.has(Number(r.choice)) ? String(r.choice) : ''})) : [];
+      text = typeof saved.text === 'string' ? saved.text.slice(0,100000) : '';
+      rows = Array.isArray(saved.rows) ? saved.rows.slice(0,500).filter(r=>r && typeof r.original==='string' && typeof r.query==='string').map(r=>({original:r.original,query:r.query,quantity:parser.validQuantity(r.quantity)?Number(r.quantity):'',unit:String(r.unit || '').slice(0,30),choice:r.choice==='pending' || byId.has(Number(r.choice)) ? String(r.choice) : ''})) : [];
       if (saved.version !== 3) rows = rows.map(parser.upgradeDraftRow);
     } catch { /* A malformed saved draft must not block a new list. */ }
     function save() { try { localStorage.setItem(STORE,JSON.stringify({version:3,text,rows})); } catch { notify('Tu borrador sigue abierto, pero no pudimos guardarlo en este navegador.'); } }
@@ -98,6 +98,6 @@
     });
     $('#parse-list').disabled=false;
     renderRows();summary();
-    return {summary,show(mode){const manual=mode==='buscar';$('#paste-mode').hidden=manual;$('#manual-mode').hidden=!manual;document.querySelectorAll('[data-builder-mode]').forEach(link=>{if(link.dataset.builderMode===(manual?'buscar':'pegar'))link.setAttribute('aria-current','page');else link.removeAttribute('aria-current');});}};
+    return {summary,draft:()=>rows.map(row=>({...row})),show(mode){const manual=mode==='buscar';$('#paste-mode').hidden=manual;$('#manual-mode').hidden=!manual;document.querySelectorAll('[data-builder-mode]').forEach(link=>{if(link.dataset.builderMode===(manual?'buscar':'pegar'))link.setAttribute('aria-current','page');else link.removeAttribute('aria-current');});}};
   };
 })(globalThis);

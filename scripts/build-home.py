@@ -107,11 +107,26 @@ def card(p):
 categories=''.join(f'<a class="department" href="?categoria={quote(c["name"], safe="")}">{icon(c["icon"])}<span>{escape(c["name"].capitalize().replace(" - epp", " - EPP"))}</span></a>' for c in CATEGORIES)
 sectors=''.join(f'<a class="sector-card" href="?sector={s["id"]}">{icon(s["icon"])}<h3>{escape(s["name"])}</h3><p>{escape(s["description"])}</p><span>Ver productos {icon("arrow-right")}</span></a>' for s in SECTORS)
 by_id={p['id']:p for p in products}
-featured_slides=''.join(f'<div class="product-grid featured-slide{" is-active" if start == 0 else ""}" role="group" aria-roledescription="grupo" aria-label="{start // 6 + 1} de 3"{ "" if start == 0 else " inert aria-hidden=\"true\""}>'+''.join(card(by_id[i]) for i in FEATURED[start:start+6])+'</div>' for start in range(0,len(FEATURED),6))
+# Best sellers supplied by Albañil; images represent groups, not stock claims.
+FEATURED_GROUPS = [
+ ('Ladrillo 18 huecos',84,'18 huecos'),('Bloqueta H15 × 30',91,'bloqueta h15'),('Fenólicos 18 mm','fenolicos.png',''),
+ ('Cemento Andino Tipo 1',375,'cemento andino'),('Amoladoras','amoladoras.jpg',''),('Plásticos','plasticos.jpg',''),
+ ('Autoperforantes','autoperforantes.jpg',''),('Paneles LED','paneles.jpg',''),('Soldadura','soldadura.jpg',''),
+ ('Guantes',43,'guantes'),('Lijas',617,'lija'),('Tecnopor de 1"',248,'tecnopor de 1"'),
+ ('Sikaflex',137,'sikaflex'),('Esmalte anticorrosivo Walon','walon.webp',''),('Spray C&A','spray.jpg',''),
+ ('Llave check de 1/2" CIM','check.jpg',''),('Wincha Truper',601,'wincha truper'),('Alambre 16',68,'alambre nro 16')]
+def group_card(g):
+    title,photo,query=g
+    image=by_id[photo]['image'] if isinstance(photo,int) else 'assets/groups/'+photo
+    url='?q='+quote(query,safe='') if query else 'https://wa.me/51968406042?text='+quote('Hola, quisiera consultar por '+title+'. ¿Me confirman opciones, precio y disponibilidad?',safe='')
+    external='' if query else ' target="_blank" rel="noopener noreferrer"'
+    return f'<article class="product-card featured-group"><a class="product-image" href="{escape(url)}"{external}><img src="{escape(image)}" alt="{escape(title)} — foto representativa" width="480" height="480" loading="lazy"></a><div class="product-body"><p class="product-brand">Más vendidos</p><h3><a href="{escape(url)}"{external}>{escape(title)}</a></h3><p class="group-note">Foto referencial · opciones por confirmar</p><a class="secondary-button" href="{escape(url)}"{external}>{'Ver opciones' if query else 'Consultar al asesor'}</a></div></article>'
+featured_slides=''.join(f'<div class="product-grid featured-slide{" is-active" if start == 0 else ""}" role="group" aria-roledescription="grupo" aria-label="{start // 6 + 1} de 3"'+('' if start == 0 else ' inert aria-hidden="true"')+'>'+''.join(group_card(g) for g in FEATURED_GROUPS[start:start+6])+'</div>' for start in range(0,18,6))
+
 hero_list=''.join(f'<div class="hero-list-row"><img src="{escape(by_id[i]["imageSmall"])}" width="52" height="52" alt=""><span>{escape(by_id[i]["title"])}</span><strong>{quantity}</strong></div>' for i,quantity in [(375,'10'),(348,'50 m'),(257,'4')])
 template=(ROOT/'scripts/home.template.html').read_text()
 rendered=template.replace('<!--PRODUCTS-->',featured_slides).replace('<!--CATEGORIES-->',categories).replace('<!--SECTORS-->',sectors).replace('<!--HERO-LIST-->',hero_list)
-for asset in ['home.css','home.js','list-parser.js','list-builder.js','featured-carousel.js','contact.js']:
+for asset in ['home.css','home.js','list-parser.js','list-builder.js','featured-carousel.js','contact.js','intake.js']:
     version=hashlib.sha256((OUT/asset).read_bytes()).hexdigest()[:10]
     rendered=rendered.replace(f'"{asset}"',f'"{asset}?v={version}"')
 (OUT/'index.html').write_text(rendered)
