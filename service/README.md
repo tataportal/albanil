@@ -19,3 +19,9 @@ Pendiente antes de uso real: decidir alojamiento, HTTPS y servidor de producció
 ## Demostración pública
 
 GitHub Pages publica `/propuesta/admin/` con tres solicitudes sintéticas de `demo.json`. Permite probar filtros, seguimiento y edición de productos en memoria; recargar restaura los ejemplos. No hay acceso a la base privada ni envíos a los teléfonos ficticios. Los archivos de demostración son ficticios. El builder público conserva el flujo manual por WhatsApp hasta conectar el receptor privado.
+
+## Tipo de cambio USD → PEN
+
+En Precios y stock se guarda un único tipo de cambio manual (hasta cuatro decimales), con vista previa de cinco productos y total afectado. El precio original en USD se conserva. Productos en PEN no cambian; sin tipo de cambio, los USD no muestran un precio en soles inventado. El servicio audita cambios y rechaza versiones desactualizadas. `/api/catalog` incluye el cambio y precios convertidos; el catálogo y armador muestran soles. Cada solicitud guarda precio, moneda, conversión y cambio de ese momento sin recalcular registros anteriores. Esto no implementa emisión de cotizaciones finales.
+
+En Pages, dos productos tienen precios ficticios solo dentro de la demo del panel. «Ver precios en la web» abre `?ver=todo&demo=tipo-cambio` y usa una copia de prueba en este navegador. La ruta normal del catálogo no lee esa copia. No es una actualización compartida entre clientes.

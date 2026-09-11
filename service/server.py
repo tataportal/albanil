@@ -17,7 +17,7 @@ import sqlite3
 import threading
 import time
 from datetime import datetime, timezone
-from decimal import Decimal, InvalidOperation
+from decimal import Decimal, InvalidOperation, ROUND_HALF_UP
 from http.cookies import SimpleCookie
 from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
@@ -59,6 +59,8 @@ class Store:
         Path(path).parent.mkdir(parents=True, exist_ok=True)
         with self.connect() as db:
             db.executescript('''
+                CREATE TABLE IF NOT EXISTS settings(id INTEGER PRIMARY KEY CHECK(id=1), rate TEXT, version INTEGER NOT NULL, updated_at TEXT);
+                INSERT OR IGNORE INTO settings VALUES(1,NULL,0,NULL);
                 CREATE TABLE IF NOT EXISTS products(id INTEGER PRIMARY KEY, sku TEXT NOT NULL DEFAULT '', unit TEXT NOT NULL DEFAULT '', price REAL, currency TEXT NOT NULL DEFAULT 'PEN', tax TEXT NOT NULL DEFAULT 'confirmar', stock REAL, version INTEGER NOT NULL DEFAULT 0, updated_at TEXT);
                 CREATE TABLE IF NOT EXISTS requests(reference TEXT PRIMARY KEY, idempotency TEXT UNIQUE NOT NULL, fingerprint TEXT NOT NULL, customer TEXT NOT NULL, items TEXT NOT NULL, status TEXT NOT NULL, agent TEXT NOT NULL DEFAULT '', notes TEXT NOT NULL DEFAULT '', version INTEGER NOT NULL DEFAULT 0, created_at TEXT NOT NULL, updated_at TEXT NOT NULL);
                 CREATE TABLE IF NOT EXISTS request_sequence(id INTEGER PRIMARY KEY AUTOINCREMENT);
@@ -87,10 +89,38 @@ class Store:
         result['availability'] = 'Por confirmar' if data['stock'] is None else ('Disponible' if data['stock'] > 0 else 'Agotado')
         return result
 
+    def exchange_rate(self):
+        with self.connect() as db:
+            row=dict(db.execute('SELECT rate,version,updated_at FROM settings WHERE id=1').fetchone())
+        row['rate']=float(row['rate']) if row['rate'] else None
+        return row
+
+    def update_exchange_rate(self, payload, actor):
+        try:
+            rate=Decimal(str(payload.get('rate')))
+            if isinstance(payload.get('rate'),bool) or not rate.is_finite() or not Decimal('0.0001')<=rate<=100 or rate!=rate.quantize(Decimal('0.0001')):
+                raise ValueError('Ingresa un tipo de cambio mayor que cero, hasta 100 y con máximo 4 decimales.')
+        except InvalidOperation:
+            raise ValueError('Tipo de cambio inválido.')
+        with self.connect() as db:
+            db.execute('BEGIN IMMEDIATE')
+            before=dict(db.execute('SELECT rate,version,updated_at FROM settings WHERE id=1').fetchone())
+            if payload.get('version')!=before['version']:raise Conflict('El tipo de cambio cambió. Actualiza el panel antes de guardar.')
+            after={'rate':str(rate),'version':before['version']+1,'updated_at':now()}
+            db.execute('UPDATE settings SET rate=?,version=?,updated_at=? WHERE id=1',tuple(after.values()))
+            db.execute('INSERT INTO audit(entity,entity_id,actor,before_json,after_json,created_at) VALUES(?,?,?,?,?,?)',('exchange_rate','1',actor,json.dumps(before),json.dumps(after),now()))
+        return self.exchange_rate()
+
     def products(self):
         with self.connect() as db:
             saved = {r['id']:r for r in db.execute('SELECT * FROM products')}
-        return [self.product(p, saved.get(p['id'])) for p in self.by_id.values()]
+            setting=db.execute('SELECT rate FROM settings WHERE id=1').fetchone()
+        rate=setting['rate']
+        results=[self.product(p, saved.get(p['id'])) for p in self.by_id.values()]
+        for p in results:
+            p['exchangeRate']=float(rate) if rate and p['currency']=='USD' else None
+            p['pricePEN']=None if p['price'] is None or (p['currency']=='USD' and not rate) else float((Decimal(str(p['price']))*(Decimal(rate) if p['currency']=='USD' else 1)).quantize(Decimal('0.01'),rounding=ROUND_HALF_UP))
+        return results
 
     def update_product(self, product_id, payload, actor):
         if product_id not in self.by_id:
@@ -154,7 +184,7 @@ class Store:
             suggestions = item.get('suggestionIds',[])
             if not isinstance(suggestions,list) or len(suggestions)>6 or any(type(i) is not int or i not in current for i in suggestions): raise ValueError('Coincidencias inválidas.')
             lines.append(dict(productId=pid, title=p['title'] if p else query, sku=p['sku'] if p else '', brand=p['brand'] if p else '', quantity=qty, unit=unit, original=original, pending=not p, source=source, suggestions=[{'id':i,'title':current[i]['title']} for i in suggestions],
-                              price=p['price'] if p else None, currency=p['currency'] if p else None, stock=p['stock'] if p else None,
+                              pricePEN=p['pricePEN'] if p else None, exchangeRate=p['exchangeRate'] if p else None, price=p['price'] if p else None, currency=p['currency'] if p else None, stock=p['stock'] if p else None,
                               availability=p['availability'] if p else 'Por confirmar', saleUnit=p['unit'] if p else '', tax=p['tax'] if p else 'confirmar'))
         # Fingerprint uses the client's validated request, not mutable catalog values.
         fingerprint=hashlib.sha256(json.dumps(payload,sort_keys=True).encode()).hexdigest()
@@ -280,12 +310,13 @@ class Handler(SimpleHTTPRequestHandler):
         path=urlsplit(self.path).path
         if path=='/api/health':return self.reply(200,{'mode':'local','requests':True})
         if path=='/api/catalog':
-            return self.reply(200,{**self.server.store.catalog,'products':self.server.store.products()})
+            return self.reply(200,{**self.server.store.catalog,'products':self.server.store.products(),'exchangeRate':self.server.store.exchange_rate()})
         if path.startswith('/api/'):
             s=self.session()
             if not s:return self.reply(401,{'error':'Inicia sesión.'})
             if path=='/api/session':return self.reply(200,{'user':'Administrador','csrf':s['csrf']})
-            if path=='/api/products':return self.reply(200,{'products':self.server.store.products()})
+            if path=='/api/products':return self.reply(200,{'products':self.server.store.products(),'exchangeRate':self.server.store.exchange_rate()})
+            if path=='/api/exchange-rate':return self.reply(200,self.server.store.exchange_rate())
             if path=='/api/requests':return self.reply(200,{'requests':self.server.store.requests()})
             match=re.fullmatch(r'/api/requests/(ALB-[A-Z0-9-]+)/files/(\d+)',path)
             if match:
@@ -340,6 +371,7 @@ class Handler(SimpleHTTPRequestHandler):
                 with self.server.lock:
                     self.server.sessions={k:v for k,v in self.server.sessions.items() if v is not s}
                 return self.reply(200,{},'albanil_session=; HttpOnly; SameSite=Strict; Path=/api; Max-Age=0')
+            if method=='PATCH' and path=='/api/exchange-rate':return self.reply(200,self.server.store.update_exchange_rate(payload,'Administrador'))
             if method=='PATCH' and re.fullmatch(r'/api/products/\d+',path):return self.reply(200,self.server.store.update_product(int(path.rsplit('/',1)[1]),payload,'Administrador'))
             if method=='PATCH' and re.fullmatch('/api/requests/ALB-[A-Z0-9-]+',path):return self.reply(200,self.server.store.update_request(path.rsplit('/',1)[1],payload,'Administrador'))
             return self.reply(404,{'error':'No encontrado.'})

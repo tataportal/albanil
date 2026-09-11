@@ -11,6 +11,7 @@
   let listBuilder = null;
   let requestBuilder = null;
   let service = false;
+  const fxDemo=new URLSearchParams(location.search).get('demo')==='tipo-cambio';
   let filtered = [];
   let shown = PAGE_SIZE;
   let toastTimer;
@@ -91,7 +92,7 @@
     return true;
   }
   function productPrice(product) {
-    return product.price != null ? `${product.currency==='USD'?'US$':'S/'} ${Number(product.price).toFixed(2)}${product.unit?' / '+escape(product.unit):''}` : 'Precio a cotizar';
+    return product.price != null ? `${AlbanilPricing.label(product)}${product.pricePEN!=null&&product.unit?' / '+escape(product.unit):''}` : 'Precio a cotizar';
   }
   function quantityAttrs(unit='') {
     const fraction=AlbanilListParser.fractionalUnit(unit);
@@ -343,6 +344,19 @@
       if (!response.ok) throw new Error('Catalog unavailable');
       const data = await response.json();
       if (!Array.isArray(data.products) || !Array.isArray(data.groups) || !Array.isArray(data.categories) || !Array.isArray(data.sectors)) throw new Error('Invalid catalog');
+      let rate=data.exchangeRate?.rate??null;
+      if(fxDemo){
+        const banner=document.querySelector('.preview-bar');
+        banner.textContent='DEMOSTRACIÓN DE TIPO DE CAMBIO · Precios ficticios de prueba. No son una oferta comercial.';
+        banner.style.padding='12px 24px';
+        let preview=null;try{preview=JSON.parse(localStorage.getItem(AlbanilPricing.demoKey));}catch{}
+        if(preview&&AlbanilPricing.validRate(preview.rate)&&Array.isArray(preview.products)){
+          rate=preview.rate;
+          const demoProducts=new Map(preview.products.filter(p=>Number.isInteger(p.id)&&typeof p.price==='number'&&Number.isFinite(p.price)&&p.price>0&&p.price<=999999&&['PEN','USD'].includes(p.currency)).map(p=>[p.id,p]));
+          data.products=data.products.filter(p=>demoProducts.has(p.id)).map(p=>({...p,...demoProducts.get(p.id)}));
+        }else{data.products=[];banner.textContent+=' Abre el panel, guarda el tipo de cambio y pulsa «Ver precios en la web».';}
+      }
+      data.products=data.products.map(p=>AlbanilPricing.apply(p,rate));
       catalog = data;
       catalog.products.forEach((p) => { p.search = normalize(`${p.title} ${p.brand} ${p.category}`); });
       byId = new Map(catalog.products.map((p) => [p.id, p]));

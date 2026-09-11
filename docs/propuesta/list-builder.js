@@ -16,7 +16,7 @@
     function save() { try { localStorage.setItem(STORE,JSON.stringify({version:3,text,rows})); } catch { notify('Tu borrador sigue abierto, pero no pudimos guardarlo en este navegador.'); } }
     function showError(message) { $('#builder-error').textContent=message; $('#builder-error').hidden=!message; }
     const money = cents => 'S/ ' + (cents/100).toFixed(2);
-    const price = p => p.price!=null ? `${p.currency==='USD'?'US$':'S/'} ${Number(p.price).toFixed(2)}${p.unit?' / '+escape(p.unit):''}` : p.referencePriceCents?money(p.referencePriceCents):'Precio a consultar';
+    const price = p => p.price!=null ? `${AlbanilPricing.label(p)}${p.pricePEN!=null&&p.unit?' / '+escape(p.unit):''}` : p.referencePriceCents?money(p.referencePriceCents):'Precio a consultar';
     function choices(row,index) {
       const found = parser.search(row.query,products);
       const chosen = byId.get(Number(row.choice));

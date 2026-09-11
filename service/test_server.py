@@ -19,6 +19,32 @@ class StoreTests(unittest.TestCase):
         return dict(sku='TAP-6',unit='par',price='2.38',currency='PEN',tax='incluido',stock='10',version=0,**changes)
     def request(self):
         return {'customer':{'name':'Cliente de prueba','phone':'999111222','email':'prueba@example.com','company':'','ruc':'','delivery':'entrega','destination':'Huancayo - dirección de prueba','notes':'Confirmar presentación'},'consent':True,'items':[{'productId':6,'quantity':2,'unit':'par','original':'2 pares de tapones','query':'tapones'},{'productId':None,'quantity':1.5,'unit':'m3','query':'Arena gruesa','original':'1.5 m3 de arena'}]}
+    def test_exchange_rate_conversion_and_historical_snapshot(self):
+        payload=self.product();payload.update(price=20,currency='USD')
+        self.store.update_product(6,payload,'Admin')
+        get=lambda: next(p for p in self.store.products() if p['id']==6)
+        self.assertIsNone(get()['pricePEN'])
+        self.store.update_exchange_rate({'rate':3.75,'version':0},'Admin')
+        self.assertEqual(get()['pricePEN'],75)
+        ref=self.store.create_request(self.request(),secrets.token_hex(16))['reference']
+        self.store.update_exchange_rate({'rate':3.8,'version':1},'Admin')
+        self.assertEqual(Store(self.path).exchange_rate()['rate'],3.8)
+        self.assertEqual(get()['price'],20)
+        self.assertEqual(get()['currency'],'USD')
+        self.assertEqual(get()['pricePEN'],76)
+        old=next(r for r in self.store.requests() if r['reference']==ref)['items'][0]
+        self.assertEqual((old['pricePEN'],old['exchangeRate']),(75,3.75))
+        with self.assertRaises(Conflict):self.store.update_exchange_rate({'rate':4,'version':0},'Admin')
+        for bad in [None,True,0,-1,'NaN','Infinity','1.23456',101]:
+            with self.assertRaises(ValueError):self.store.update_exchange_rate({'rate':bad,'version':2},'Admin')
+        payload.update(price=1.01,currency='PEN',version=1)
+        self.store.update_product(6,payload,'Admin')
+        self.assertEqual(get()['pricePEN'],1.01)
+        payload.update(currency='USD',version=2)
+        self.store.update_product(6,payload,'Admin')
+        self.store.update_exchange_rate({'rate':3.5,'version':2},'Admin')
+        self.assertEqual(get()['pricePEN'],3.54)
+
     def test_stock_price_persistence_and_audit(self):
         updated=self.store.update_product(6,self.product(),'Administrador')
         self.assertEqual(updated['availability'],'Disponible')
@@ -120,6 +146,10 @@ class HTTPTests(unittest.TestCase):
         payload={'sku':'','unit':'par','price':2.38,'currency':'PEN','tax':'incluido','stock':5,'version':0}
         self.assertEqual(self.call('PATCH','/api/products/6',payload,{'Cookie':cookie})[0],403)
         h={'Cookie':cookie,'X-CSRF-Token':data['csrf']}
+        self.assertEqual(self.call('PATCH','/api/exchange-rate',{'rate':3.75,'version':0})[0],401)
+        self.assertEqual(self.call('PATCH','/api/exchange-rate',{'rate':3.75,'version':0},{'Cookie':cookie})[0],403)
+        self.assertEqual(self.call('PATCH','/api/exchange-rate',{'rate':3.75,'version':0},h)[0],200)
+        self.assertEqual(self.call('GET','/api/catalog')[1]['exchangeRate']['rate'],3.75)
         body={'customer':{'name':'Prueba','phone':'999111222','delivery':'retiro'},'consent':True,'items':[],'attachments':[{'name':'pedido.pdf','data':base64.b64encode(b'%PDF-1.4 test').decode()}]}
         code,res,_=self.call('POST','/api/requests',body,{'Idempotency-Key':secrets.token_hex(16)})
         self.assertEqual(code,201)
