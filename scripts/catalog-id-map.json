@@ -1,0 +1,2218 @@
+{
+  "510|caja de pase galv 0,6mm 10x10x5|accesorios eléctricos|mencor|1": {
+    "id": 510,
+    "reference": "510"
+  },
+  "511|caja de pase galv 0,6mm 15x15x10|accesorios eléctricos|mencor|1": {
+    "id": 511,
+    "reference": "511"
+  },
+  "512|caja de pase galv 0,6mm 20x20x10|accesorios eléctricos|mencor|1": {
+    "id": 512,
+    "reference": "512"
+  },
+  "513|caja de pase galv 0,6mm 30x30x10|accesorios eléctricos|mencor|1": {
+    "id": 513,
+    "reference": "513"
+  },
+  "514|caja de pase galv 1,2mm 10x10x5|accesorios eléctricos|mencor|1": {
+    "id": 514,
+    "reference": "514"
+  },
+  "515|caja de pase galv 1,2mm 15x15x10|accesorios eléctricos|mencor|1": {
+    "id": 515,
+    "reference": "515"
+  },
+  "516|caja de pase galv 1,2mm 20x20x10|accesorios eléctricos|mencor|1": {
+    "id": 516,
+    "reference": "516"
+  },
+  "517|caja de pase galv 1,2mm 30x30x10|accesorios eléctricos|mencor|1": {
+    "id": 517,
+    "reference": "517"
+  },
+  "518|caja de pase galv 1,5mm 10x10x5|accesorios eléctricos|mencor|1": {
+    "id": 518,
+    "reference": "518"
+  },
+  "519|caja de pase galv 1,5mm 15x15x10|accesorios eléctricos|mencor|1": {
+    "id": 519,
+    "reference": "519"
+  },
+  "520|caja de pase galv 1,5mm 20x20x10|accesorios eléctricos|mencor|1": {
+    "id": 520,
+    "reference": "520"
+  },
+  "521|caja de pase galv 1,5mm 30x30x10|accesorios eléctricos|mencor|1": {
+    "id": 521,
+    "reference": "521"
+  },
+  "504|caja de pase pvc 10x10x7|accesorios eléctricos|megans|1": {
+    "id": 504,
+    "reference": "504"
+  },
+  "505|caja de pase pvc 10x15x8|accesorios eléctricos|megans|1": {
+    "id": 505,
+    "reference": "505"
+  },
+  "506|caja de pase pvc 15x15x8|accesorios eléctricos|megans|1": {
+    "id": 506,
+    "reference": "506"
+  },
+  "507|caja de pase pvc 20x20x8|accesorios eléctricos|megans|1": {
+    "id": 507,
+    "reference": "507"
+  },
+  "508|caja de pase pvc 20x25x8|accesorios eléctricos|megans|1": {
+    "id": 508,
+    "reference": "508"
+  },
+  "509|caja de pase pvc 30x30x8|accesorios eléctricos|megans|1": {
+    "id": 509,
+    "reference": "509"
+  },
+  "527|caja octogonal galvanizado 0,7mm|accesorios eléctricos|mencor|1": {
+    "id": 527,
+    "reference": "527"
+  },
+  "522|caja octogonal pvc pavco|accesorios eléctricos|pavco|1": {
+    "id": 522,
+    "reference": "522"
+  },
+  "523|caja octogonal pvc willy|accesorios eléctricos|willyplast|1": {
+    "id": 523,
+    "reference": "523"
+  },
+  "555|caja p/cuchilla 12 polos|accesorios eléctricos|megans|1": {
+    "id": 555,
+    "reference": "555"
+  },
+  "556|caja p/cuchilla 16 polos|accesorios eléctricos|megans|1": {
+    "id": 556,
+    "reference": "556"
+  },
+  "557|caja p/cuchilla 18 polos|accesorios eléctricos|megans|1": {
+    "id": 557,
+    "reference": "557"
+  },
+  "551|caja p/cuchilla 2 polos|accesorios eléctricos|megans|1": {
+    "id": 551,
+    "reference": "551"
+  },
+  "552|caja p/cuchilla 3 polos|accesorios eléctricos|megans|1": {
+    "id": 552,
+    "reference": "552"
+  },
+  "553|caja p/cuchilla 6 polos|accesorios eléctricos|megans|1": {
+    "id": 553,
+    "reference": "553"
+  },
+  "554|caja p/cuchilla 8 polos|accesorios eléctricos|megans|1": {
+    "id": 554,
+    "reference": "554"
+  },
+  "526|caja para dicroico spotligth|accesorios eléctricos|willyplast|1": {
+    "id": 526,
+    "reference": "526"
+  },
+  "530|caja rectangular galv 0,7mm|accesorios eléctricos|mencor|1": {
+    "id": 530,
+    "reference": "530"
+  },
+  "524|caja rectangular pvc pavco|accesorios eléctricos|pavco|1": {
+    "id": 524,
+    "reference": "524"
+  },
+  "525|caja rectangular pvc willys plast|accesorios eléctricos|willysplast|1": {
+    "id": 525,
+    "reference": "525"
+  },
+  "496|diferencial 2x40 stronger new era|accesorios eléctricos|stronger new era|1": {
+    "id": 496,
+    "reference": "496"
+  },
+  "545|enchufe industrial l/tierra|accesorios eléctricos|nacional|1": {
+    "id": 545,
+    "reference": "545"
+  },
+  "546|enchufe industrial sin l/tierra|accesorios eléctricos|nacional|1": {
+    "id": 546,
+    "reference": "546"
+  },
+  "544|enchufe simple negro|accesorios eléctricos|nacional|1": {
+    "id": 544,
+    "reference": "544"
+  },
+  "486|interruptor doble l/tierra madera cubull|accesorios eléctricos|cubull|1": {
+    "id": 486,
+    "reference": "486"
+  },
+  "478|interruptor doble l/tierra pvc blanco cubull|accesorios eléctricos|cubull|1": {
+    "id": 478,
+    "reference": "478"
+  },
+  "467|interruptor doble pvc blanco bticino|accesorios eléctricos|sencia bticino|1": {
+    "id": 467,
+    "reference": "467"
+  },
+  "487|interruptor simple l/tierra madera cubull|accesorios eléctricos|cubull|1": {
+    "id": 487,
+    "reference": "487"
+  },
+  "479|interruptor simple l/tierra pvc blanco cubull|accesorios eléctricos|cubull|1": {
+    "id": 479,
+    "reference": "479"
+  },
+  "466|interruptor simple pvc blanco bticino|accesorios eléctricos|sencia bticino|1": {
+    "id": 466,
+    "reference": "466"
+  },
+  "533|meneke monófasico hembra|accesorios eléctricos|meneke|1": {
+    "id": 533,
+    "reference": "533"
+  },
+  "534|meneke monófasico macho|accesorios eléctricos|meneke|1": {
+    "id": 534,
+    "reference": "534"
+  },
+  "535|meneke trifasico hembra|accesorios eléctricos|meneke|1": {
+    "id": 535,
+    "reference": "535"
+  },
+  "536|meneke trifasico macho|accesorios eléctricos|meneke|1": {
+    "id": 536,
+    "reference": "536"
+  },
+  "537|pulpo electrico|accesorios eléctricos|meneke|1": {
+    "id": 537,
+    "reference": "537"
+  },
+  "550|soquet colgante failux|accesorios eléctricos|failux|1": {
+    "id": 550,
+    "reference": "550"
+  },
+  "548|soquet plafon opalux|accesorios eléctricos|opalux|1": {
+    "id": 548,
+    "reference": "548"
+  },
+  "492|termomagnetica 2x16 stronger new era|accesorios eléctricos|stronger new era|1": {
+    "id": 492,
+    "reference": "492"
+  },
+  "493|termomagnetica 2x20 stronger new era|accesorios eléctricos|stronger new era|1": {
+    "id": 493,
+    "reference": "493"
+  },
+  "494|termomagnetica 2x25 stronger new era|accesorios eléctricos|stronger new era|1": {
+    "id": 494,
+    "reference": "494"
+  },
+  "495|termomagnetica 2x32 stronger new era|accesorios eléctricos|stronger new era|1": {
+    "id": 495,
+    "reference": "495"
+  },
+  "503|termomagnetica 2x63 stronger new era|accesorios eléctricos|opalux|1": {
+    "id": 503,
+    "reference": "503"
+  },
+  "484|tomacorriente doble l/tierra madera cubull|accesorios eléctricos|cubull|1": {
+    "id": 484,
+    "reference": "484"
+  },
+  "476|tomacorriente doble l/tierra pvc blanco cubull|accesorios eléctricos|cubull|1": {
+    "id": 476,
+    "reference": "476"
+  },
+  "485|tomacorriente simple l/tierra madera cubull|accesorios eléctricos|cubull|1": {
+    "id": 485,
+    "reference": "485"
+  },
+  "477|tomacorriente simple l/tierra pvc blanco cubull|accesorios eléctricos|cubull|1": {
+    "id": 477,
+    "reference": "477"
+  },
+  "542|wincha 10m metal|accesorios eléctricos|nacional|1": {
+    "id": 542,
+    "reference": "542"
+  },
+  "540|wincha 15m metal|accesorios eléctricos|nacional|1": {
+    "id": 540,
+    "reference": "540"
+  },
+  "541|wincha 5m metal|accesorios eléctricos|nacional|1": {
+    "id": 541,
+    "reference": "541"
+  },
+  "155|cal de obra x 1 kg|aditivos|oriental|1": {
+    "id": 155,
+    "reference": "155"
+  },
+  "152|cal de obra x 17 kg|aditivos|universal|1": {
+    "id": 152,
+    "reference": "152"
+  },
+  "153|cemento blanco x 1kg|aditivos|huascaran|1": {
+    "id": 153,
+    "reference": "153"
+  },
+  "154|fragua diversos colores|aditivos|super emperador|1": {
+    "id": 154,
+    "reference": "154"
+  },
+  "136|silicona sikasil ia 300ml|aditivos|sika|1": {
+    "id": 136,
+    "reference": "136"
+  },
+  "143|sika 1 polvo x 1 kl|aditivos|sika|1": {
+    "id": 143,
+    "reference": "143"
+  },
+  "145|sika 1 x 20 lt|aditivos|sika|1": {
+    "id": 145,
+    "reference": "145"
+  },
+  "144|sika 1 x 4 lt|aditivos|sika|1": {
+    "id": 144,
+    "reference": "144"
+  },
+  "148|sika intraplast x 0,85kg|aditivos|sika|1": {
+    "id": 148,
+    "reference": "148"
+  },
+  "147|sika rep 500 x 30kg|aditivos|sika|1": {
+    "id": 147,
+    "reference": "147"
+  },
+  "146|sika techo 3 x 4 lt|aditivos|sika|1": {
+    "id": 146,
+    "reference": "146"
+  },
+  "149|sikagrout 110 x 30 kg|aditivos|sika|1": {
+    "id": 149,
+    "reference": "149"
+  },
+  "150|sikagrout 212 x 30 kg|aditivos|sika|1": {
+    "id": 150,
+    "reference": "150"
+  },
+  "141|sikadur 31 x 1 kg|aditivos|sika|1": {
+    "id": 141,
+    "reference": "141"
+  },
+  "139|sikadur 31 x 5kg|aditivos|sika|1": {
+    "id": 139,
+    "reference": "139"
+  },
+  "142|sikadur 32 x 1 kg|aditivos|sika|1": {
+    "id": 142,
+    "reference": "142"
+  },
+  "140|sikadur 32 x 5kg|aditivos|sika|1": {
+    "id": 140,
+    "reference": "140"
+  },
+  "137|sikaflex 11fc - 300ml|aditivos|sika|1": {
+    "id": 137,
+    "reference": "137"
+  },
+  "138|sikaflex 11fc - 600ml|aditivos|sika|1": {
+    "id": 138,
+    "reference": "138"
+  },
+  "151|silicona 300 ml|aditivos|knauff|1": {
+    "id": 151,
+    "reference": "151"
+  },
+  "639|yeso ceramico 1kg - oriental|aditivos|oriental|1": {
+    "id": 639,
+    "reference": "639"
+  },
+  "156|yeso 8 kg|aditivos|roncha|1": {
+    "id": 156,
+    "reference": "156"
+  },
+  "563|tubo alcantarillado 6\" 160mm x 6m|agua y alcantarillado|pavco|1": {
+    "id": 563,
+    "reference": "563"
+  },
+  "566|tubo alcantarillado 6\" 160mm x 6m|agua y alcantarillado|gerfor|1": {
+    "id": 566,
+    "reference": "566"
+  },
+  "565|tubo alcantarillado 8\" 200mm x 6m|agua y alcantarillado|pavco|1": {
+    "id": 565,
+    "reference": "565"
+  },
+  "567|tubo alcantarillado 8\" 200mm x 6m|agua y alcantarillado|gerfor|1": {
+    "id": 567,
+    "reference": "567"
+  },
+  "568|100 w luminaria led para pastoral|alumbrado publico|opalux|1": {
+    "id": 568,
+    "reference": "568"
+  },
+  "571|100 w luminaria led para pastoral|alumbrado publico|macroled|1": {
+    "id": 571,
+    "reference": "571"
+  },
+  "570|150 w luminaria led para pastoral|alumbrado publico|macroled|1": {
+    "id": 570,
+    "reference": "570"
+  },
+  "574|200 w led solar 10+4 - alfa|alumbrado publico|alfa|1": {
+    "id": 574,
+    "reference": "574"
+  },
+  "572|200 w led solar p/calle + panel alfa|alumbrado publico|alfa|1": {
+    "id": 572,
+    "reference": "572"
+  },
+  "576|300 w led solar 16+3 - alfa|alumbrado publico|alfa|1": {
+    "id": 576,
+    "reference": "576"
+  },
+  "573|300 w led solar p/calle + panel alf|alumbrado publico|alfa|1": {
+    "id": 573,
+    "reference": "573"
+  },
+  "575|400 w led solar 20+4 - alfa|alumbrado publico|alfa|1": {
+    "id": 575,
+    "reference": "575"
+  },
+  "569|farola para parque macroled|alumbrado publico|macroled|1": {
+    "id": 569,
+    "reference": "569"
+  },
+  "596|baño combo one piece + lavadero frencia|baños y accesorios|frencia|1": {
+    "id": 596,
+    "reference": "596"
+  },
+  "593|baño dos piezas punta sal - italgrif|baños y accesorios|italgrif|1": {
+    "id": 593,
+    "reference": "593"
+  },
+  "595|baño one piece frencia|baños y accesorios|frencia|1": {
+    "id": 595,
+    "reference": "595"
+  },
+  "594|baño onepiece buzios - italgrif|baños y accesorios|italgrif|1": {
+    "id": 594,
+    "reference": "594"
+  },
+  "163|cisterna 1200 lt|bombas y tanques|rotoplast|1": {
+    "id": 163,
+    "reference": "163"
+  },
+  "179|electronivel c&a|bombas y tanques|sin marca|1": {
+    "id": 179,
+    "reference": "179"
+  },
+  "178|flotador para tanque 3/4 bronce|bombas y tanques|rotoplast|1": {
+    "id": 178,
+    "reference": "178"
+  },
+  "166|periferica de 1/2 hp|bombas y tanques|wolfox|1": {
+    "id": 166,
+    "reference": "166"
+  },
+  "160|tanque arena 1100 lt|bombas y tanques|rotoplast|1": {
+    "id": 160,
+    "reference": "160"
+  },
+  "385|cable desnudo 25mm|cables|sin marca|1": {
+    "id": 385,
+    "reference": "385"
+  },
+  "363|cpt 10mm|cables|celsa|1": {
+    "id": 363,
+    "reference": "363"
+  },
+  "362|cpt 2,5mm|cables|celsa|1": {
+    "id": 362,
+    "reference": "362"
+  },
+  "364|cable desnudo 10mm|cables|celsa|1": {
+    "id": 364,
+    "reference": "364"
+  },
+  "365|cable desnudo 35mm|cables|celsa|1": {
+    "id": 365,
+    "reference": "365"
+  },
+  "366|cable desnudo 50mm|cables|celsa|1": {
+    "id": 366,
+    "reference": "366"
+  },
+  "367|cable desnudo 70mm|cables|celsa|1": {
+    "id": 367,
+    "reference": "367"
+  },
+  "368|cable desnudo 95mm|cables|celsa|1": {
+    "id": 368,
+    "reference": "368"
+  },
+  "349|indeco cable thw90 12|cables|indeco|1": {
+    "id": 349,
+    "reference": "349"
+  },
+  "348|indeco cable thw90 14|cables|indeco|1": {
+    "id": 348,
+    "reference": "348"
+  },
+  "351|indeco cable tw80 12|cables|indeco|1": {
+    "id": 351,
+    "reference": "351"
+  },
+  "350|indeco cable tw80 14|cables|indeco|1": {
+    "id": 350,
+    "reference": "350"
+  },
+  "355|n2xoh 10mm|cables|celsa|1": {
+    "id": 355,
+    "reference": "355"
+  },
+  "354|n2xoh 16mm|cables|celsa|1": {
+    "id": 354,
+    "reference": "354"
+  },
+  "358|n2xoh 25mm|cables|celsa|1": {
+    "id": 358,
+    "reference": "358"
+  },
+  "359|n2xoh 35mm|cables|celsa|1": {
+    "id": 359,
+    "reference": "359"
+  },
+  "356|n2xoh 6mm|cables|celsa|1": {
+    "id": 356,
+    "reference": "356"
+  },
+  "357|n2xoh 70mm|cables|celsa|1": {
+    "id": 357,
+    "reference": "357"
+  },
+  "360|nh80 2,5|cables|celsa|1": {
+    "id": 360,
+    "reference": "360"
+  },
+  "361|nh80 4mm|cables|celsa|1": {
+    "id": 361,
+    "reference": "361"
+  },
+  "353|rema cable thw90 12 / 7 hilos|cables|rema|1": {
+    "id": 353,
+    "reference": "353"
+  },
+  "352|rema cable thw90 14 / 7 hilos|cables|rema|1": {
+    "id": 352,
+    "reference": "352"
+  },
+  "372|vulcanizado monofasico 10|cables|indeco|1": {
+    "id": 372,
+    "reference": "372"
+  },
+  "373|vulcanizado monofasico 12|cables|indeco|1": {
+    "id": 373,
+    "reference": "373"
+  },
+  "374|vulcanizado monofasico 14|cables|indeco|1": {
+    "id": 374,
+    "reference": "374"
+  },
+  "369|vulcanizado trifasico 10|cables|indeco|1": {
+    "id": 369,
+    "reference": "369"
+  },
+  "370|vulcanizado trifasico 12|cables|indeco|1": {
+    "id": 370,
+    "reference": "370"
+  },
+  "371|vulcanizado trifasico 14|cables|indeco|1": {
+    "id": 371,
+    "reference": "371"
+  },
+  "562|cemento cemex portland tipo 1|cemento y similares|cemex|1": {
+    "id": 562,
+    "reference": "562"
+  },
+  "375|cemento andino portland premiun tipo 1|cemento y similares|andino|1": {
+    "id": 375,
+    "reference": "375"
+  },
+  "376|pegamento para cerámico extrafuerte blanco|cemento y similares|superflex|1": {
+    "id": 376,
+    "reference": "376"
+  },
+  "377|pegamento para cerámico extrafuerte gris|cemento y similares|superflex|1": {
+    "id": 377,
+    "reference": "377"
+  },
+  "378|dado de concreto de 2,00 cm|dados de concreto|sin marca|1": {
+    "id": 378,
+    "reference": "378"
+  },
+  "379|dado de concreto de 2,50 cm|dados de concreto|sin marca|1": {
+    "id": 379,
+    "reference": "379"
+  },
+  "381|dado de concreto de 4,00 cm|dados de concreto|sin marca|1": {
+    "id": 381,
+    "reference": "381"
+  },
+  "383|dado de concreto de 7,00 cm|dados de concreto|sin marca|1": {
+    "id": 383,
+    "reference": "383"
+  },
+  "384|dado de concreto de 7,50 cm|dados de concreto|sin marca|1": {
+    "id": 384,
+    "reference": "384"
+  },
+  "25|arnes + linea de vida|equipo de proteccion personal - epp|segpro|1": {
+    "id": 25,
+    "reference": "25"
+  },
+  "7|barbiquejo|equipo de proteccion personal - epp|nacional|1": {
+    "id": 7,
+    "reference": "7"
+  },
+  "19|botas de jebe con punta de acero|equipo de proteccion personal - epp|nacional|1": {
+    "id": 19,
+    "reference": "19"
+  },
+  "26|camisa de drill - celeste o ploma|equipo de proteccion personal - epp|nacional|1": {
+    "id": 26,
+    "reference": "26"
+  },
+  "33|camisa obra manga larga / naranja|equipo de proteccion personal - epp|nacional|1": {
+    "id": 33,
+    "reference": "33"
+  },
+  "29|capotin pvc|equipo de proteccion personal - epp|segpro|1": {
+    "id": 29,
+    "reference": "29"
+  },
+  "5|casco div. colores - nacional|equipo de proteccion personal - epp|nacional|1": {
+    "id": 5,
+    "reference": "5"
+  },
+  "4|casco 3m - diversos colores|equipo de proteccion personal - epp|3m|1": {
+    "id": 4,
+    "reference": "4"
+  },
+  "9|chaleco seguridad amarillo|equipo de proteccion personal - epp|nacional|1": {
+    "id": 9,
+    "reference": "9"
+  },
+  "8|chaleco seguridad rojo|equipo de proteccion personal - epp|nacional|1": {
+    "id": 8,
+    "reference": "8"
+  },
+  "13|chaleco seguridad anaranjado malla|equipo de proteccion personal - epp|pretul|1": {
+    "id": 13,
+    "reference": "13"
+  },
+  "12|chaleco seguridad anaranjado malla y tela|equipo de proteccion personal - epp|pretul|1": {
+    "id": 12,
+    "reference": "12"
+  },
+  "10|chaleco seguridad azul / verde acolchado|equipo de proteccion personal - epp|nacional|1": {
+    "id": 10,
+    "reference": "10"
+  },
+  "11|chaleco seguridad drill anaranjado|equipo de proteccion personal - epp|nacional|1": {
+    "id": 11,
+    "reference": "11"
+  },
+  "14|chaleco seguridad plomo con naranja - drill|equipo de proteccion personal - epp|sin marca|1": {
+    "id": 14,
+    "reference": "14"
+  },
+  "30|chompa jorge chavez|equipo de proteccion personal - epp|nacional|1": {
+    "id": 30,
+    "reference": "30"
+  },
+  "17|cinta de seguridad amarilla|equipo de proteccion personal - epp|truper|1": {
+    "id": 17,
+    "reference": "17"
+  },
+  "18|cinta de seguridad rojo|equipo de proteccion personal - epp|truper|1": {
+    "id": 18,
+    "reference": "18"
+  },
+  "31|cortaviento drill|equipo de proteccion personal - epp|nacional|1": {
+    "id": 31,
+    "reference": "31"
+  },
+  "43|guantes anticorte plomo|equipo de proteccion personal - epp|eurotool|1": {
+    "id": 43,
+    "reference": "43"
+  },
+  "41|guantes de hilo + palma de jebe rojo|equipo de proteccion personal - epp|sin marca|1": {
+    "id": 41,
+    "reference": "41"
+  },
+  "40|guantes de hilo + palma de jebe amarillo|equipo de proteccion personal - epp|eurotool|1": {
+    "id": 40,
+    "reference": "40"
+  },
+  "42|guantes de lana + palma de jebe rojo|equipo de proteccion personal - epp|sin marca|1": {
+    "id": 42,
+    "reference": "42"
+  },
+  "37|lentes cuadrado transparente|equipo de proteccion personal - epp|eurotool|1": {
+    "id": 37,
+    "reference": "37"
+  },
+  "38|lentes cuadrado oscuros|equipo de proteccion personal - epp|eurotool|1": {
+    "id": 38,
+    "reference": "38"
+  },
+  "35|lentes ojo de gato oscuros|equipo de proteccion personal - epp|eurotool|1": {
+    "id": 35,
+    "reference": "35"
+  },
+  "36|lentes ojo de gato transparente|equipo de proteccion personal - epp|eurotool|1": {
+    "id": 36,
+    "reference": "36"
+  },
+  "20|mameluco anaranjado/cinta reflectiva|equipo de proteccion personal - epp|nacional|1": {
+    "id": 20,
+    "reference": "20"
+  },
+  "21|mameluco azul/cinta reflectiva|equipo de proteccion personal - epp|nacional|1": {
+    "id": 21,
+    "reference": "21"
+  },
+  "34|pantalon drill naranja con cinta reflectiva|equipo de proteccion personal - epp|nacional|1": {
+    "id": 34,
+    "reference": "34"
+  },
+  "28|polo manga larga anaranjado|equipo de proteccion personal - epp|nacional|1": {
+    "id": 28,
+    "reference": "28"
+  },
+  "27|polo manga larga anaranjado + cintas reflectivas|equipo de proteccion personal - epp|nacional|1": {
+    "id": 27,
+    "reference": "27"
+  },
+  "22|respirador con 2 filtro para vapores orgánicos, gases y acido (silicona)|equipo de proteccion personal - epp|kamasa|1": {
+    "id": 22,
+    "reference": "22"
+  },
+  "24|respirador contra acido y gas 2 filtro pvc|equipo de proteccion personal - epp|kamasa|1": {
+    "id": 24,
+    "reference": "24"
+  },
+  "23|respirador contra polvo 1 filtro|equipo de proteccion personal - epp|kamasa|1": {
+    "id": 23,
+    "reference": "23"
+  },
+  "6|tapón de oido|equipo de proteccion personal - epp|truper|1": {
+    "id": 6,
+    "reference": "6"
+  },
+  "32|tivex o mameluco blanco|equipo de proteccion personal - epp|sin marca|1": {
+    "id": 32,
+    "reference": "32"
+  },
+  "16|zapato de seguridad / punta acero|equipo de proteccion personal - epp|nacional|1": {
+    "id": 16,
+    "reference": "16"
+  },
+  "47|aceros arequipa - fierro de 1/2\"|fierros y alambres|aceros arequipa|1": {
+    "id": 47,
+    "reference": "47"
+  },
+  "45|aceros arequipa - fierro de 3/4\"|fierros y alambres|aceros arequipa|1": {
+    "id": 45,
+    "reference": "45"
+  },
+  "48|aceros arequipa - fierro de 3/8\"|fierros y alambres|aceros arequipa|1": {
+    "id": 48,
+    "reference": "48"
+  },
+  "46|aceros arequipa - fierro de 5/8\"|fierros y alambres|aceros arequipa|1": {
+    "id": 46,
+    "reference": "46"
+  },
+  "50|aceros arequipa - fierro de 6mm|fierros y alambres|aceros arequipa|1": {
+    "id": 50,
+    "reference": "50"
+  },
+  "49|aceros arequipa - fierro de 8mm|fierros y alambres|aceros arequipa|1": {
+    "id": 49,
+    "reference": "49"
+  },
+  "68|alambre nro 16|fierros y alambres|aceros arequipa|1": {
+    "id": 68,
+    "reference": "68"
+  },
+  "69|alambre nro 8|fierros y alambres|aceros arequipa|1": {
+    "id": 69,
+    "reference": "69"
+  },
+  "81|clavo de 1 1/2\"|fierros y alambres|sin marca|1": {
+    "id": 81,
+    "reference": "81"
+  },
+  "80|clavo de 1\"|fierros y alambres|sin marca|1": {
+    "id": 80,
+    "reference": "80"
+  },
+  "78|clavo de 2 1/2\"|fierros y alambres|truper|1": {
+    "id": 78,
+    "reference": "78"
+  },
+  "70|clavo de 2\"|fierros y alambres|sin marca|1": {
+    "id": 70,
+    "reference": "70"
+  },
+  "72|clavo de 3\"|fierros y alambres|sin marca|1": {
+    "id": 72,
+    "reference": "72"
+  },
+  "79|clavo de 3/4\"|fierros y alambres|sin marca|1": {
+    "id": 79,
+    "reference": "79"
+  },
+  "73|clavo de 4\"|fierros y alambres|sin marca|1": {
+    "id": 73,
+    "reference": "73"
+  },
+  "71|clavo de 5\"|fierros y alambres|sin marca|1": {
+    "id": 71,
+    "reference": "71"
+  },
+  "75|clavo de 6\"|fierros y alambres|sin marca|1": {
+    "id": 75,
+    "reference": "75"
+  },
+  "76|clavo de 7\"|fierros y alambres|sin marca|1": {
+    "id": 76,
+    "reference": "76"
+  },
+  "77|clavo de 8\"|fierros y alambres|sin marca|1": {
+    "id": 77,
+    "reference": "77"
+  },
+  "99|clavo de calamina|fierros y alambres|sin marca|1": {
+    "id": 99,
+    "reference": "99"
+  },
+  "83|grapas para almbre de puas|fierros y alambres|sin marca|1": {
+    "id": 83,
+    "reference": "83"
+  },
+  "55|sider perú - fierro de 1/2\"|fierros y alambres|sider perú|1": {
+    "id": 55,
+    "reference": "55"
+  },
+  "53|sider perú - fierro de 3/4\"|fierros y alambres|sider perú|1": {
+    "id": 53,
+    "reference": "53"
+  },
+  "56|sider perú - fierro de 3/8\"|fierros y alambres|sider perú|1": {
+    "id": 56,
+    "reference": "56"
+  },
+  "54|sider perú - fierro de 5/8\"|fierros y alambres|sider perú|1": {
+    "id": 54,
+    "reference": "54"
+  },
+  "58|sider perú - fierro de 6mm|fierros y alambres|sider perú|1": {
+    "id": 58,
+    "reference": "58"
+  },
+  "57|sider perú - fierro de 8mm|fierros y alambres|sider perú|1": {
+    "id": 57,
+    "reference": "57"
+  },
+  "52|sider perú - fierro de 1\"|fierros y alambres|sider perú|1": {
+    "id": 52,
+    "reference": "52"
+  },
+  "51|varilla de temperatura 4,7|fierros y alambres|aceros arequipa|1": {
+    "id": 51,
+    "reference": "51"
+  },
+  "59|varilla de temperatura 4,7|fierros y alambres|sider perú|1": {
+    "id": 59,
+    "reference": "59"
+  },
+  "44|aceros arequipa - fierro de 1\"|fierros y alambres|aceros arequipa|1": {
+    "id": 44,
+    "reference": "44"
+  },
+  "592|grifo lavadero cocina 2034 alfa|griferias|alfa|1": {
+    "id": 592,
+    "reference": "592"
+  },
+  "591|grifo lavatorio fria caliente 2033 346g 2033 alfa|griferias|alfa|1": {
+    "id": 591,
+    "reference": "591"
+  },
+  "590|grifo ovalin cromado 2032 alfa|griferias|alfa|1": {
+    "id": 590,
+    "reference": "590"
+  },
+  "589|grifo ovalin negro 938g 2023 alfa|griferias|alfa|1": {
+    "id": 589,
+    "reference": "589"
+  },
+  "586|afloja todo 345 ml truper|herramientas|truper|1": {
+    "id": 586,
+    "reference": "586"
+  },
+  "587|afloja todo 400 ml truper|herramientas|truper|1": {
+    "id": 587,
+    "reference": "587"
+  },
+  "588|afloja todo 550 ml truper|herramientas|truper|1": {
+    "id": 588,
+    "reference": "588"
+  },
+  "583|aplicador de silicona esqueleto truper|herramientas|truper|1": {
+    "id": 583,
+    "reference": "583"
+  },
+  "585|aplicador de silicona pesado truper|herramientas|truper|1": {
+    "id": 585,
+    "reference": "585"
+  },
+  "584|aplicador de silicona salchicha|herramientas|truper|1": {
+    "id": 584,
+    "reference": "584"
+  },
+  "597|carretilla truper|herramientas|truper|1": {
+    "id": 597,
+    "reference": "597"
+  },
+  "599|cutter 6\" - truper|herramientas|truper|1": {
+    "id": 599,
+    "reference": "599"
+  },
+  "604|flexometro (wincha) 100 m - truper|herramientas|truper|1": {
+    "id": 604,
+    "reference": "604"
+  },
+  "606|flexometro (wincha) 30 m - truper|herramientas|truper|1": {
+    "id": 606,
+    "reference": "606"
+  },
+  "605|flexometro (wincha) 50 m - truper|herramientas|truper|1": {
+    "id": 605,
+    "reference": "605"
+  },
+  "603|flexometro (wincha) 5m - pretul|herramientas|pretul|1": {
+    "id": 603,
+    "reference": "603"
+  },
+  "601|flexometro (wincha) 5m - truper|herramientas|truper|1": {
+    "id": 601,
+    "reference": "601"
+  },
+  "602|flexometro (wincha) 8m - pretul|herramientas|pretul|1": {
+    "id": 602,
+    "reference": "602"
+  },
+  "600|flexometro (wincha) 8m - truper|herramientas|truper|1": {
+    "id": 600,
+    "reference": "600"
+  },
+  "580|plancha de batir 6\" - pretul|herramientas|pretul|1": {
+    "id": 580,
+    "reference": "580"
+  },
+  "581|plancha de batir 7\" - pretul|herramientas|pretul|1": {
+    "id": 581,
+    "reference": "581"
+  },
+  "579|plancha de empastar / batir- truper|herramientas|truper|1": {
+    "id": 579,
+    "reference": "579"
+  },
+  "582|planchade batir 8\" - pretul|herramientas|pretul|1": {
+    "id": 582,
+    "reference": "582"
+  },
+  "598|truper - llanta de carretilla|herramientas|truper|1": {
+    "id": 598,
+    "reference": "598"
+  },
+  "|tramontina lampa cuchara|herramientas|tramontina|1": {
+    "id": 100001,
+    "reference": "N-0001"
+  },
+  "|pico tramontina + mango|herramientas|tramontina|1": {
+    "id": 100002,
+    "reference": "N-0002"
+  },
+  "|lampa cuchara vector|herramientas|vector|1": {
+    "id": 100003,
+    "reference": "N-0003"
+  },
+  "|pico vector + mango|herramientas|vector|1": {
+    "id": 100004,
+    "reference": "N-0004"
+  },
+  "|amoladora 4 1/2\" 710w - total|herramientas|total|1": {
+    "id": 100005,
+    "reference": "N-0005"
+  },
+  "|lijadora total|herramientas|total|1": {
+    "id": 100006,
+    "reference": "N-0006"
+  },
+  "|esmeril angular 7 1/4 2000w|herramientas|incgo|1": {
+    "id": 100007,
+    "reference": "N-0007"
+  },
+  "|taladro inalambrico 20v x 66n|herramientas|total|1": {
+    "id": 100008,
+    "reference": "N-0008"
+  },
+  "|casco de soldadura fotosensible|herramientas|total|1": {
+    "id": 100009,
+    "reference": "N-0009"
+  },
+  "|soldadura cellocord 6011|herramientas|cellocord|1": {
+    "id": 100010,
+    "reference": "N-0010"
+  },
+  "|soldadura indura 6011|herramientas|indura|1": {
+    "id": 100011,
+    "reference": "N-0011"
+  },
+  "|tronzadora de metal / sierra 14\" 2300w total|herramientas|dwalt|1": {
+    "id": 100012,
+    "reference": "N-0012"
+  },
+  "|tronzadora de metal / sierra 14\" 2400w incgo|herramientas|incgo|1": {
+    "id": 100013,
+    "reference": "N-0013"
+  },
+  "|rotomartillo 1700w 14 kg 55 joules|herramientas|incgo|1": {
+    "id": 100014,
+    "reference": "N-0014"
+  },
+  "|rotomartillo 1700w 16 kg 55 joules + 2 cinceles+ estuche|herramientas|incgo|1": {
+    "id": 100015,
+    "reference": "N-0015"
+  },
+  "|sinolit - 25kg|pinturas|cpp|1": {
+    "id": 100016,
+    "reference": "N-0016"
+  },
+  "|temple 25 kg cpp|pinturas|cpp|1": {
+    "id": 100017,
+    "reference": "N-0017"
+  },
+  "|esmalte diversos colores|pinturas|crons|1": {
+    "id": 100018,
+    "reference": "N-0018"
+  },
+  "|esmalte diversos colores|pinturas|walon|1": {
+    "id": 100019,
+    "reference": "N-0019"
+  },
+  "|rodillo toro 12\" naranja|herramientas|toro|1": {
+    "id": 100020,
+    "reference": "N-0020"
+  },
+  "|rodillo toro 12\" blanco|herramientas|toro|1": {
+    "id": 100021,
+    "reference": "N-0021"
+  },
+  "|rodillo toro 9\" naranja|herramientas|toro|1": {
+    "id": 100022,
+    "reference": "N-0022"
+  },
+  "|trapo industrial cocido x kg|herramientas|diversos|1": {
+    "id": 100023,
+    "reference": "N-0023"
+  },
+  "|trapo industrial saco 50 kg|herramientas|diversos|1": {
+    "id": 100024,
+    "reference": "N-0024"
+  },
+  "|rodillo toro 9\" blanco|herramientas|toro|1": {
+    "id": 100025,
+    "reference": "N-0025"
+  },
+  "|meneke hembra electrico 20v|accesorios eléctricos|meneke|1": {
+    "id": 100026,
+    "reference": "N-0026"
+  },
+  "|meneke macho electrico 20v|accesorios eléctricos|meneke|1": {
+    "id": 100027,
+    "reference": "N-0027"
+  },
+  "|meneke hembra electrico 20v|accesorios eléctricos|meneke|2": {
+    "id": 100028,
+    "reference": "N-0028"
+  },
+  "|thiner 2800ml anypsa|pinturas|anypsa|1": {
+    "id": 100029,
+    "reference": "N-0029"
+  },
+  "|thiner 2800ml f&l|pinturas|f&l|1": {
+    "id": 100030,
+    "reference": "N-0030"
+  },
+  "|rollo de plastico 1.5m - 50kg|madera y plasticos|diversos|1": {
+    "id": 100031,
+    "reference": "N-0031"
+  },
+  "|rollo de plastico 2 m - 50kg|madera y plasticos|diversos|1": {
+    "id": 100032,
+    "reference": "N-0032"
+  },
+  "|rollo de yute|madera y plasticos|diversos|1": {
+    "id": 100033,
+    "reference": "N-0033"
+  },
+  "|rollo de manguera 5/8|agua y alcantarillado|diversos|1": {
+    "id": 100034,
+    "reference": "N-0034"
+  },
+  "|rollo de malla arpillera blanco, azul, negro|madera y plasticos|diversos|1": {
+    "id": 100035,
+    "reference": "N-0035"
+  },
+  "|llave check 1/2 horizontal vae|agua y alcantarillado|vae|1": {
+    "id": 100036,
+    "reference": "N-0036"
+  },
+  "|llave check 1/2 horizontal cim|agua y alcantarillado|cimvalve|1": {
+    "id": 100037,
+    "reference": "N-0037"
+  },
+  "|llave de pie 1\" vae|agua y alcantarillado|vae|1": {
+    "id": 100038,
+    "reference": "N-0038"
+  },
+  "|llave de pie 1\" cim|agua y alcantarillado|cimvalve|1": {
+    "id": 100039,
+    "reference": "N-0039"
+  },
+  "|caja de spray 12unid - diversos colores|pinturas|rayma|1": {
+    "id": 100040,
+    "reference": "N-0040"
+  },
+  "|spray (lata x unidad) diversos colores|pinturas|rayma|1": {
+    "id": 100041,
+    "reference": "N-0041"
+  },
+  "|spray (lata x unidad) diversos colores|pinturas|c&a|1": {
+    "id": 100042,
+    "reference": "N-0042"
+  },
+  "|yutearpillero marron de 1.5m x 100 m|madera y plasticos|diversos|1": {
+    "id": 100043,
+    "reference": "N-0043"
+  },
+  "|fenolico verde 18mm|madera y plasticos|diversos|1": {
+    "id": 100044,
+    "reference": "N-0044"
+  },
+  "|tripley importado 2mm|madera y plasticos|diversos|1": {
+    "id": 100045,
+    "reference": "N-0045"
+  },
+  "|cemento portland tipo 1|cemento y similares|holcim|1": {
+    "id": 100046,
+    "reference": "N-0046"
+  },
+  "|fenolico marron 18mm|madera y plasticos|diversos|1": {
+    "id": 100047,
+    "reference": "N-0047"
+  },
+  "|cachimba 6-4 s25|agua y alcantarillado|diversos|1": {
+    "id": 100048,
+    "reference": "N-0048"
+  },
+  "|cachimba 6-6 s25|agua y alcantarillado|diversos|1": {
+    "id": 100049,
+    "reference": "N-0049"
+  },
+  "|cachimba 8-6 s25|agua y alcantarillado|diversos|1": {
+    "id": 100050,
+    "reference": "N-0050"
+  },
+  "|codo 4\" x 45o|agua y alcantarillado|diversos|1": {
+    "id": 100051,
+    "reference": "N-0051"
+  },
+  "|codo 4\" x 90o|agua y alcantarillado|diversos|1": {
+    "id": 100052,
+    "reference": "N-0052"
+  },
+  "|codo 6\" x 45o|agua y alcantarillado|diversos|1": {
+    "id": 100053,
+    "reference": "N-0053"
+  },
+  "|codo 6\" x 90o|agua y alcantarillado|diversos|1": {
+    "id": 100054,
+    "reference": "N-0054"
+  },
+  "|union de reparacion de 6\"|agua y alcantarillado|diversos|1": {
+    "id": 100055,
+    "reference": "N-0055"
+  },
+  "|union 6\" simple|agua y alcantarillado|diversos|1": {
+    "id": 100056,
+    "reference": "N-0056"
+  },
+  "|reduccion 6- 4 s25|agua y alcantarillado|diversos|1": {
+    "id": 100057,
+    "reference": "N-0057"
+  },
+  "|reduccion 8 - 6 s25|agua y alcantarillado|diversos|1": {
+    "id": 100058,
+    "reference": "N-0058"
+  },
+  "|yee 6\" s25|agua y alcantarillado|diversos|1": {
+    "id": 100059,
+    "reference": "N-0059"
+  },
+  "|codo 8\" x 45o|agua y alcantarillado|diversos|1": {
+    "id": 100060,
+    "reference": "N-0060"
+  },
+  "|codo 8\" x 90o|agua y alcantarillado|diversos|1": {
+    "id": 100061,
+    "reference": "N-0061"
+  },
+  "|malla verde raschel|madera y plasticos|diversos|1": {
+    "id": 100062,
+    "reference": "N-0062"
+  },
+  "|teja andina|techos|eternit|1": {
+    "id": 100063,
+    "reference": "N-0063"
+  },
+  "|cinta ducto 9m|techos|toolcraft|1": {
+    "id": 100064,
+    "reference": "N-0064"
+  },
+  "|bomba sumergible acero inox agua sucia uso rudo 1 1/2hp 220v|bombas y tanques|toolcraft|1": {
+    "id": 100065,
+    "reference": "N-0065"
+  },
+  "|bomba sumergible acero agua limpia 1hp 220v|bombas y tanques|toolcraft|1": {
+    "id": 100066,
+    "reference": "N-0066"
+  },
+  "|bomba sumergible acero inox agua sucia uso rudo 1 hp 220v|bombas y tanques|toolcraft|1": {
+    "id": 100067,
+    "reference": "N-0067"
+  },
+  "|bomba sumergible acero agua limpia 1/2hp 220v|bombas y tanques|toolcraft|1": {
+    "id": 100068,
+    "reference": "N-0068"
+  },
+  "|bomba sumergible acero agua limpia tipo bala 2hp 220v|bombas y tanques|toolcraft|1": {
+    "id": 100069,
+    "reference": "N-0069"
+  },
+  "|bomba sumergible acero agua limpia tipo bala 1hp 220v|bombas y tanques|toolcraft|1": {
+    "id": 100070,
+    "reference": "N-0070"
+  },
+  "|escalera 3 pasos aluminio|herramientas|truper|1": {
+    "id": 100071,
+    "reference": "N-0071"
+  },
+  "|escalera 4 pasos aluminio|herramientas|truper|1": {
+    "id": 100072,
+    "reference": "N-0072"
+  },
+  "|escalera 5 pasos aluminio|herramientas|truper|1": {
+    "id": 100073,
+    "reference": "N-0073"
+  },
+  "|escalera 6 pasos aluminio|herramientas|truper|1": {
+    "id": 100074,
+    "reference": "N-0074"
+  },
+  "|escalera telescopica 20 pasos fibra de vidrio|herramientas|toolcraft|1": {
+    "id": 100075,
+    "reference": "N-0075"
+  },
+  "|escalera telescopica 28 pasos fibra de vidrio|herramientas|toolcraft|1": {
+    "id": 100076,
+    "reference": "N-0076"
+  },
+  "|tornillo autoperforante 10 x 3/4\" punta broca p/metal|techos|diversos|1": {
+    "id": 100077,
+    "reference": "N-0077"
+  },
+  "|tornillo autoperforante 10 x 1\" punta broca p/metal|techos|diversos|1": {
+    "id": 100078,
+    "reference": "N-0078"
+  },
+  "|tornillo autoperforante 10 x 1 1/2\" punta broca p/metal|techos|diversos|1": {
+    "id": 100079,
+    "reference": "N-0079"
+  },
+  "|tornillo autoperforante 10 x 2\" punta broca p/metal|techos|diversos|1": {
+    "id": 100080,
+    "reference": "N-0080"
+  },
+  "|tornillo autoperforante 10 x 3\" punta broca p/metal|techos|diversos|1": {
+    "id": 100081,
+    "reference": "N-0081"
+  },
+  "|tornillo autoperforante 10 x 1\" punta fina p/madera|techos|diversos|1": {
+    "id": 100082,
+    "reference": "N-0082"
+  },
+  "|tornillo autoperforante 10 x 1 1/2\" punta fina p/madera|techos|diversos|1": {
+    "id": 100083,
+    "reference": "N-0083"
+  },
+  "92|bloqueta h12|ladrillos|pirámide|1": {
+    "id": 92,
+    "reference": "92"
+  },
+  "91|bloqueta h15|ladrillos|pirámide|1": {
+    "id": 91,
+    "reference": "91"
+  },
+  "90|bloqueta h20|ladrillos|pirámide|1": {
+    "id": 90,
+    "reference": "90"
+  },
+  "94|caravista 6|ladrillos|pirámide|1": {
+    "id": 94,
+    "reference": "94"
+  },
+  "95|caravista 9|ladrillos|pirámide|1": {
+    "id": 95,
+    "reference": "95"
+  },
+  "85|fortaleza king kong 18 huecos|ladrillos|fortaleza|1": {
+    "id": 85,
+    "reference": "85"
+  },
+  "84|fortes king kong 18 huecos|ladrillos|fortes|1": {
+    "id": 84,
+    "reference": "84"
+  },
+  "87|golem king kong 18 huecos|ladrillos|golem - huancayo|1": {
+    "id": 87,
+    "reference": "87"
+  },
+  "86|piramide king kong 18 huecos|ladrillos|pirámide|1": {
+    "id": 86,
+    "reference": "86"
+  },
+  "88|pandereta fortaleza|ladrillos|fortaleza|1": {
+    "id": 88,
+    "reference": "88"
+  },
+  "96|pastelero|ladrillos|pirámide|1": {
+    "id": 96,
+    "reference": "96"
+  },
+  "97|teja|ladrillos|pirámide|1": {
+    "id": 97,
+    "reference": "97"
+  },
+  "633|disco p/metal 4 1/2\" - norton|lijas y abrasivos|norton|1": {
+    "id": 633,
+    "reference": "633"
+  },
+  "635|disco p/metal 7\" - norton|lijas y abrasivos|sin marca|1": {
+    "id": 635,
+    "reference": "635"
+  },
+  "636|disco p/metal 9\" - norton|lijas y abrasivos|sin marca|1": {
+    "id": 636,
+    "reference": "636"
+  },
+  "638|disco tronzadora - makita|lijas y abrasivos|makita|1": {
+    "id": 638,
+    "reference": "638"
+  },
+  "637|disco tronzadora - norton|lijas y abrasivos|norton|1": {
+    "id": 637,
+    "reference": "637"
+  },
+  "616|disco 4\" p/cerámico seco/húmedo (115mm)|lijas y abrasivos|kamasa|1": {
+    "id": 616,
+    "reference": "616"
+  },
+  "615|disco 4\" p/cerámico ultrafino(115mm)|lijas y abrasivos|kamasa|1": {
+    "id": 615,
+    "reference": "615"
+  },
+  "611|disco 4\" p/concreto gris (115mm)|lijas y abrasivos|kamasa|1": {
+    "id": 611,
+    "reference": "611"
+  },
+  "614|disco 4\" p/concreto naranja (115mm)|lijas y abrasivos|kamasa|1": {
+    "id": 614,
+    "reference": "614"
+  },
+  "613|disco 4\" p/concreto rojo (115mm)|lijas y abrasivos|kamasa|1": {
+    "id": 613,
+    "reference": "613"
+  },
+  "612|disco 4\" p/concreto verde (115mm)|lijas y abrasivos|kamasa|1": {
+    "id": 612,
+    "reference": "612"
+  },
+  "607|disco 7\" p/concreto gris (180mm)|lijas y abrasivos|kamasa|1": {
+    "id": 607,
+    "reference": "607"
+  },
+  "610|disco 7\" p/concreto naranja (180mm)|lijas y abrasivos|kamasa|1": {
+    "id": 610,
+    "reference": "610"
+  },
+  "609|disco 7\" p/concreto rojo (180mm)|lijas y abrasivos|kamasa|1": {
+    "id": 609,
+    "reference": "609"
+  },
+  "608|disco 7\" p/concreto verde (180mm)|lijas y abrasivos|kamasa|1": {
+    "id": 608,
+    "reference": "608"
+  },
+  "|disco 14\" p/concreto uyustool|lijas y abrasivos|uyustool|1": {
+    "id": 100084,
+    "reference": "N-0084"
+  },
+  "625|lija 150 - agua|lijas y abrasivos|metalnox|1": {
+    "id": 625,
+    "reference": "625"
+  },
+  "620|lija nro 100 (pared, metal, madera)|lijas y abrasivos|metalnox|1": {
+    "id": 620,
+    "reference": "620"
+  },
+  "621|lija nro 120 (pared, metal, madera)|lijas y abrasivos|metalnox|1": {
+    "id": 621,
+    "reference": "621"
+  },
+  "622|lija nro 180 (pared, metal, madera)|lijas y abrasivos|metalnox|1": {
+    "id": 622,
+    "reference": "622"
+  },
+  "623|lija nro 220 (pared, metal, madera)|lijas y abrasivos|metalnox|1": {
+    "id": 623,
+    "reference": "623"
+  },
+  "617|lija nro 40 (pared, metal, madera)|lijas y abrasivos|metalnox|1": {
+    "id": 617,
+    "reference": "617"
+  },
+  "618|lija nro 60 (pared, metal, madera)|lijas y abrasivos|metalnox|1": {
+    "id": 618,
+    "reference": "618"
+  },
+  "619|lija nro 80 (pared, metal, madera)|lijas y abrasivos|metalnox|1": {
+    "id": 619,
+    "reference": "619"
+  },
+  "632|lija 120 - agua|lijas y abrasivos|sin marca|1": {
+    "id": 632,
+    "reference": "632"
+  },
+  "630|lija 1200 - agua|lijas y abrasivos|metalnox|1": {
+    "id": 630,
+    "reference": "630"
+  },
+  "626|lija 180 - agua|lijas y abrasivos|metalnox|1": {
+    "id": 626,
+    "reference": "626"
+  },
+  "631|lija 2000 - agua|lijas y abrasivos|metalnox|1": {
+    "id": 631,
+    "reference": "631"
+  },
+  "627|lija 220 - agua|lijas y abrasivos|metalnox|1": {
+    "id": 627,
+    "reference": "627"
+  },
+  "628|lija 400 - agua|lijas y abrasivos|metalnox|1": {
+    "id": 628,
+    "reference": "628"
+  },
+  "629|lija 600 - agua|lijas y abrasivos|metalnox|1": {
+    "id": 629,
+    "reference": "629"
+  },
+  "640|walon esmalte anticorrosivo gris1gl|pinturas|walon|1": {
+    "id": 640,
+    "reference": "640"
+  },
+  "180|bentonita|pozo a tierra / soldadura exotérmica|disagel|1": {
+    "id": 180,
+    "reference": "180"
+  },
+  "120|cemento conductivo - 25kg|pozo a tierra / soldadura exotérmica|disagel|1": {
+    "id": 120,
+    "reference": "120"
+  },
+  "195|chispero t320 - soldadura exotermica|pozo a tierra / soldadura exotérmica|thesmartweld|1": {
+    "id": 195,
+    "reference": "195"
+  },
+  "184|conector cobre 3/4|pozo a tierra / soldadura exotérmica|sin marca|1": {
+    "id": 184,
+    "reference": "184"
+  },
+  "123|conector cobre 5/8|pozo a tierra / soldadura exotérmica|sin marca|1": {
+    "id": 123,
+    "reference": "123"
+  },
+  "228|cápsula para soldadura exotérmica #115gr|pozo a tierra / soldadura exotérmica|thesmartweld|1": {
+    "id": 228,
+    "reference": "228"
+  },
+  "229|cápsula para soldadura exotérmica #150gr|pozo a tierra / soldadura exotérmica|thesmartweld|1": {
+    "id": 229,
+    "reference": "229"
+  },
+  "231|cápsula para soldadura exotérmica #200gr|pozo a tierra / soldadura exotérmica|thesmartweld|1": {
+    "id": 231,
+    "reference": "231"
+  },
+  "230|cápsula para soldadura exotérmica #250gr|pozo a tierra / soldadura exotérmica|thesmartweld|1": {
+    "id": 230,
+    "reference": "230"
+  },
+  "225|cápsula para soldadura exotérmica #45gr|pozo a tierra / soldadura exotérmica|thesmartweld|1": {
+    "id": 225,
+    "reference": "225"
+  },
+  "226|cápsula para soldadura exotérmica #65gr|pozo a tierra / soldadura exotérmica|thesmartweld|1": {
+    "id": 226,
+    "reference": "226"
+  },
+  "227|cápsula para soldadura exotérmica #90gr|pozo a tierra / soldadura exotérmica|thesmartweld|1": {
+    "id": 227,
+    "reference": "227"
+  },
+  "193|llave de fuerza 50a|pozo a tierra / soldadura exotérmica|schneayder|1": {
+    "id": 193,
+    "reference": "193"
+  },
+  "131|llave de fuerza 50a schneider|pozo a tierra / soldadura exotérmica|schneyder|1": {
+    "id": 131,
+    "reference": "131"
+  },
+  "126|masilla dispadora de calor para soldadura exotérmica|pozo a tierra / soldadura exotérmica|sin marca|1": {
+    "id": 126,
+    "reference": "126"
+  },
+  "188|masilla dispadora de calor para soldadura exotérmica|pozo a tierra / soldadura exotérmica|sin marca|1": {
+    "id": 188,
+    "reference": "188"
+  },
+  "210|molde de soldadura cc1 3/4 - 2/0|pozo a tierra / soldadura exotérmica|thesmartweld|1": {
+    "id": 210,
+    "reference": "210"
+  },
+  "211|molde de soldadura cc1 3/4 - 4/0|pozo a tierra / soldadura exotérmica|thesmartweld|1": {
+    "id": 211,
+    "reference": "211"
+  },
+  "220|molde de soldadura cc11 2/0 - 2/0|pozo a tierra / soldadura exotérmica|thesmartweld|1": {
+    "id": 220,
+    "reference": "220"
+  },
+  "221|molde de soldadura cc11 4/0 - 4/0|pozo a tierra / soldadura exotérmica|thesmartweld|1": {
+    "id": 221,
+    "reference": "221"
+  },
+  "212|molde de soldadura cc2 1/0 - 1/0|pozo a tierra / soldadura exotérmica|thesmartweld|1": {
+    "id": 212,
+    "reference": "212"
+  },
+  "213|molde de soldadura cc2 2/0 - 2/0|pozo a tierra / soldadura exotérmica|thesmartweld|1": {
+    "id": 213,
+    "reference": "213"
+  },
+  "214|molde de soldadura cc2 4/0 - 4/0|pozo a tierra / soldadura exotérmica|thesmartweld|1": {
+    "id": 214,
+    "reference": "214"
+  },
+  "215|molde de soldadura cc4 1/0 - 1/0|pozo a tierra / soldadura exotérmica|thesmartweld|1": {
+    "id": 215,
+    "reference": "215"
+  },
+  "216|molde de soldadura cc4 2/0 - 2/0|pozo a tierra / soldadura exotérmica|thesmartweld|1": {
+    "id": 216,
+    "reference": "216"
+  },
+  "217|molde de soldadura cc4 4/0 - 4/0|pozo a tierra / soldadura exotérmica|thesmartweld|1": {
+    "id": 217,
+    "reference": "217"
+  },
+  "218|molde de soldadura cc7 1/0 - 1/0|pozo a tierra / soldadura exotérmica|thesmartweld|1": {
+    "id": 218,
+    "reference": "218"
+  },
+  "219|molde de soldadura cc7 2/0 - 2/0|pozo a tierra / soldadura exotérmica|thesmartweld|1": {
+    "id": 219,
+    "reference": "219"
+  },
+  "198|molde de soldadura cr1- 3/4 - 2/0 m - 9319|pozo a tierra / soldadura exotérmica|thesmartweld|1": {
+    "id": 198,
+    "reference": "198"
+  },
+  "199|molde de soldadura cr1-3/4 - 4/0 m - 9101|pozo a tierra / soldadura exotérmica|thesmartweld|1": {
+    "id": 199,
+    "reference": "199"
+  },
+  "200|molde de soldadura cr2 3/4 - 1/0|pozo a tierra / soldadura exotérmica|thesmartweld|1": {
+    "id": 200,
+    "reference": "200"
+  },
+  "201|molde de soldadura cr2 3/4 - 2/0|pozo a tierra / soldadura exotérmica|thesmartweld|1": {
+    "id": 201,
+    "reference": "201"
+  },
+  "202|molde de soldadura cr2 3/4 - 4/0|pozo a tierra / soldadura exotérmica|thesmartweld|1": {
+    "id": 202,
+    "reference": "202"
+  },
+  "208|molde de soldadura cr25 3/4 - 2/0|pozo a tierra / soldadura exotérmica|thesmartweld|1": {
+    "id": 208,
+    "reference": "208"
+  },
+  "209|molde de soldadura cr25 3/4 - 4/0|pozo a tierra / soldadura exotérmica|thesmartweld|1": {
+    "id": 209,
+    "reference": "209"
+  },
+  "203|molde de soldadura cr3 3/4 - 1/0|pozo a tierra / soldadura exotérmica|thesmartweld|1": {
+    "id": 203,
+    "reference": "203"
+  },
+  "204|molde de soldadura cr3 3/4 - 2/0|pozo a tierra / soldadura exotérmica|thesmartweld|1": {
+    "id": 204,
+    "reference": "204"
+  },
+  "205|molde de soldadura cr3 3/4 - 4/0|pozo a tierra / soldadura exotérmica|thesmartweld|1": {
+    "id": 205,
+    "reference": "205"
+  },
+  "206|molde de soldadura cr4 3/4 - 2/0|pozo a tierra / soldadura exotérmica|thesmartweld|1": {
+    "id": 206,
+    "reference": "206"
+  },
+  "207|molde de soldadura cr4 3/4 - 4/0|pozo a tierra / soldadura exotérmica|thesmartweld|1": {
+    "id": 207,
+    "reference": "207"
+  },
+  "223|molde tipo estructura cs-23 1/0|pozo a tierra / soldadura exotérmica|thesmartweld|1": {
+    "id": 223,
+    "reference": "223"
+  },
+  "222|molde tipo estructura cs-23 2awg|pozo a tierra / soldadura exotérmica|thesmartweld|1": {
+    "id": 222,
+    "reference": "222"
+  },
+  "135|pararayos|pozo a tierra / soldadura exotérmica|ioni mach|1": {
+    "id": 135,
+    "reference": "135"
+  },
+  "196|pararayos|pozo a tierra / soldadura exotérmica|ioniflash|1": {
+    "id": 196,
+    "reference": "196"
+  },
+  "191|prensa estopa pvc 3/4|pozo a tierra / soldadura exotérmica|sin marca|1": {
+    "id": 191,
+    "reference": "191"
+  },
+  "130|prensa estopa pvc 5/8|pozo a tierra / soldadura exotérmica|sin marca|1": {
+    "id": 130,
+    "reference": "130"
+  },
+  "189|prensa estopa niquelada 3/4|pozo a tierra / soldadura exotérmica|sin marca|1": {
+    "id": 189,
+    "reference": "189"
+  },
+  "190|prensa estopa niquelada 5/8|pozo a tierra / soldadura exotérmica|sin marca|1": {
+    "id": 190,
+    "reference": "190"
+  },
+  "181|sal industrial|pozo a tierra / soldadura exotérmica|disagel|1": {
+    "id": 181,
+    "reference": "181"
+  },
+  "132|tenaza l160|pozo a tierra / soldadura exotérmica|thesmartweld|1": {
+    "id": 132,
+    "reference": "132"
+  },
+  "121|thorgel|pozo a tierra / soldadura exotérmica|thor|1": {
+    "id": 121,
+    "reference": "121"
+  },
+  "340|varilla de cobre 3/4|pozo a tierra / soldadura exotérmica|sin marca|1": {
+    "id": 100085,
+    "reference": "340-2"
+  },
+  "187|varilla de cobre 5/8|pozo a tierra / soldadura exotérmica|sin marca|1": {
+    "id": 187,
+    "reference": "187"
+  },
+  "242|calamina de plástico 1,80 x 0,80 amarilla|techos|fibraforte|1": {
+    "id": 242,
+    "reference": "242"
+  },
+  "243|calamina de plástico 1,80 x 0,80 blanca|techos|fibraforte|1": {
+    "id": 243,
+    "reference": "243"
+  },
+  "240|calamina de plástico 3,60 x 0,80 amarilla|techos|fibraforte|1": {
+    "id": 240,
+    "reference": "240"
+  },
+  "241|calamina de plástico 3,60 x 0,80 blanca|techos|fibraforte|1": {
+    "id": 241,
+    "reference": "241"
+  },
+  "238|calamina galvanizada 1,80 x 0,80x 0,22|techos|aceros|1": {
+    "id": 238,
+    "reference": "238"
+  },
+  "239|calamina galvanizada 1,80 x 0,80 x 0,30|techos|aceros|1": {
+    "id": 239,
+    "reference": "239"
+  },
+  "236|calamina galvanizada 3,60 x 0,80x 0,22|techos|aceros|1": {
+    "id": 236,
+    "reference": "236"
+  },
+  "237|calamina galvanizada 3,60 x 0,80x 0,30|techos|aceros|1": {
+    "id": 237,
+    "reference": "237"
+  },
+  "244|camalina roja 3,60 x 0,80 x 0,23|techos|aceros|1": {
+    "id": 244,
+    "reference": "244"
+  },
+  "232|tr4 calibre 0,30|techos|nacional|1": {
+    "id": 232,
+    "reference": "232"
+  },
+  "233|tr4 calibre 0,35|techos|nacional|1": {
+    "id": 233,
+    "reference": "233"
+  },
+  "234|tr4 calibre 0,40|techos|nacional|1": {
+    "id": 234,
+    "reference": "234"
+  },
+  "245|tecnopor 15 cm x 30 cm x 120cm|tecnopor|dipropor|1": {
+    "id": 245,
+    "reference": "245"
+  },
+  "247|tecnopor 8 cm x 30 cm x 120cm|tecnopor|dipropor|1": {
+    "id": 247,
+    "reference": "247"
+  },
+  "248|tecnopor de 1\" x 120cm x 240 cm|tecnopor|dipropor|1": {
+    "id": 248,
+    "reference": "248"
+  },
+  "461|adaptador 1/2\" x 1 1/2\" bronce (bushing)|tubos y conexiones|fortaly|1": {
+    "id": 461,
+    "reference": "461"
+  },
+  "460|adaptador 1/2\" x 1\" bronce (bushing)|tubos y conexiones|fortaly|1": {
+    "id": 460,
+    "reference": "460"
+  },
+  "463|adaptador 1/2\" x 2 1/2\" bronce (bushing)|tubos y conexiones|fortaly|1": {
+    "id": 463,
+    "reference": "463"
+  },
+  "462|adaptador 1/2\" x 2\" bronce (bushing)|tubos y conexiones|fortaly|1": {
+    "id": 462,
+    "reference": "462"
+  },
+  "464|adaptador 1/2\" x 3\" bronce (bushing)|tubos y conexiones|fortaly|1": {
+    "id": 464,
+    "reference": "464"
+  },
+  "465|adaptador 1/2\" x 4\" bronce (bushing)|tubos y conexiones|fortaly|1": {
+    "id": 465,
+    "reference": "465"
+  },
+  "313|adaptador de 1\"|tubos y conexiones|pavco|1": {
+    "id": 313,
+    "reference": "313"
+  },
+  "311|adaptador de 1/2\"|tubos y conexiones|pavco|1": {
+    "id": 311,
+    "reference": "311"
+  },
+  "314|adaptador de 1/2\" agua caliente|tubos y conexiones|pavco|1": {
+    "id": 314,
+    "reference": "314"
+  },
+  "312|adaptador de 3/4\"|tubos y conexiones|pavco|1": {
+    "id": 312,
+    "reference": "312"
+  },
+  "315|adaptador de 3/4\" agua caliente|tubos y conexiones|pavco|1": {
+    "id": 315,
+    "reference": "315"
+  },
+  "392|codo 2\" x 45o|tubos y conexiones|pavco|1": {
+    "id": 392,
+    "reference": "392"
+  },
+  "391|codo 2\" x 90o|tubos y conexiones|pavco|1": {
+    "id": 391,
+    "reference": "391"
+  },
+  "394|codo 3\" x 45o|tubos y conexiones|pavco|1": {
+    "id": 394,
+    "reference": "394"
+  },
+  "390|codo 3\" x 90o|tubos y conexiones|pavco|1": {
+    "id": 390,
+    "reference": "390"
+  },
+  "396|codo 4\" x 45o|tubos y conexiones|pavco|1": {
+    "id": 396,
+    "reference": "396"
+  },
+  "395|codo 4\" x 90o|tubos y conexiones|pavco|1": {
+    "id": 395,
+    "reference": "395"
+  },
+  "292|codo 1\" x 45o simple|tubos y conexiones|pavco|1": {
+    "id": 292,
+    "reference": "292"
+  },
+  "291|codo 1\" x 90o simple|tubos y conexiones|pavco|1": {
+    "id": 291,
+    "reference": "291"
+  },
+  "284|codo 1/2 x 45o simple|tubos y conexiones|pavco|1": {
+    "id": 284,
+    "reference": "284"
+  },
+  "283|codo 1/2 x 90o simple|tubos y conexiones|pavco|1": {
+    "id": 283,
+    "reference": "283"
+  },
+  "451|codo 1/2\" bronce|tubos y conexiones|valmax|1": {
+    "id": 451,
+    "reference": "451"
+  },
+  "421|codo 1/2\" galvanizado|tubos y conexiones|nacional|1": {
+    "id": 421,
+    "reference": "421"
+  },
+  "322|codo de 1\" x 45o agua caliente|tubos y conexiones|pavco|1": {
+    "id": 322,
+    "reference": "322"
+  },
+  "319|codo de 1\" x 90o agua caliente|tubos y conexiones|pavco|1": {
+    "id": 319,
+    "reference": "319"
+  },
+  "320|codo de 1/2\" x 45o agua caliente|tubos y conexiones|pavco|1": {
+    "id": 320,
+    "reference": "320"
+  },
+  "317|codo de 1/2\" x 90o agua caliente|tubos y conexiones|pavco|1": {
+    "id": 317,
+    "reference": "317"
+  },
+  "321|codo de 3/4\" x 45o agua caliente|tubos y conexiones|pavco|1": {
+    "id": 321,
+    "reference": "321"
+  },
+  "318|codo de 3/4\" x 90o agua caliente|tubos y conexiones|pavco|1": {
+    "id": 318,
+    "reference": "318"
+  },
+  "278|conector 1\" sel|tubos y conexiones|pavco|1": {
+    "id": 278,
+    "reference": "278"
+  },
+  "277|conector 3/4\" sel|tubos y conexiones|pavco|1": {
+    "id": 277,
+    "reference": "277"
+  },
+  "335|curva 1 agua|tubos y conexiones|pavco|1": {
+    "id": 335,
+    "reference": "335"
+  },
+  "333|curva 1/2 agua|tubos y conexiones|pavco|1": {
+    "id": 333,
+    "reference": "333"
+  },
+  "280|curva sel 1 1/2\"|tubos y conexiones|pavco|1": {
+    "id": 280,
+    "reference": "280"
+  },
+  "279|curva sel 1 1/4\"|tubos y conexiones|pavco|1": {
+    "id": 279,
+    "reference": "279"
+  },
+  "276|curva sel 1\"|tubos y conexiones|pavco|1": {
+    "id": 276,
+    "reference": "276"
+  },
+  "275|curva sel 3/4\"|tubos y conexiones|pavco|1": {
+    "id": 275,
+    "reference": "275"
+  },
+  "274|curva sel 5/8\"|tubos y conexiones|pavco|1": {
+    "id": 274,
+    "reference": "274"
+  },
+  "447|niple 1\" x 1 1/2\" galvanizado|tubos y conexiones|nacional|1": {
+    "id": 447,
+    "reference": "447"
+  },
+  "446|niple 1\" x 1\" galvanizado|tubos y conexiones|nacional|1": {
+    "id": 446,
+    "reference": "446"
+  },
+  "449|niple 1\" x 2 1/2\" galvanizado|tubos y conexiones|nacional|1": {
+    "id": 449,
+    "reference": "449"
+  },
+  "448|niple 1\" x 2\" galvanizado|tubos y conexiones|nacional|1": {
+    "id": 448,
+    "reference": "448"
+  },
+  "450|niple 1\" x 3\" galvanizado|tubos y conexiones|nacional|1": {
+    "id": 450,
+    "reference": "450"
+  },
+  "455|niple 1/2\" x 1 1/2\" bronce|tubos y conexiones|fortaly|1": {
+    "id": 455,
+    "reference": "455"
+  },
+  "427|niple 1/2\" x 1 1/2\" galvanizado|tubos y conexiones|nacional|1": {
+    "id": 427,
+    "reference": "427"
+  },
+  "454|niple 1/2\" x 1\" bronce|tubos y conexiones|fortaly|1": {
+    "id": 454,
+    "reference": "454"
+  },
+  "426|niple 1/2\" x 1\" galvanizado|tubos y conexiones|nacional|1": {
+    "id": 426,
+    "reference": "426"
+  },
+  "457|niple 1/2\" x 2 1/2\" bronce|tubos y conexiones|fortaly|1": {
+    "id": 457,
+    "reference": "457"
+  },
+  "429|niple 1/2\" x 2 1/2\" galvanizado|tubos y conexiones|nacional|1": {
+    "id": 429,
+    "reference": "429"
+  },
+  "456|niple 1/2\" x 2\" bronce|tubos y conexiones|fortaly|1": {
+    "id": 456,
+    "reference": "456"
+  },
+  "428|niple 1/2\" x 2\" galvanizado|tubos y conexiones|nacional|1": {
+    "id": 428,
+    "reference": "428"
+  },
+  "458|niple 1/2\" x 3\" bronce|tubos y conexiones|fortaly|1": {
+    "id": 458,
+    "reference": "458"
+  },
+  "430|niple 1/2\" x 3\" galvanizado|tubos y conexiones|nacional|1": {
+    "id": 430,
+    "reference": "430"
+  },
+  "459|niple 1/2\" x 4\" bronce|tubos y conexiones|fortaly|1": {
+    "id": 459,
+    "reference": "459"
+  },
+  "437|niple 3/4\" x 1 1/2\" galvanizado|tubos y conexiones|nacional|1": {
+    "id": 437,
+    "reference": "437"
+  },
+  "436|niple 3/4\" x 1\" galvanizado|tubos y conexiones|nacional|1": {
+    "id": 436,
+    "reference": "436"
+  },
+  "439|niple 3/4\" x 2 1/2\" galvanizado|tubos y conexiones|nacional|1": {
+    "id": 439,
+    "reference": "439"
+  },
+  "438|niple 3/4\" x 2\" galvanizado|tubos y conexiones|nacional|1": {
+    "id": 438,
+    "reference": "438"
+  },
+  "440|niple 3/4\" x 3\" galvanizado|tubos y conexiones|nacional|1": {
+    "id": 440,
+    "reference": "440"
+  },
+  "417|reducción de 3\" a 2\"|tubos y conexiones|pavco|1": {
+    "id": 417,
+    "reference": "417"
+  },
+  "415|reducción de 4\" a 2\"|tubos y conexiones|pavco|1": {
+    "id": 415,
+    "reference": "415"
+  },
+  "416|reducción de 4\" a 3\"|tubos y conexiones|pavco|1": {
+    "id": 416,
+    "reference": "416"
+  },
+  "418|tapon hembra de 2\"|tubos y conexiones|inyectoplast|1": {
+    "id": 418,
+    "reference": "418"
+  },
+  "419|tapon hembra de 3\"|tubos y conexiones|inyectoplast|1": {
+    "id": 419,
+    "reference": "419"
+  },
+  "420|tapon hembra de 4\"|tubos y conexiones|inyectoplast|1": {
+    "id": 420,
+    "reference": "420"
+  },
+  "442|tee 1\" galvanizado|tubos y conexiones|nacional|1": {
+    "id": 442,
+    "reference": "442"
+  },
+  "452|tee 1/2\" bronce|tubos y conexiones|fortaly|1": {
+    "id": 452,
+    "reference": "452"
+  },
+  "422|tee 1/2\" galvanizado|tubos y conexiones|nacional|1": {
+    "id": 422,
+    "reference": "422"
+  },
+  "397|tee 2\"|tubos y conexiones|pavco|1": {
+    "id": 397,
+    "reference": "397"
+  },
+  "398|tee 3\"|tubos y conexiones|pavco|1": {
+    "id": 398,
+    "reference": "398"
+  },
+  "399|tee 4\"|tubos y conexiones|pavco|1": {
+    "id": 399,
+    "reference": "399"
+  },
+  "400|tee 4\" a 2\"|tubos y conexiones|pavco|1": {
+    "id": 400,
+    "reference": "400"
+  },
+  "410|tee sanitaria 2\"|tubos y conexiones|pavco|1": {
+    "id": 410,
+    "reference": "410"
+  },
+  "411|tee sanitaria 4\"|tubos y conexiones|pavco|1": {
+    "id": 411,
+    "reference": "411"
+  },
+  "253|tubo desague 4\"|tubos y conexiones|nicoll|1": {
+    "id": 253,
+    "reference": "253"
+  },
+  "256|tubo desague 4\"|tubos y conexiones|pavco|1": {
+    "id": 256,
+    "reference": "256"
+  },
+  "425|tapón macho 1/2\" galvanizado|tubos y conexiones|nacional|1": {
+    "id": 425,
+    "reference": "425"
+  },
+  "444|tapón hembra 1\" galvanizado|tubos y conexiones|nacional|1": {
+    "id": 444,
+    "reference": "444"
+  },
+  "343|tapón hembra 1\" con rosca|tubos y conexiones|sin marca|1": {
+    "id": 343,
+    "reference": "343"
+  },
+  "344|tapón hembra 1\" simple|tubos y conexiones|sin marca|1": {
+    "id": 344,
+    "reference": "344"
+  },
+  "424|tapón hembra 1/2\" galvanizado|tubos y conexiones|nacional|1": {
+    "id": 424,
+    "reference": "424"
+  },
+  "339|tapón hembra 1/2\" con rosca|tubos y conexiones|sin marca|1": {
+    "id": 339,
+    "reference": "339"
+  },
+  "340|tapón hembra 1/2\" simple|tubos y conexiones|sin marca|1": {
+    "id": 340,
+    "reference": "340"
+  },
+  "347|tapón macho 1\"|tubos y conexiones|sin marca|1": {
+    "id": 347,
+    "reference": "347"
+  },
+  "345|tapón macho 1/2\"|tubos y conexiones|sin marca|1": {
+    "id": 345,
+    "reference": "345"
+  },
+  "300|tee 1\" simple|tubos y conexiones|pavco|1": {
+    "id": 300,
+    "reference": "300"
+  },
+  "301|tee 1\" con rosca|tubos y conexiones|pavco|1": {
+    "id": 301,
+    "reference": "301"
+  },
+  "295|tee 1/2 simple|tubos y conexiones|pavco|1": {
+    "id": 295,
+    "reference": "295"
+  },
+  "267|tubo 1 - agua caliente|tubos y conexiones|pavco|1": {
+    "id": 267,
+    "reference": "267"
+  },
+  "266|tubo 3/4 - agua caliente|tubos y conexiones|pavco|1": {
+    "id": 266,
+    "reference": "266"
+  },
+  "272|tubo de luz sel 1\"|tubos y conexiones|pavco|1": {
+    "id": 272,
+    "reference": "272"
+  },
+  "269|tubo de luz sel 3/4|tubos y conexiones|tuboplast|1": {
+    "id": 269,
+    "reference": "269"
+  },
+  "271|tubo de luz sel 3/4|tubos y conexiones|pavco|1": {
+    "id": 271,
+    "reference": "271"
+  },
+  "268|tubo de luz sel 5/8|tubos y conexiones|american plast|1": {
+    "id": 268,
+    "reference": "268"
+  },
+  "263|tubo para agua 1\" con rosca|tubos y conexiones|pavco|1": {
+    "id": 263,
+    "reference": "263"
+  },
+  "264|tubo para agua 1\" simple|tubos y conexiones|pavco|1": {
+    "id": 264,
+    "reference": "264"
+  },
+  "265|tubo para agua 1/2 - agua caliente|tubos y conexiones|pavco|1": {
+    "id": 265,
+    "reference": "265"
+  },
+  "260|tubo para agua de 1/2\" simple|tubos y conexiones|pavco|1": {
+    "id": 260,
+    "reference": "260"
+  },
+  "257|tubo para agua de 1/2\" con rosca|tubos y conexiones|nicoll|1": {
+    "id": 257,
+    "reference": "257"
+  },
+  "258|tubo para agua de 1/2\" simple|tubos y conexiones|nicoll|1": {
+    "id": 258,
+    "reference": "258"
+  },
+  "254|tubo para desagüe de 2\"|tubos y conexiones|pavco|1": {
+    "id": 254,
+    "reference": "254"
+  },
+  "255|tubo para desagüe de 3\"|tubos y conexiones|pavco|1": {
+    "id": 255,
+    "reference": "255"
+  },
+  "443|unión 1\" galvanizado|tubos y conexiones|nacional|1": {
+    "id": 443,
+    "reference": "443"
+  },
+  "423|unión 1/2\" galvanizado|tubos y conexiones|nacional|1": {
+    "id": 423,
+    "reference": "423"
+  },
+  "433|unión 3/4\" galvanizado|tubos y conexiones|nacional|1": {
+    "id": 433,
+    "reference": "433"
+  },
+  "453|unión 1/2\" bronce|tubos y conexiones|fortaly|1": {
+    "id": 453,
+    "reference": "453"
+  },
+  "412|unión de 2\"|tubos y conexiones|pavco|1": {
+    "id": 412,
+    "reference": "412"
+  },
+  "413|unión de 3\"|tubos y conexiones|pavco|1": {
+    "id": 413,
+    "reference": "413"
+  },
+  "414|unión de 4\"|tubos y conexiones|pavco|1": {
+    "id": 414,
+    "reference": "414"
+  },
+  "308|unión 1\" simple|tubos y conexiones|pavco|1": {
+    "id": 308,
+    "reference": "308"
+  },
+  "309|unión 1\" con rosca|tubos y conexiones|pavco|1": {
+    "id": 309,
+    "reference": "309"
+  },
+  "282|unión 1\" sel|tubos y conexiones|pavco|1": {
+    "id": 282,
+    "reference": "282"
+  },
+  "302|unión 1/2 simple|tubos y conexiones|pavco|1": {
+    "id": 302,
+    "reference": "302"
+  },
+  "281|unión 3/4\" sel|tubos y conexiones|pavco|1": {
+    "id": 281,
+    "reference": "281"
+  },
+  "325|unión de 1\" agua caliente|tubos y conexiones|pavco|1": {
+    "id": 325,
+    "reference": "325"
+  },
+  "323|unión de 1/2\" agua caliente|tubos y conexiones|pavco|1": {
+    "id": 323,
+    "reference": "323"
+  },
+  "328|unión universal de 1\" agua caliente|tubos y conexiones|pavco|1": {
+    "id": 328,
+    "reference": "328"
+  },
+  "326|unión universal de 1/2\" agua caliente|tubos y conexiones|pavco|1": {
+    "id": 326,
+    "reference": "326"
+  },
+  "329|unión universal de 1/2\" simple|tubos y conexiones|pavco|1": {
+    "id": 329,
+    "reference": "329"
+  },
+  "327|unión universal de 3/4\" agua caliente|tubos y conexiones|pavco|1": {
+    "id": 327,
+    "reference": "327"
+  },
+  "402|yee 2\"|tubos y conexiones|pavco|1": {
+    "id": 402,
+    "reference": "402"
+  },
+  "403|yee 3\"|tubos y conexiones|pavco|1": {
+    "id": 403,
+    "reference": "403"
+  },
+  "404|yee 4\"|tubos y conexiones|pavco|1": {
+    "id": 404,
+    "reference": "404"
+  },
+  "405|yee 4\" a 2\"|tubos y conexiones|pavco|1": {
+    "id": 405,
+    "reference": "405"
+  }
+}

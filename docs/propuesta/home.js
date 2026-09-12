@@ -21,7 +21,7 @@
   const buttonTimers = new WeakMap();
   const escape = (value) => String(value).replace(/[&<>"']/g, (c) => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const icon = (name) => `<svg class="icon" aria-hidden="true"><use href="assets/icons.svg#${name}"></use></svg>`;
-  const normalize = (value) => String(value).normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/[^a-z0-9/]+/g, ' ').trim();
+  const normalize = (value) => String(value).normalize('NFD').replace(/[\u0300-\u036f]/g, '').toLowerCase().replace(/\btripley\b/g,'triplay').replace(/[^a-z0-9/]+/g, ' ').trim();
   const validQuantity = (value, unit = '') => AlbanilListParser.validOrderQuantity(value,unit);
   const roundQuantity = (value) => Math.round(Number(value) * 100) / 100;
 
@@ -104,12 +104,12 @@
     return [...Object.entries(quote).map(([id,quantity])=>({productId:Number(id),title:byId.get(Number(id)).title,quantity,unit:byId.get(Number(id)).unit||'',original:''})), ...imported.map(row=>({productId:row.productId,title:byId.get(row.productId)?.title||row.query,quantity:row.quantity,unit:row.unit||byId.get(row.productId)?.unit||'',original:row.original}))];
   }
   function card(product) {
-    return `<article class="product-card"><a class="product-image" href="?producto=${product.id}" data-product="${product.id}"><img src="${escape(product.image)}" alt="${escape(product.title)}" width="480" height="480" loading="lazy"></a><div class="product-body"><p class="product-brand">${escape(product.brand || 'Albañil')}</p><h3><a href="?producto=${product.id}" data-product="${product.id}">${escape(product.title)}</a></h3><p class="product-price">${productPrice(product)}</p>${service?`<p class="product-stock">${escape(product.availability)}</p>`:''}<button class="add-button" data-add="${product.id}" aria-label="Agregar a mi lista: ${escape(product.title)}">${icon('plus')} Agregar a mi lista</button></div></article>`;
+    return `<article class="product-card"><a class="product-image" href="?producto=${product.id}" data-product="${product.id}"><img src="${escape(product.image)}" alt="${escape(product.title)}" width="480" height="480" loading="lazy"></a><div class="product-body"><p class="product-brand">${escape(product.brand || 'Albañil')}</p><h3><a href="?producto=${product.id}" data-product="${product.id}">${escape(product.title)}</a></h3><p class="product-price">${productPrice(product)}</p>${product.availability?`<p class="product-stock">${escape(product.availability)}</p>`:''}<button class="add-button" data-add="${product.id}" aria-label="Agregar a mi lista: ${escape(product.title)}">${icon('plus')} Agregar a mi lista</button></div></article>`;
   }
   function showProduct(id, askQuantity = false) {
     const product = byId.get(id);
     if (!product) { notify('No encontramos ese producto en la copia del catálogo.'); return; }
-    $('#product-detail').innerHTML = `<div class="detail-layout"><div class="detail-image"><img src="${escape(product.image)}" alt="${escape(product.title)}" width="480" height="480"></div><div><p class="product-brand">${escape(product.brand || 'Albañil')}</p><h2 id="product-title">${escape(product.title)}</h2><p class="detail-category">${escape(product.category)}</p>${service?`<p class="product-stock">${escape(product.availability)}${product.stock!=null?` · ${escape(product.stock)} ${escape(product.unit)}`:''}</p>`:''}<p class="detail-reference-price">${product.price != null ? `${productPrice(product)} <span>IGV: ${product.tax==='incluido'?'incluido':product.tax==='no_incluido'?'no incluido':'por confirmar'}</span>` : product.referencePriceCents ? `S/ ${(product.referencePriceCents/100).toFixed(2)} <span>Precio de referencia · copia del 8 sep. 2026</span>` : 'Precio a consultar'}</p>${product.specifications ? `<p class="detail-specifications">${escape(product.specifications)}</p>` : ''}<p class="detail-note">La unidad de venta y el precio final se confirman con la tienda. Agrega la cantidad que necesitas. La tienda confirmará precio, presentación y disponibilidad.</p><form id="detail-form" data-id="${id}"><label for="detail-quantity">Cantidad a agregar${product.unit?' ('+escape(product.unit)+')':' (entera)'}</label><input class="quantity-input" id="detail-quantity" name="quantity" type="number" ${quantityAttrs(product.unit)} value="1" required><button class="primary-button" type="submit">${icon('plus')} Agregar a mi lista</button></form></div></div>`;
+    $('#product-detail').innerHTML = `<div class="detail-layout"><div class="detail-image"><img src="${escape(product.image)}" alt="${escape(product.title)}" width="480" height="480"></div><div><p class="product-brand">${escape(product.brand || 'Albañil')}</p><h2 id="product-title">${escape(product.title)}</h2><p class="detail-category">${escape(product.category)} · Ref. ${escape(product.reference||product.id)}</p>${product.availability?`<p class="product-stock">${escape(product.availability)}${product.stock!=null&&product.unit?` · ${escape(product.stock)} ${escape(product.unit)}`:''}</p>`:''}<p class="detail-reference-price">${product.price != null ? `${productPrice(product)} <span>IGV: ${product.tax==='incluido'?'incluido':product.tax==='no_incluido'?'no incluido':'por confirmar'}</span>` : product.referencePriceCents ? `S/ ${(product.referencePriceCents/100).toFixed(2)} <span>Precio de referencia · copia del 8 sep. 2026</span>` : 'Precio a consultar'}</p>${product.specifications ? `<p class="detail-specifications">${escape(product.specifications)}</p>` : ''}${product.currency==='USD'&&product.price!=null?`<p>Precio base: US$ ${Number(product.price).toFixed(2)}</p>`:''}<p class="detail-note">La unidad de venta y el precio final se confirman con la tienda. Agrega la cantidad que necesitas. La tienda confirmará precio, presentación y disponibilidad.</p><form id="detail-form" data-id="${id}"><label for="detail-quantity">Cantidad a agregar${product.unit?' ('+escape(product.unit)+')':' (entera)'}</label><input class="quantity-input" id="detail-quantity" name="quantity" type="number" ${quantityAttrs(product.unit)} value="1" required><button class="primary-button" type="submit">${icon('plus')} Agregar a mi lista</button></form></div></div>`;
     openDialog('product');
     if (askQuantity) { $('#detail-quantity').focus(); $('#detail-quantity').select(); }
   }
@@ -197,7 +197,8 @@
       if(focus){$('#request-page-title').focus({preventScroll:true});$('#request-view').scrollIntoView({behavior:'instant'});}
     } else if (isCatalog) {
       const terms = normalize(query).split(/\s+/).filter(Boolean);
-      const matches = catalog.products.filter((p) => (!group || p.group === group) && (!sector || sector.types.includes(p.category)) && terms.every((word) => p.search.includes(word)));
+      const exactReference=catalog.products.find(p=>String(p.reference||p.id).toLowerCase()===query.trim().toLowerCase());
+      const matches = catalog.products.filter((p) => (!exactReference || p.id===exactReference.id) && (!group || p.group === group) && (!sector || sector.types.includes(p.category)) && terms.every((word) => p.search.includes(word)));
       filtered = matches.filter((p) => !category || p.category === category);
       renderCategoryChips(params, sector?.types || catalog.groups.find((item) => item.id === group)?.types, matches);
       if (params.get('orden') === 'nombre') filtered.sort((a, b) => a.title.localeCompare(b.title, 'es'));
@@ -323,8 +324,8 @@
   $('#review-quote').setAttribute('data-intake-prepare','');
   $('#download-quote').addEventListener('click', () => {
     if (!checkQuoteQuantities()) return;
-    const lines = Object.entries(quote).map(([id, quantity]) => `${quantity} × ${byId.get(Number(id)).title} | Marca: ${byId.get(Number(id)).brand || 'Por confirmar'} | Ref. ${id}`);
-    lines.push(...imported.map(row=>`${row.quantity}${row.unit?' '+row.unit:''} × ${byId.get(row.productId)?.title || row.query} | ${row.productId?'Ref. '+row.productId:'PENDIENTE DE IDENTIFICAR'}\n  Texto original: ${row.original}`));
+    const lines = Object.entries(quote).map(([id, quantity]) => `${quantity} × ${byId.get(Number(id)).title} | Marca: ${byId.get(Number(id)).brand || 'Por confirmar'} | Ref. ${byId.get(Number(id)).reference||id}`);
+    lines.push(...imported.map(row=>`${row.quantity}${row.unit?' '+row.unit:''} × ${byId.get(row.productId)?.title || row.query} | ${row.productId?'Ref. '+(byId.get(row.productId)?.reference||row.productId):'PENDIENTE DE IDENTIFICAR'}\n  Texto original: ${row.original}`));
     const content = ['ALBAÑIL | SOLICITUD DE COTIZACIÓN', 'No enviada a la tienda. Precios, presentación y disponibilidad por confirmar.', '', ...lines, '', 'Flete: por calcular según destino, cantidad y condiciones de entrega. No incluido en los precios de referencia.'].join('\n');
     const url = URL.createObjectURL(new Blob([content], {type:'text/plain;charset=utf-8'}));
     const link = document.createElement('a'); link.href = url; link.download = 'albanil-solicitud.txt'; link.click();
@@ -352,8 +353,13 @@
         if(preview&&AlbanilPricing.validRate(preview.rate)&&Array.isArray(preview.products)){
           rate=preview.rate;rateUpdatedAt=preview.updated_at??null;
           const demoProducts=new Map(preview.products.filter(p=>Number.isInteger(p.id)&&typeof p.price==='number'&&Number.isFinite(p.price)&&p.price>0&&p.price<=999999&&['PEN','USD'].includes(p.currency)).map(p=>[p.id,p]));
-          data.products=data.products.map(p=>({...p,...(demoProducts.get(p.id)||{})}));
+          data.products=data.products.map(p=>({...p,...(!p.dataUpdatedAt||new Date(preview.updated_at)>=new Date(p.dataUpdatedAt)?demoProducts.get(p.id)||{}:{})}));
         }
+      }
+      let sharedRate=null;
+      if(!service&&window.AlbanilSettings){
+        sharedRate=await AlbanilSettings.publicRate(data.exchangeRate);
+        rate=sharedRate.rate;rateUpdatedAt=sharedRate.updated_at;
       }
       const rateKnown=AlbanilPricing.validRate(rate);
       $('#home-fx-value').textContent=rateKnown?`US$ 1 = S/ ${Number(rate).toLocaleString('es-PE',{minimumFractionDigits:2,maximumFractionDigits:4,useGrouping:false})}`:'Por confirmar';
@@ -361,11 +367,11 @@
       $('#home-fx-date').hidden=!rateKnown||!Number.isFinite(rateDate.getTime());
       if(!$('#home-fx-date').hidden){
         $('#home-fx-date').dateTime=rateDate.toISOString();
-        $('#home-fx-date').textContent='Actualizado: '+rateDate.toLocaleString('es-PE',{timeZone:'America/Lima',day:'2-digit',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit'})+' (Perú)';
+        $('#home-fx-date').textContent=(sharedRate?.unavailable?'Último valor disponible · Actualizado: ':'Actualizado: ')+rateDate.toLocaleString('es-PE',{timeZone:'America/Lima',day:'2-digit',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit'})+' (Perú)';
       }
-      data.products=data.products.map(p=>AlbanilPricing.apply(p,rate));
+      data.products=data.products.filter(p=>p.state!=='INACTIVO').map(p=>AlbanilPricing.apply(p,rate));
       catalog = data;
-      catalog.products.forEach((p) => { p.search = normalize(`${p.title} ${p.brand} ${p.category}`); });
+      catalog.products.forEach((p) => { p.search = normalize(`${p.title} ${p.brand} ${p.category} ${p.reference||p.id}`); });
       byId = new Map(catalog.products.map((p) => [p.id, p]));
       if (!listBuilder) listBuilder = createAlbanilListBuilder({products:catalog.products,addProduct,escape,notify,getSummary:getQuoteSummary,addImported(rows){imported.push(...rows);persist();renderQuote();}});
       if(!requestBuilder)requestBuilder=createAlbanilRequest({getItems:requestItems,service,escape,notify});

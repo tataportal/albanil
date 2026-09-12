@@ -37,7 +37,7 @@ const repaired = parser.parse(pasted);
 assert.deepEqual(repaired.map(r=>[r.query,r.quantity,r.unit]),[
  ['Cemento Portland',1,'bolsa'],['Arena gruesa',1,'metro cúbico'],['Arena fina',1,'metro cúbico'],['Piedra chancada',1,'metro cúbico'],['Ladrillo King Kong',1,'millar']
 ]);
-assert.deepEqual(parser.search(repaired[0].query,products).map(p=>p.id).sort((a,b)=>a-b),[375,562]);
+assert.deepEqual(parser.search(repaired[0].query,products).map(p=>p.id).sort((a,b)=>a-b),[375,562,100046]);
 assert.deepEqual(parser.search(repaired[4].query,products).map(p=>p.id).sort((a,b)=>a-b),[84,85,86,87]);
 for(const row of repaired.slice(1,4)) assert.equal(parser.search(row.query,products).length,0); // Never substitute sand-colored tanks for sand.
 assert.equal(repaired[4].original,pasted.split('\n')[4]);
@@ -65,7 +65,7 @@ assert.deepEqual(constructionRows.map(r=>[r.query,r.quantity,r.unit]),[
 ]);
 assert.deepEqual(parser.search(constructionRows[1].query,products).map(p=>p.id),[253,256]);
 assert.deepEqual(parser.search(constructionRows[2].query,products).map(p=>p.id),[257,258,259,260]);
-assert.equal(parser.search(constructionRows[0].query,products).length,0);
+assert.deepEqual(parser.search(constructionRows[0].query,products).map(p=>p.id),[100045]);
 assert.equal(parser.search(constructionRows[3].query,products).length,0); // Never replace PVC glue with ceramic adhesive.
 for(const [i,row] of constructionRows.entries()) {
  assert.equal(row.original,constructionList.split('\n')[i]);

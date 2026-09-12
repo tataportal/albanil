@@ -96,6 +96,31 @@ for p in products:
         if clean.exists():
             p['image']=f"assets/products/clean-v2/{p['id']}.webp"
         p['imageSmall']=p['image'].removesuffix('.webp')+'-320.webp'
+# Apply the customer workbook after original photos/links have been resolved.
+consolidated=json.loads((ROOT/'scripts/consolidated-products.json').read_text())
+existing={p['id']:p for p in products}
+for incoming in consolidated['products']:
+    current=existing.get(incoming['id'])
+    if current is None:
+        current={'id':incoming['id'],'image':'assets/product-photo-pending.svg','url':f"?producto={incoming['id']}",'specifications':'','deliveryConditions':''}
+        products.append(current)
+        existing[current['id']]=current
+    current.update(incoming)
+    current['referencePriceCents']=None
+    current['priceSourceDate']=consolidated['importedAt'][:10]
+    current['dataSource']='consolidado'
+    current['dataUpdatedAt']=consolidated['importedAt']
+    current['group']=next((g['id'] for g in GROUPS if current['category'] in g['types']),'techos')
+    if not any(c['name']==current['category'] for c in CATEGORIES):
+        CATEGORIES.append({'id':max(c['id'] for c in CATEGORIES)+1,'name':current['category'],'url':'','icon':'wood'})
+        next(g for g in GROUPS if g['id']=='techos')['types'].append(current['category'])
+        SECTORS[0]['types'].append(current['category'])
+for product in products:
+    product.setdefault('reference',str(product['id']))
+    # Unlisted products retain their links, but outdated snapshot prices are not republished.
+    if product.get('dataSource')!='consolidado':product['referencePriceCents']=None
+assert len({p['id'] for p in products})==len(products)
+assert len({p['reference'] for p in products})==len(products)
 (OUT/'catalog.json').write_text(json.dumps({'exchangeRate':EXCHANGE_RATE,'categories':CATEGORIES,'groups':GROUPS,'sectors':SECTORS,'featured':FEATURED,'products':products},ensure_ascii=False,separators=(',',':')))
 print(f'Built {len(products)} unique products, {len(CATEGORIES)} original categories, {len(FEATURED)} sample featured products.')
 
@@ -111,12 +136,12 @@ sectors=''.join(f'<a class="sector-card" href="?sector={s["id"]}">{icon(s["icon"
 by_id={p['id']:p for p in products}
 # Best sellers supplied by Albañil; images represent groups, not stock claims.
 FEATURED_GROUPS = [
- ('Ladrillo 18 huecos',84,'18 huecos'),('Bloqueta H15 × 30',91,'bloqueta h15'),('Fenólicos 18 mm','fenolicos.png',''),
- ('Cemento Andino Tipo 1',375,'cemento andino'),('Amoladoras','amoladoras.jpg',''),('Plásticos','plasticos.jpg',''),
- ('Autoperforantes','autoperforantes.jpg',''),('Paneles LED','paneles.jpg',''),('Soldadura','soldadura.jpg',''),
+ ('Ladrillo 18 huecos',84,'18 huecos'),('Bloqueta H15 × 30',91,'bloqueta h15'),('Fenólicos 18 mm','fenolicos.png','fenolico 18mm'),
+ ('Cemento Andino Tipo 1',375,'cemento andino'),('Amoladoras','amoladoras.jpg','amoladora'),('Plásticos','plasticos.jpg','plastico'),
+ ('Autoperforantes','autoperforantes.jpg','autoperforante'),('Paneles LED','paneles.jpg',''),('Soldadura','soldadura.jpg','soldadura'),
  ('Guantes',43,'guantes'),('Lijas',617,'lija'),('Tecnopor de 1"',248,'tecnopor de 1"'),
- ('Sikaflex',137,'sikaflex'),('Esmalte anticorrosivo Walon','walon.webp',''),('Spray C&A','spray.jpg',''),
- ('Llave check de 1/2" CIM','check.jpg',''),('Wincha Truper',601,'wincha truper'),('Alambre 16',68,'alambre nro 16')]
+ ('Sikaflex',137,'sikaflex'),('Esmalte anticorrosivo Walon','walon.webp',''),('Spray C&A','spray.jpg','spray'),
+ ('Llave check de 1/2" CIM','check.jpg','check cim'),('Wincha Truper',601,'wincha truper'),('Alambre 16',68,'alambre nro 16')]
 def group_card(g):
     title,photo,query=g
     image=by_id[photo]['image'] if isinstance(photo,int) else 'assets/groups/'+photo
@@ -129,7 +154,7 @@ hero_list=''.join(f'<div class="hero-list-row"><img src="{escape(by_id[i]["image
 template=(ROOT/'scripts/home.template.html').read_text()
 rendered=template.replace('<!--PRODUCTS-->',featured_slides).replace('<!--CATEGORIES-->',categories).replace('<!--SECTORS-->',sectors).replace('<!--HERO-LIST-->',hero_list)
 rendered=rendered.replace('<!--EXCHANGE-RATE-->',f"US$ 1 = S/ {EXCHANGE_RATE['rate']:.2f}")
-for asset in ['home.css','pricing.js','home.js','list-parser.js','list-builder.js','request.js','featured-carousel.js','contact.js','intake.js']:
+for asset in ['home.css','pricing.js','settings.js','home.js','list-parser.js','list-builder.js','request.js','featured-carousel.js','contact.js','intake.js']:
     version=hashlib.sha256((OUT/asset).read_bytes()).hexdigest()[:10]
     rendered=rendered.replace(f'"{asset}"',f'"{asset}?v={version}"')
 (OUT/'index.html').write_text(rendered)
