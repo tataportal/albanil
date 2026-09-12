@@ -123,7 +123,7 @@ def group_card(g):
     return f'<article class="product-card featured-group"><a class="product-image" href="{escape(url)}"{external}><img src="{escape(image)}" alt="{escape(title)} — foto representativa" width="480" height="480" loading="lazy"></a><div class="product-body"><p class="product-brand">Más vendidos</p><h3><a href="{escape(url)}"{external}>{escape(title)}</a></h3><p class="group-note">Foto referencial · opciones por confirmar</p><a class="secondary-button" href="{escape(url)}"{external}>{'Ver opciones' if query else 'Consultar al asesor'}</a></div></article>'
 featured_slides=''.join(f'<div class="product-grid featured-slide{" is-active" if start == 0 else ""}" role="group" aria-roledescription="grupo" aria-label="{start // 6 + 1} de 3"'+('' if start == 0 else ' inert aria-hidden="true"')+'>'+''.join(group_card(g) for g in FEATURED_GROUPS[start:start+6])+'</div>' for start in range(0,18,6))
 
-hero_list=''.join(f'<div class="hero-list-row"><img src="{escape(by_id[i]["imageSmall"])}" width="52" height="52" alt=""><span>{escape(by_id[i]["title"])}</span><strong>{quantity}</strong></div>' for i,quantity in [(375,'10'),(348,'50 m'),(257,'4')])
+hero_list=''.join(f'<img class="hero-product hero-product-{index}" src="{escape(by_id[i]["image"])}" width="480" height="480" alt="">' for index,i in enumerate([375,601,348],1))
 template=(ROOT/'scripts/home.template.html').read_text()
 rendered=template.replace('<!--PRODUCTS-->',featured_slides).replace('<!--CATEGORIES-->',categories).replace('<!--SECTORS-->',sectors).replace('<!--HERO-LIST-->',hero_list)
 for asset in ['home.css','pricing.js','home.js','list-parser.js','list-builder.js','request.js','featured-carousel.js','contact.js','intake.js']:

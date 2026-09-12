@@ -356,6 +356,7 @@
         }
       }
       const rateKnown=AlbanilPricing.validRate(rate);
+      document.querySelector('.exchange-reference').hidden=!rateKnown;
       $('#home-fx-value').textContent=rateKnown?`US$ 1 = S/ ${Number(rate).toLocaleString('es-PE',{minimumFractionDigits:2,maximumFractionDigits:4,useGrouping:false})}`:'Por confirmar';
       const rateDate=new Date(rateUpdatedAt||'');
       $('#home-fx-date').hidden=!rateKnown||!Number.isFinite(rateDate.getTime());
