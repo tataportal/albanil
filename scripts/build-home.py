@@ -15,6 +15,8 @@ from urllib.parse import quote
 ROOT = Path(__file__).resolve().parents[1]
 DOCS = ROOT / 'docs'
 OUT = DOCS / 'propuesta'
+EXCHANGE_RATE = json.loads((ROOT/'scripts/exchange-rate.json').read_text())
+assert 0 < EXCHANGE_RATE['rate'] <= 100, 'Invalid exchange rate'
 # Preserve the public menu's category names and order; rubros are editorial only.
 class CategoryMenu(HTMLParser):
     def __init__(self):
@@ -94,7 +96,7 @@ for p in products:
         if clean.exists():
             p['image']=f"assets/products/clean-v2/{p['id']}.webp"
         p['imageSmall']=p['image'].removesuffix('.webp')+'-320.webp'
-(OUT/'catalog.json').write_text(json.dumps({'categories':CATEGORIES,'groups':GROUPS,'sectors':SECTORS,'featured':FEATURED,'products':products},ensure_ascii=False,separators=(',',':')))
+(OUT/'catalog.json').write_text(json.dumps({'exchangeRate':EXCHANGE_RATE,'categories':CATEGORIES,'groups':GROUPS,'sectors':SECTORS,'featured':FEATURED,'products':products},ensure_ascii=False,separators=(',',':')))
 print(f'Built {len(products)} unique products, {len(CATEGORIES)} original categories, {len(FEATURED)} sample featured products.')
 
 def icon(name):
@@ -126,6 +128,7 @@ featured_slides=''.join(f'<div class="product-grid featured-slide{" is-active" i
 hero_list=''.join(f'<div class="hero-list-row"><img src="{escape(by_id[i]["imageSmall"])}" width="52" height="52" alt=""><span>{escape(by_id[i]["title"])}</span><strong>{quantity}</strong></div>' for i,quantity in [(375,'10'),(348,'50 m'),(257,'4')])
 template=(ROOT/'scripts/home.template.html').read_text()
 rendered=template.replace('<!--PRODUCTS-->',featured_slides).replace('<!--CATEGORIES-->',categories).replace('<!--SECTORS-->',sectors).replace('<!--HERO-LIST-->',hero_list)
+rendered=rendered.replace('<!--EXCHANGE-RATE-->',f"US$ 1 = S/ {EXCHANGE_RATE['rate']:.2f}")
 for asset in ['home.css','pricing.js','home.js','list-parser.js','list-builder.js','request.js','featured-carousel.js','contact.js','intake.js']:
     version=hashlib.sha256((OUT/asset).read_bytes()).hexdigest()[:10]
     rendered=rendered.replace(f'"{asset}"',f'"{asset}?v={version}"')
