@@ -116,27 +116,13 @@
 .hero-list-row:last-child{border-bottom:0}.hero-list-heading>span{font-size:13px;color:var(--muted)}
 @media(max-width:639px){.order-hero{min-height:0}.hero-copy h1 br{display:none}}
 
-/* Supplied banner includes its desktop lettering. Keep semantic text for assistive technology
-   and render live text over the photo on smaller screens, where embedded lettering is cropped. */
+/* Both supplied banners include lettering; keep one accessible HTML heading. */
 .order-hero-banner{position:relative;display:block;aspect-ratio:1803/509;min-height:0;padding:0;overflow:hidden;border:0;background:#526c2b url('assets/list-banner.webp') center/cover no-repeat}
+.order-hero-banner .hero-copy h1,.order-hero-banner .hero-copy>p{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
 .order-hero-banner .hero-actions{position:absolute;left:3.2%;bottom:12%;margin:0}
-@media(min-width:1024px){
- .order-hero-banner .hero-copy h1,.order-hero-banner .hero-copy>p{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
-}
 @media(max-width:1023px){
- .order-hero-banner{aspect-ratio:auto;min-height:400px;padding:32px;background-image:linear-gradient(90deg,#263c35ed,#263c3580),url('assets/list-banner.webp');background-size:cover,max(220%,1520px) auto;background-position:center,right center}
- .order-hero-banner .hero-copy{max-width:520px}
- .order-hero-banner .hero-copy h1{font-size:clamp(32px,5.4vw,46px);color:#fff}
- .order-hero-banner .hero-copy>p{color:#fff;max-width:420px}
- .order-hero-banner .hero-actions{position:static;margin-top:26px}
-}
-@media(max-width:639px){.order-hero-banner{padding:28px 22px;min-height:400px}.order-hero-banner .hero-copy>p br{display:none}}
-
-/* Use the supplied portrait composition on phones; its lettering is already in the image. */
-@media(max-width:639px){
- .order-hero-banner{aspect-ratio:902/817;min-height:0;padding:0;background:#526c2b url('assets/list-banner-mobile.webp') center/cover no-repeat}
- .order-hero-banner .hero-copy h1,.order-hero-banner .hero-copy>p{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
- .order-hero-banner .hero-actions{position:absolute;left:22px;right:22px;bottom:20px;margin:0}
+ .order-hero-banner{aspect-ratio:902/817;background-image:url('assets/list-banner-mobile.webp')}
+ .order-hero-banner .hero-actions{left:22px;right:22px;bottom:20px}
  .order-hero-banner .order-start{width:100%}
 }
 .site-footer{padding-bottom:24px}
