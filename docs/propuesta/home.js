@@ -11,9 +11,6 @@
   let listBuilder = null;
   let requestBuilder = null;
   let service = false;
-  const fxParams=new URLSearchParams(location.search);
-  const fxDemo=fxParams.get('precios')==='local'||fxParams.get('demo')==='tipo-cambio';
-  if(fxParams.has('demo')){fxParams.delete('demo');fxParams.set('precios','local');history.replaceState(null,'','?'+fxParams+location.hash);}
   let filtered = [];
   let shown = PAGE_SIZE;
   let toastTimer;
@@ -343,19 +340,12 @@
     document.querySelectorAll('[data-add]').forEach((button) => { button.disabled = true; });
     try {
       service = ['127.0.0.1','localhost'].includes(location.hostname) && ['8092','8098'].includes(location.port);
-      const response = await fetch(service?'/api/catalog':'catalog.json', {cache:'no-store'});
+      let response;
+      try{response=await fetch(service?'/api/catalog':window.AlbanilSettings.api+'/api/catalog',{cache:'no-store',signal:AbortSignal.timeout(10000)});if(!response.ok)throw Error('No disponible');}catch{response=await fetch('catalog.json',{cache:'no-store'});}
       if (!response.ok) throw new Error('Catalog unavailable');
       const data = await response.json();
       if (!Array.isArray(data.products) || !Array.isArray(data.groups) || !Array.isArray(data.categories) || !Array.isArray(data.sectors)) throw new Error('Invalid catalog');
       let rate=data.exchangeRate?.rate??null,rateUpdatedAt=data.exchangeRate?.updated_at??null;
-      if(fxDemo){
-        let preview=null;try{preview=JSON.parse(localStorage.getItem(AlbanilPricing.demoKey));}catch{}
-        if(preview&&AlbanilPricing.validRate(preview.rate)&&Array.isArray(preview.products)){
-          rate=preview.rate;rateUpdatedAt=preview.updated_at??null;
-          const demoProducts=new Map(preview.products.filter(p=>Number.isInteger(p.id)&&typeof p.price==='number'&&Number.isFinite(p.price)&&p.price>0&&p.price<=999999&&['PEN','USD'].includes(p.currency)).map(p=>[p.id,p]));
-          data.products=data.products.map(p=>({...p,...(!p.dataUpdatedAt||new Date(preview.updated_at)>=new Date(p.dataUpdatedAt)?demoProducts.get(p.id)||{}:{})}));
-        }
-      }
       let sharedRate=null;
       if(!service&&window.AlbanilSettings){
         sharedRate=await AlbanilSettings.publicRate(data.exchangeRate);
@@ -374,7 +364,7 @@
       catalog.products.forEach((p) => { p.search = normalize(`${p.title} ${p.brand} ${p.category} ${p.reference||p.id}`); });
       byId = new Map(catalog.products.map((p) => [p.id, p]));
       if (!listBuilder) listBuilder = createAlbanilListBuilder({products:catalog.products,addProduct,escape,notify,getSummary:getQuoteSummary,addImported(rows){imported.push(...rows);persist();renderQuote();}});
-      if(!requestBuilder)requestBuilder=createAlbanilRequest({getItems:requestItems,service,escape,notify});
+      if(!requestBuilder)requestBuilder=createAlbanilRequest({getItems:requestItems,service:service||!!window.AlbanilSettings?.api,escape,notify});
       if(service && !document.querySelector('.featured-group'))document.querySelectorAll('.featured-slide').forEach((slide,index)=>{slide.innerHTML=catalog.featured.slice(index*6,index*6+6).map(id=>card(byId.get(id))).join('');});
       window.AlbanilIntakeBridge = {summary:getQuoteSummary,draft:()=>listBuilder.draft(),products:catalog.products};
       restore(); renderRoute();

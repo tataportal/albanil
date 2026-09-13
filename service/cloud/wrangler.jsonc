@@ -1,0 +1,9 @@
+{
+  "name": "albanil-settings",
+  "main": "worker.mjs",
+  "compatibility_date": "2026-09-12",
+  "account_id": "9b26741155656b971477eb0674099db3",
+  "workers_dev": true,
+  "vars": {"ALLOWED_ORIGINS": "https://tataportal.github.io"},
+  "d1_databases": [{"binding":"DB","database_name":"albanil-settings","database_id":"6a80877b-7ca4-4019-a48e-d935a6c9c77b"}]
+}

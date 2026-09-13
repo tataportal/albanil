@@ -24,7 +24,7 @@ from pathlib import Path
 from urllib.parse import urlsplit, unquote, quote
 
 ROOT = Path(__file__).resolve().parents[1]
-UNITS = {'unidad': False, 'par': False, 'caja': False, 'bolsa': False, 'rollo': False,
+UNITS = {'varilla': False, 'envase': False, 'saco': False, 'hoja': False, 'cartucho': False, 'lata': False, 'galon': False, 'juego': False, 'unidad': False, 'par': False, 'caja': False, 'bolsa': False, 'rollo': False,
          'tubo': False, 'plancha': False, 'tarro': False, 'millar': False,
          'metro': True, 'kg': True, 'litro': True, 'm2': True, 'm3': True}
 STATUSES = ('Nueva', 'En atención', 'Cotización parcial', 'Cotizada', 'Terminada', 'Cerrada')

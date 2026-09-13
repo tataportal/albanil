@@ -23,3 +23,11 @@ error_log
 __pycache__/
 *.sqlite3*
 *.private
+
+# Shared exchange-rate service; credentials remain under ignored .local/.
+!service/cloud/
+!service/cloud/*.mjs
+!service/cloud/*.jsonc
+!service/cloud/schema.sql
+!service/cloud/README.md
+service/cloud/.wrangler/

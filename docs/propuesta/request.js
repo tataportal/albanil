@@ -1,6 +1,7 @@
 'use strict';
 window.createAlbanilRequest = function ({getItems, service, notify, escape:esc}) {
  const $=s=>document.querySelector(s);
+ const apiBase=['127.0.0.1','localhost'].includes(location.hostname)?'':window.AlbanilSettings?.api||'';
  let key='',lastPayload='',sending=false;
  function render(){
   const items=getItems();
@@ -8,14 +9,14 @@ window.createAlbanilRequest = function ({getItems, service, notify, escape:esc})
   $('#request-item-count').textContent=`${items.length} ${items.length===1?'renglón':'renglones'}`;
   $('#request-submit').hidden=!service;$('#request-submit').disabled=!items.length;
   $('#request-download').disabled=!items.length;
-  $('#request-mode-note').textContent=service?'La solicitud se guardará en el panel de este equipo.':'Esta publicación aún no recibe solicitudes. Puedes descargar la solicitud estructurada para compartirla con el vendedor.';
+  $('#request-mode-note').textContent=service?'El asesor recibirá tu solicitud en el panel.':'Esta publicación aún no recibe solicitudes. Puedes descargar la solicitud estructurada para compartirla con el vendedor.';
  }
  function delivery(){const pick=$('#customer-delivery').value==='retiro';$('#destination-field').hidden=pick;$('#customer-destination').required=!pick;$('#request-freight').textContent=pick?'No aplica por retiro':'Por calcular según destino y cantidad';}
  $('#customer-delivery').addEventListener('change',delivery);
  function payload(){
   if(!$('#customer-form').reportValidity())return null;
   const items=getItems();if(!items.length){notify('Agrega al menos un material.');return null;}
-  if(items.length>100){notify('Divide tu solicitud en grupos de hasta 100 renglones.');return null;}
+  if(items.length>500){notify('Divide tu solicitud en grupos de hasta 500 renglones.');return null;}
   if(items.some(i=>!AlbanilListParser.validOrderQuantity(i.quantity,i.unit))){notify('Revisa las cantidades de tu lista antes de continuar.');return null;}
   const values=Object.fromEntries(new FormData($('#customer-form')));
   return {customer:{name:values.name,phone:values.phone,email:values.email||'',company:values.company||'',ruc:values.ruc||'',delivery:values.delivery,destination:values.delivery==='entrega'?values.destination:'',notes:values.notes||''},consent:values.consent==='on',items:items.map(i=>({productId:i.productId,query:i.title,quantity:i.quantity,unit:i.unit,original:i.original||''}))};
@@ -26,9 +27,11 @@ window.createAlbanilRequest = function ({getItems, service, notify, escape:esc})
   const serialized=JSON.stringify(data);if(serialized!==lastPayload){key=crypto.randomUUID();lastPayload=serialized;}
   sending=true;$('#request-submit').disabled=true;$('#request-error').textContent='';
   try{
-   const response=await fetch('/api/requests',{method:'POST',headers:{'Content-Type':'application/json','Idempotency-Key':key},body:serialized});
+   const response=await fetch(apiBase+'/api/requests',{method:'POST',headers:{'Content-Type':'application/json','Idempotency-Key':key},body:serialized});
    const result=await response.json();if(!response.ok)throw new Error(result.error||'No se pudo guardar la solicitud.');
+   if(typeof result.reference!=='string'||!/^ALB-[A-Z0-9-]+$/.test(result.reference))throw Error('No recibimos el número de solicitud. Intenta guardar nuevamente.');
    $('#request-form-area').hidden=true;$('#request-success').hidden=false;$('#request-reference').textContent=result.reference;
+   $('#request-success-whatsapp').href='https://wa.me/51968406042?text='+encodeURIComponent(`Hola, quiero dar seguimiento a mi solicitud de cotización N.º ${result.reference}. Mi lista está registrada en la plataforma. ¿Me puede atender un asesor?`);
    $('#request-success-title').focus();
   }catch(err){$('#request-error').textContent=err.message||'No se confirmó el envío. Puedes reintentar sin duplicar tu solicitud.';}
   finally{sending=false;$('#request-submit').disabled=false;}

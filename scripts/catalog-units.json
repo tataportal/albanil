@@ -1,0 +1,2794 @@
+{
+  "4": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "5": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "6": {
+    "unit": "par",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "7": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "8": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "9": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "10": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "11": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "12": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "13": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "14": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "15": {
+    "unit": "par",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "16": {
+    "unit": "par",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "17": {
+    "unit": "rollo",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "18": {
+    "unit": "rollo",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "19": {
+    "unit": "par",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "20": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "21": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "22": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "23": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "24": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "25": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "26": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "27": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "28": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "29": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "30": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "31": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "32": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "33": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "34": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "35": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "36": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "37": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "38": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "39": {
+    "unit": "par",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "40": {
+    "unit": "par",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "41": {
+    "unit": "par",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "42": {
+    "unit": "par",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "43": {
+    "unit": "par",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "44": {
+    "unit": "varilla",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "45": {
+    "unit": "varilla",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "46": {
+    "unit": "varilla",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "47": {
+    "unit": "varilla",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "48": {
+    "unit": "varilla",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "49": {
+    "unit": "varilla",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "50": {
+    "unit": "varilla",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "51": {
+    "unit": "varilla",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "52": {
+    "unit": "varilla",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "53": {
+    "unit": "varilla",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "54": {
+    "unit": "varilla",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "55": {
+    "unit": "varilla",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "56": {
+    "unit": "varilla",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "57": {
+    "unit": "varilla",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "58": {
+    "unit": "varilla",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "59": {
+    "unit": "varilla",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "60": {
+    "unit": "varilla",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "61": {
+    "unit": "varilla",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "62": {
+    "unit": "varilla",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "63": {
+    "unit": "varilla",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "64": {
+    "unit": "varilla",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "65": {
+    "unit": "varilla",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "66": {
+    "unit": "varilla",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "67": {
+    "unit": "varilla",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "68": {
+    "unit": "kg",
+    "basis": "Alambre, clavos o grapas a granel; inferido por artículo y precio"
+  },
+  "69": {
+    "unit": "kg",
+    "basis": "Alambre, clavos o grapas a granel; inferido por artículo y precio"
+  },
+  "70": {
+    "unit": "kg",
+    "basis": "Alambre, clavos o grapas a granel; inferido por artículo y precio"
+  },
+  "71": {
+    "unit": "kg",
+    "basis": "Alambre, clavos o grapas a granel; inferido por artículo y precio"
+  },
+  "72": {
+    "unit": "kg",
+    "basis": "Alambre, clavos o grapas a granel; inferido por artículo y precio"
+  },
+  "73": {
+    "unit": "kg",
+    "basis": "Alambre, clavos o grapas a granel; inferido por artículo y precio"
+  },
+  "74": {
+    "unit": "kg",
+    "basis": "Alambre, clavos o grapas a granel; inferido por artículo y precio"
+  },
+  "75": {
+    "unit": "kg",
+    "basis": "Alambre, clavos o grapas a granel; inferido por artículo y precio"
+  },
+  "76": {
+    "unit": "kg",
+    "basis": "Alambre, clavos o grapas a granel; inferido por artículo y precio"
+  },
+  "77": {
+    "unit": "kg",
+    "basis": "Alambre, clavos o grapas a granel; inferido por artículo y precio"
+  },
+  "78": {
+    "unit": "kg",
+    "basis": "Alambre, clavos o grapas a granel; inferido por artículo y precio"
+  },
+  "79": {
+    "unit": "kg",
+    "basis": "Alambre, clavos o grapas a granel; inferido por artículo y precio"
+  },
+  "80": {
+    "unit": "kg",
+    "basis": "Alambre, clavos o grapas a granel; inferido por artículo y precio"
+  },
+  "81": {
+    "unit": "kg",
+    "basis": "Alambre, clavos o grapas a granel; inferido por artículo y precio"
+  },
+  "82": {
+    "unit": "rollo",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "83": {
+    "unit": "kg",
+    "basis": "Alambre, clavos o grapas a granel; inferido por artículo y precio"
+  },
+  "84": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "85": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "86": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "87": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "88": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "89": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "90": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "91": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "92": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "93": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "94": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "95": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "96": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "97": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "99": {
+    "unit": "kg",
+    "basis": "Alambre, clavos o grapas a granel; inferido por artículo y precio"
+  },
+  "118": {
+    "unit": "bolsa",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "119": {
+    "unit": "bolsa",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "120": {
+    "unit": "bolsa",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "121": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "122": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "123": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "124": {
+    "unit": "varilla",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "125": {
+    "unit": "varilla",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "126": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "127": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "128": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "129": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "130": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "131": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "132": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "133": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "134": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "135": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "136": {
+    "unit": "cartucho",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "137": {
+    "unit": "cartucho",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "138": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "139": {
+    "unit": "envase",
+    "basis": "Envase completo de la capacidad indicada; no venta fraccionada por litro o kg"
+  },
+  "140": {
+    "unit": "envase",
+    "basis": "Envase completo de la capacidad indicada; no venta fraccionada por litro o kg"
+  },
+  "141": {
+    "unit": "envase",
+    "basis": "Envase completo de la capacidad indicada; no venta fraccionada por litro o kg"
+  },
+  "142": {
+    "unit": "envase",
+    "basis": "Envase completo de la capacidad indicada; no venta fraccionada por litro o kg"
+  },
+  "143": {
+    "unit": "bolsa",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "144": {
+    "unit": "envase",
+    "basis": "Envase completo de la capacidad indicada; no venta fraccionada por litro o kg"
+  },
+  "145": {
+    "unit": "envase",
+    "basis": "Envase completo de la capacidad indicada; no venta fraccionada por litro o kg"
+  },
+  "146": {
+    "unit": "envase",
+    "basis": "Envase completo de la capacidad indicada; no venta fraccionada por litro o kg"
+  },
+  "147": {
+    "unit": "bolsa",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "148": {
+    "unit": "bolsa",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "149": {
+    "unit": "bolsa",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "150": {
+    "unit": "bolsa",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "151": {
+    "unit": "cartucho",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "152": {
+    "unit": "bolsa",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "153": {
+    "unit": "bolsa",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "154": {
+    "unit": "bolsa",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "155": {
+    "unit": "bolsa",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "156": {
+    "unit": "bolsa",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "157": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "158": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "159": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "160": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "161": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "162": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "163": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "164": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "165": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "166": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "167": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "168": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "169": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "170": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "171": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "172": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "173": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "174": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "175": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "176": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "177": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "178": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "179": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "180": {
+    "unit": "bolsa",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "181": {
+    "unit": "bolsa",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "182": {
+    "unit": "bolsa",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "183": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "184": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "185": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "186": {
+    "unit": "varilla",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "187": {
+    "unit": "varilla",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "188": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "189": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "190": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "191": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "192": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "193": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "194": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "195": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "196": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "197": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "198": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "199": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "200": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "201": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "202": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "203": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "204": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "205": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "206": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "207": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "208": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "209": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "210": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "211": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "212": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "213": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "214": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "215": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "216": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "217": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "218": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "219": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "220": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "221": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "222": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "223": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "224": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "225": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "226": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "227": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "228": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "229": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "230": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "231": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "232": {
+    "unit": "m2",
+    "basis": "Especificación original de precio por metros cuadrados"
+  },
+  "233": {
+    "unit": "m2",
+    "basis": "Especificación original de precio por metros cuadrados"
+  },
+  "234": {
+    "unit": "m2",
+    "basis": "Especificación original de precio por metros cuadrados"
+  },
+  "235": {
+    "unit": "plancha",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "236": {
+    "unit": "plancha",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "237": {
+    "unit": "plancha",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "238": {
+    "unit": "plancha",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "239": {
+    "unit": "plancha",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "240": {
+    "unit": "plancha",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "241": {
+    "unit": "plancha",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "242": {
+    "unit": "plancha",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "243": {
+    "unit": "plancha",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "244": {
+    "unit": "plancha",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "245": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "246": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "247": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "248": {
+    "unit": "plancha",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "249": {
+    "unit": "plancha",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "250": {
+    "unit": "plancha",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "251": {
+    "unit": "tubo",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "252": {
+    "unit": "tubo",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "253": {
+    "unit": "tubo",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "254": {
+    "unit": "tubo",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "255": {
+    "unit": "tubo",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "256": {
+    "unit": "tubo",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "257": {
+    "unit": "tubo",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "258": {
+    "unit": "tubo",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "259": {
+    "unit": "tubo",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "260": {
+    "unit": "tubo",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "261": {
+    "unit": "tubo",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "262": {
+    "unit": "tubo",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "263": {
+    "unit": "tubo",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "264": {
+    "unit": "tubo",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "265": {
+    "unit": "tubo",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "266": {
+    "unit": "tubo",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "267": {
+    "unit": "tubo",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "268": {
+    "unit": "tubo",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "269": {
+    "unit": "tubo",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "270": {
+    "unit": "tubo",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "271": {
+    "unit": "tubo",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "272": {
+    "unit": "tubo",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "273": {
+    "unit": "tubo",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "274": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "275": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "276": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "277": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "278": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "279": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "280": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "281": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "282": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "283": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "284": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "285": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "286": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "287": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "288": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "289": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "290": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "291": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "292": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "293": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "294": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "295": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "296": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "297": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "298": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "299": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "300": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "301": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "302": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "303": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "304": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "305": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "306": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "307": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "308": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "309": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "310": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "311": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "312": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "313": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "314": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "315": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "316": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "317": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "318": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "319": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "320": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "321": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "322": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "323": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "324": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "325": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "326": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "327": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "328": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "329": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "330": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "331": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "332": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "333": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "334": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "335": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "336": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "337": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "338": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "339": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "340": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "341": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "342": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "343": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "344": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "345": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "346": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "347": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "348": {
+    "unit": "rollo",
+    "basis": "Presentación inferida por tipo de cable y escala del precio; no se asume longitud del rollo"
+  },
+  "349": {
+    "unit": "rollo",
+    "basis": "Presentación inferida por tipo de cable y escala del precio; no se asume longitud del rollo"
+  },
+  "350": {
+    "unit": "rollo",
+    "basis": "Presentación inferida por tipo de cable y escala del precio; no se asume longitud del rollo"
+  },
+  "351": {
+    "unit": "rollo",
+    "basis": "Presentación inferida por tipo de cable y escala del precio; no se asume longitud del rollo"
+  },
+  "352": {
+    "unit": "rollo",
+    "basis": "Presentación inferida por tipo de cable y escala del precio; no se asume longitud del rollo"
+  },
+  "353": {
+    "unit": "rollo",
+    "basis": "Presentación inferida por tipo de cable y escala del precio; no se asume longitud del rollo"
+  },
+  "354": {
+    "unit": "metro",
+    "basis": "Presentación inferida por tipo de cable y escala del precio; no se asume longitud del rollo"
+  },
+  "355": {
+    "unit": "metro",
+    "basis": "Presentación inferida por tipo de cable y escala del precio; no se asume longitud del rollo"
+  },
+  "356": {
+    "unit": "metro",
+    "basis": "Presentación inferida por tipo de cable y escala del precio; no se asume longitud del rollo"
+  },
+  "357": {
+    "unit": "metro",
+    "basis": "Presentación inferida por tipo de cable y escala del precio; no se asume longitud del rollo"
+  },
+  "358": {
+    "unit": "metro",
+    "basis": "Presentación inferida por tipo de cable y escala del precio; no se asume longitud del rollo"
+  },
+  "359": {
+    "unit": "metro",
+    "basis": "Presentación inferida por tipo de cable y escala del precio; no se asume longitud del rollo"
+  },
+  "360": {
+    "unit": "rollo",
+    "basis": "Presentación inferida por tipo de cable y escala del precio; no se asume longitud del rollo"
+  },
+  "361": {
+    "unit": "rollo",
+    "basis": "Presentación inferida por tipo de cable y escala del precio; no se asume longitud del rollo"
+  },
+  "362": {
+    "unit": "rollo",
+    "basis": "Presentación inferida por tipo de cable y escala del precio; no se asume longitud del rollo"
+  },
+  "363": {
+    "unit": "metro",
+    "basis": "Presentación inferida por tipo de cable y escala del precio; no se asume longitud del rollo"
+  },
+  "364": {
+    "unit": "metro",
+    "basis": "Presentación inferida por tipo de cable y escala del precio; no se asume longitud del rollo"
+  },
+  "365": {
+    "unit": "metro",
+    "basis": "Presentación inferida por tipo de cable y escala del precio; no se asume longitud del rollo"
+  },
+  "366": {
+    "unit": "metro",
+    "basis": "Presentación inferida por tipo de cable y escala del precio; no se asume longitud del rollo"
+  },
+  "367": {
+    "unit": "metro",
+    "basis": "Presentación inferida por tipo de cable y escala del precio; no se asume longitud del rollo"
+  },
+  "368": {
+    "unit": "metro",
+    "basis": "Presentación inferida por tipo de cable y escala del precio; no se asume longitud del rollo"
+  },
+  "369": {
+    "unit": "rollo",
+    "basis": "Presentación inferida por tipo de cable y escala del precio; no se asume longitud del rollo"
+  },
+  "370": {
+    "unit": "rollo",
+    "basis": "Presentación inferida por tipo de cable y escala del precio; no se asume longitud del rollo"
+  },
+  "371": {
+    "unit": "rollo",
+    "basis": "Presentación inferida por tipo de cable y escala del precio; no se asume longitud del rollo"
+  },
+  "372": {
+    "unit": "rollo",
+    "basis": "Presentación inferida por tipo de cable y escala del precio; no se asume longitud del rollo"
+  },
+  "373": {
+    "unit": "rollo",
+    "basis": "Presentación inferida por tipo de cable y escala del precio; no se asume longitud del rollo"
+  },
+  "374": {
+    "unit": "rollo",
+    "basis": "Presentación inferida por tipo de cable y escala del precio; no se asume longitud del rollo"
+  },
+  "375": {
+    "unit": "bolsa",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "376": {
+    "unit": "bolsa",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "377": {
+    "unit": "bolsa",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "378": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "379": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "380": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "381": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "382": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "383": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "384": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "385": {
+    "unit": "metro",
+    "basis": "Presentación inferida por tipo de cable y escala del precio; no se asume longitud del rollo"
+  },
+  "386": {
+    "unit": "varilla",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "387": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "388": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "389": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "390": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "391": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "392": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "393": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "394": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "395": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "396": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "397": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "398": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "399": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "400": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "401": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "402": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "403": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "404": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "405": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "406": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "407": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "408": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "409": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "410": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "411": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "412": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "413": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "414": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "415": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "416": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "417": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "418": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "419": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "420": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "421": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "422": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "423": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "424": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "425": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "426": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "427": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "428": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "429": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "430": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "431": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "432": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "433": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "434": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "435": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "436": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "437": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "438": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "439": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "440": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "441": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "442": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "443": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "444": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "445": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "446": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "447": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "448": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "449": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "450": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "451": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "452": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "453": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "454": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "455": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "456": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "457": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "458": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "459": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "460": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "461": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "462": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "463": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "464": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "465": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "466": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "467": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "468": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "469": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "470": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "471": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "472": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "473": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "474": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "475": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "476": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "477": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "478": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "479": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "480": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "481": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "482": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "483": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "484": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "485": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "486": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "487": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "488": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "489": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "490": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "491": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "492": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "493": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "494": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "495": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "496": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "497": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "498": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "499": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "500": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "501": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "502": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "503": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "504": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "505": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "506": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "507": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "508": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "509": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "510": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "511": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "512": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "513": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "514": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "515": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "516": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "517": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "518": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "519": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "520": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "521": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "522": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "523": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "524": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "525": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "526": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "527": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "528": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "529": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "530": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "531": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "532": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "533": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "534": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "535": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "536": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "537": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "538": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "539": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "540": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "541": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "542": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "543": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "544": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "545": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "546": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "547": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "548": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "549": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "550": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "551": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "552": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "553": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "554": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "555": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "556": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "557": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "561": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "562": {
+    "unit": "bolsa",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "563": {
+    "unit": "tubo",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "565": {
+    "unit": "tubo",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "566": {
+    "unit": "tubo",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "567": {
+    "unit": "tubo",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "568": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "569": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "570": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "571": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "572": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "573": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "574": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "575": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "576": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "577": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "578": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "579": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "580": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "581": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "582": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "583": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "584": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "585": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "586": {
+    "unit": "lata",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "587": {
+    "unit": "lata",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "588": {
+    "unit": "lata",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "589": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "590": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "591": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "592": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "593": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "594": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "595": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "596": {
+    "unit": "juego",
+    "basis": "Combo completo descrito en el catálogo"
+  },
+  "597": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "598": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "599": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "600": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "601": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "602": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "603": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "604": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "605": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "606": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "607": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "608": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "609": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "610": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "611": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "612": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "613": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "614": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "615": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "616": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "617": {
+    "unit": "hoja",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "618": {
+    "unit": "hoja",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "619": {
+    "unit": "hoja",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "620": {
+    "unit": "hoja",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "621": {
+    "unit": "hoja",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "622": {
+    "unit": "hoja",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "623": {
+    "unit": "hoja",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "624": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "625": {
+    "unit": "hoja",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "626": {
+    "unit": "hoja",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "627": {
+    "unit": "hoja",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "628": {
+    "unit": "hoja",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "629": {
+    "unit": "hoja",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "630": {
+    "unit": "hoja",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "631": {
+    "unit": "hoja",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "632": {
+    "unit": "hoja",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "633": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "635": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "636": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "637": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "638": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "639": {
+    "unit": "bolsa",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "100001": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "100002": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "100003": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "100004": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "100005": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "100006": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "100007": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "100008": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "100009": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "100010": {
+    "unit": "kg",
+    "basis": "Consumible a granel; trapo explícitamente por kg, soldadura inferida por precio"
+  },
+  "100011": {
+    "unit": "kg",
+    "basis": "Consumible a granel; trapo explícitamente por kg, soldadura inferida por precio"
+  },
+  "100012": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "100013": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "100014": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "100015": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "100016": {
+    "unit": "bolsa",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "100017": {
+    "unit": "bolsa",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "100018": {
+    "unit": "envase",
+    "basis": "Envase completo; capacidad solo cuando viene indicada en el título"
+  },
+  "100019": {
+    "unit": "envase",
+    "basis": "Envase completo; capacidad solo cuando viene indicada en el título"
+  },
+  "100020": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "100021": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "100022": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "100023": {
+    "unit": "kg",
+    "basis": "Consumible a granel; trapo explícitamente por kg, soldadura inferida por precio"
+  },
+  "100024": {
+    "unit": "saco",
+    "basis": "Saco de 50 kg explícito en el nombre"
+  },
+  "100025": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "100026": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "100027": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "100028": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "100029": {
+    "unit": "envase",
+    "basis": "Envase completo; capacidad solo cuando viene indicada en el título"
+  },
+  "100030": {
+    "unit": "envase",
+    "basis": "Envase completo; capacidad solo cuando viene indicada en el título"
+  },
+  "100031": {
+    "unit": "rollo",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "100032": {
+    "unit": "rollo",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "100033": {
+    "unit": "rollo",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "100034": {
+    "unit": "rollo",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "100035": {
+    "unit": "rollo",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "100036": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "100037": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "100038": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "100039": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "100040": {
+    "unit": "caja",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "100041": {
+    "unit": "lata",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "100042": {
+    "unit": "lata",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "100043": {
+    "unit": "rollo",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "100044": {
+    "unit": "plancha",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "100045": {
+    "unit": "plancha",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "100046": {
+    "unit": "bolsa",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "100047": {
+    "unit": "plancha",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "100048": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "100049": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "100050": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "100051": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "100052": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "100053": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "100054": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "100055": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "100056": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "100057": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "100058": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "100059": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "100060": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "100061": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "100062": {
+    "unit": "rollo",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "100063": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "100064": {
+    "unit": "rollo",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "100065": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "100066": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "100067": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "100068": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "100069": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "100070": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "100071": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "100072": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "100073": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "100074": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "100075": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "100076": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "100077": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "100078": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "100079": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "100080": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "100081": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "100082": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "100083": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "100084": {
+    "unit": "unidad",
+    "basis": "Producto individual identificado en el catálogo"
+  },
+  "640": {
+    "unit": "galon",
+    "basis": "1 GL explícito en el nombre"
+  },
+  "100085": {
+    "unit": "varilla",
+    "basis": "Producto individual identificado en el catálogo"
+  }
+}

@@ -18,6 +18,7 @@ map_path=ROOT/'scripts/catalog-id-map.json'
 registry=json.loads(map_path.read_text()) if map_path.exists() else {}
 used=original_ids | {r[0] for _,r in rows if r[0] is not None} | {r['id'] for r in registry.values()}
 normalize=lambda s: re.sub(r'\s+',' ',unicodedata.normalize('NFKC',str(s or '')).strip()).casefold()
+units=json.loads((ROOT/'scripts/catalog-units.json').read_text())
 occurrences=Counter();out=[]
 for index,row in rows:
     source_id,title,category,brand,price,store_price,state,stock=row
@@ -42,7 +43,7 @@ for index,row in rows:
     if isinstance(price,str) and price.strip()=='CONSULTAR PRECIO A NUESTROS ASESORES':price=None
     if price is not None and (not isinstance(price,(int,float)) or price<=0):raise ValueError(f'Invalid price at row {index}')
     if stock is not None and (not isinstance(stock,(int,float)) or stock<0):raise ValueError(f'Invalid stock at row {index}')
-    out.append({**identity,'sourceId':source_id,'sourceRow':index,'title':title,'brand':brand,'category':category,'price':price,'currency':currency,'stock':stock,'state':state,'availability':'Por confirmar' if stock is None else 'Disponible' if stock>0 else 'Agotado','unit':'','tax':'confirmar'})
+    out.append({**identity,'sourceId':source_id,'sourceRow':index,'title':title,'brand':brand,'category':category,'price':price,'currency':currency,'stock':stock,'state':state,'availability':'Por confirmar' if stock is None else 'Disponible' if stock>0 else 'Agotado','unit':units.get(str(identity['id']),{}).get('unit',''),'tax':'confirmar'})
 assert len({p['id'] for p in out})==len(out)
 assert len({p['reference'] for p in out})==len(out)
 map_path.write_text(json.dumps(registry,ensure_ascii=False,indent=2)+'\n')

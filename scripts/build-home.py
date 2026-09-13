@@ -119,6 +119,10 @@ for product in products:
     product.setdefault('reference',str(product['id']))
     # Unlisted products retain their links, but outdated snapshot prices are not republished.
     if product.get('dataSource')!='consolidado':product['referencePriceCents']=None
+units=json.loads((ROOT/'scripts/catalog-units.json').read_text())
+for product in products:
+    if not product.get('unit') and str(product['id']) in units:
+        product['unit']=units[str(product['id'])]['unit']
 assert len({p['id'] for p in products})==len(products)
 assert len({p['reference'] for p in products})==len(products)
 (OUT/'catalog.json').write_text(json.dumps({'exchangeRate':EXCHANGE_RATE,'categories':CATEGORIES,'groups':GROUPS,'sectors':SECTORS,'featured':FEATURED,'products':products},ensure_ascii=False,separators=(',',':')))

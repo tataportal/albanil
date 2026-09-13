@@ -1,7 +1,8 @@
 'use strict';
 (() => {
  const $=s=>document.querySelector(s), esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
- let files=[],busy=false,packet=null,db=null,receiver=false,submission=null,sending=false;
+ const apiBase=['127.0.0.1','localhost'].includes(location.hostname)?'':window.AlbanilSettings?.api||'';
+ let files=[],busy=false,packet=null,db=null,receiver=!!apiBase,submission=null,sending=false;
  const note=msg=>{$('#intake-status').textContent=msg;};
  const ready=new Promise(resolve=>{const req=indexedDB.open('albanil-intake-v1',1);req.onupgradeneeded=()=>req.result.createObjectStore('files',{keyPath:'id'});req.onsuccess=()=>{db=req.result;const r=db.transaction('files').objectStore('files').getAll();r.onsuccess=()=>{files=r.result;renderFiles();resolve();};r.onerror=resolve;};req.onerror=()=>{note('Los archivos durarán mientras mantengas esta pestaña abierta.');resolve();};});
  function persist(){if(!db)return;const tx=db.transaction('files','readwrite'),s=tx.objectStore('files');s.clear();files.forEach(f=>s.put(f));tx.onerror=()=>note('No se pudo guardar el archivo en este navegador. Conserva esta pestaña abierta.');}
@@ -46,7 +47,7 @@
   $('#intake-manual').textContent=files.filter(f=>!f.text.trim()).map(f=>`${f.name}: revisión manual del original.`).join(' ');
   $('#intake-share').hidden=!(navigator.share&&navigator.canShare);$('#intake-copy-text').hidden=true;$('#intake-whatsapp-short').hidden=true;$('#intake-delivery-status').textContent='Todavía no se ha enviado a la tienda.';
   document.querySelectorAll('dialog[open]').forEach(d=>d.close());$('#intake-dialog').showModal();
-  if(receiver){$('#intake-manual-actions').hidden=true;$('#intake-transfer-note').hidden=true;$('#intake-manual-instructions').hidden=true;$('#intake-delivery-status').textContent='Guarda la solicitud para obtener un número. Los archivos quedarán incluidos.';}
+  if(receiver){$('#intake-share').hidden=true;$('#intake-manual-actions').hidden=true;$('#intake-transfer-note').hidden=true;$('#intake-manual-instructions').hidden=true;$('#intake-delivery-status').textContent='Guarda la solicitud para obtener un número. Los archivos quedarán incluidos.';}
  }
  $('#intake-prepare').addEventListener('click',prepare);
  document.addEventListener('click',e=>{if(e.target.closest('[data-intake-prepare]'))prepare();});
@@ -70,9 +71,10 @@
    const attachments=await Promise.all(packet.files.map(async f=>({name:f.name,data:await encodeFile(f.blob)})));
    const body=JSON.stringify({customer,items,attachments,consent:values.consent==='on'});
    if(!submission||submission.body!==body)submission={body,key:crypto.randomUUID()};
-   const response=await fetch('/api/requests',{method:'POST',headers:{'Content-Type':'application/json','Idempotency-Key':submission.key},body});
+   const response=await fetch(apiBase+'/api/requests',{method:'POST',headers:{'Content-Type':'application/json','Idempotency-Key':submission.key},body});
    const result=await response.json();if(!response.ok)throw Error(result.error||'No se confirmó el registro. Inténtalo nuevamente.');
-   $('#intake-saved-reference').textContent=result.reference;$('#intake-saved-whatsapp').href='https://wa.me/51968406042?text='+encodeURIComponent(`Hola, quisiera cotizar mi solicitud ${result.reference}. Incluye ${items.length} materiales y ${attachments.length} archivos, ya guardados para el asesor.`);
+   if(typeof result.reference!=='string'||!/^ALB-[A-Z0-9-]+$/.test(result.reference))throw Error('No recibimos el número de solicitud. Intenta guardar nuevamente.');
+   packet.reference=result.reference;$('#intake-saved-reference').textContent=result.reference;$('#intake-saved-whatsapp').href='https://wa.me/51968406042?text='+encodeURIComponent(`Hola, quiero dar seguimiento a mi solicitud de cotización N.º ${result.reference}. Mi lista y archivos están registrados en la plataforma. ¿Me puede atender un asesor?`);
    register.hidden=true;$('#intake-saved').hidden=false;$('#intake-delivery-status').textContent='Solicitud guardada. Continúa por WhatsApp con el número de referencia.';$('#intake-saved').scrollIntoView({block:'nearest'});
   }catch(error){$('#intake-register-error').textContent=error.message;inputs.forEach(i=>i.disabled=false);}
   finally{sending=false;button.disabled=false;button.textContent='Guardar solicitud';}
