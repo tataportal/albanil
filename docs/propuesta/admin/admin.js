@@ -63,7 +63,16 @@
  async function enter(data){csrf=data.csrf;await refresh();$('#login-view').hidden=true;$('#workspace').hidden=false;$('#logout').hidden=false;message('');}
  $('#login-form').addEventListener('submit',async e=>{e.preventDefault();const button=e.target.querySelector('button');button.disabled=true;try{await enter(await api('login',{method:'POST',body:JSON.stringify({password:$('#password').value})}));$('#password').value='';}catch(err){message(err.message);}finally{button.disabled=false;}});
  $('#logout').addEventListener('click',async()=>{try{await api('logout',{method:'POST',body:'{}'});location.reload();}catch(e){message(e.message);}});
- document.querySelectorAll('[data-tab]').forEach(button=>button.addEventListener('click',()=>{document.querySelectorAll('[data-tab]').forEach(b=>b.removeAttribute('aria-current'));button.setAttribute('aria-current','page');const p=button.dataset.tab==='products';$('#products-view').hidden=!p;$('#requests-view').hidden=p;$('#page-title').textContent=p?'Productos':'Solicitudes';}));
+ const sections={requests:{title:'Solicitudes',hash:'solicitudes'},products:{title:'Productos y stock',hash:'productos'},exchange:{title:'Tipo de cambio',hash:'tipo-cambio'}};
+ function showSection(){
+  const selected=Object.keys(sections).find(key=>sections[key].hash===location.hash.slice(1))||'requests';
+  for(const [key,section] of Object.entries(sections))$('#'+key+'-view').hidden=key!==selected;
+  document.querySelectorAll('[data-tab]').forEach(button=>{if(button.dataset.tab===selected)button.setAttribute('aria-current','page');else button.removeAttribute('aria-current');});
+  $('#page-title').textContent=sections[selected].title;
+ }
+ document.querySelectorAll('[data-tab]').forEach(button=>button.addEventListener('click',()=>{location.hash=sections[button.dataset.tab].hash;showSection();}));
+ window.addEventListener('hashchange',showSection);
+ showSection();
  $('#product-search').addEventListener('input',()=>{limit=30;renderProducts();});$('#stock-filter').addEventListener('change',()=>{limit=30;renderProducts();});$('#more-products').addEventListener('click',()=>{limit+=30;renderProducts();});
  document.querySelectorAll('[data-quick]').forEach(b=>b.addEventListener('click',()=>{$('#request-filter').value=b.dataset.quick;renderRequests();}));
  $('#request-search').addEventListener('input',renderRequests);$('#request-filter').addEventListener('change',renderRequests);
