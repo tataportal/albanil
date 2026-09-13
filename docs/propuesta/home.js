@@ -384,11 +384,5 @@
     }
   }
   $('#retry-catalog').addEventListener('click', loadCatalog);
-  $('#theme-toggle').addEventListener('click', (event) => {
-    const dark = document.documentElement.dataset.theme !== 'dark';
-    document.documentElement.dataset.theme = dark ? 'dark' : 'light';
-    event.target.setAttribute('aria-pressed', String(dark));
-    event.target.textContent = dark ? 'Tema claro' : 'Tema oscuro';
-  });
   loadCatalog();
 })();
