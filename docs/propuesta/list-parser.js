@@ -4,8 +4,8 @@
   const stop = new Set(['de','del','para','con','en','el','la','los','las','un','una','tipo']);
   const aliases = {tripley:'triplay',cementos:'cemento',ladrillos:'ladrillo',cables:'cable',tubos:'tubo',fierros:'fierro',varillas:'fierro',varilla:'fierro',pulgadas:'',pulgada:'',pulg:'',pvc:'pvc',und:'',unidades:'',unidad:'',metros:'',metro:'',mm:'mm'};
   const amount = String.raw`\d+(?:[.,]\d+)?`;
-  const units = String.raw`metros?\s+c[úu]bicos?|metros?\s+cuadrados?|m(?:³|²|3|2|\^[23])|millares?|millar|und\.?|unid\.?|unidades?|uds\.?|kg|kilos?|m|metros?|bolsas?|sacos?|rollos?|cajas?|l|litros?|galones?|pzas\.?|piezas?`;
-  const namedUnits = `${units}|planchas?|tubos?|tarros?|baldes?|latas?|frascos?|bidones?|paquetes?|barras?|paneles?|hojas?|pares?`;
+  const units = String.raw`metros?\s+c[úu]bicos?|metros?\s+cuadrados?|m(?:³|²|3|2|\^[23])|millares?|millar|und\.?|unid\.?|unidades?|uds\.?|kg|kilos?|m|metros?|bolsas?|sacos?|rollos?|cajas?|l|litros?|gal[oó]n(?:es)?|par(?:es)?|envases?|cartuchos?|juegos?|pzas\.?|piezas?`;
+  const namedUnits = `${units}|planchas?|tubos?|tarros?|baldes?|latas?|frascos?|bidones?|paquetes?|barras?|paneles?|hojas?|par(?:es)?`;
   function displayLine(value) {
     return String(value).trim().replace(/^(?:[-*•]\s+|\d+[.)]\s+)/,'')
       .replace(/\*\*|__|`/g,'')

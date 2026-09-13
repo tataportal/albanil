@@ -99,3 +99,7 @@ assert.equal(parser.validOrderQuantity(1000000),false);
 console.log('Order quantities: integer counts and explicitly measured decimals passed.');
 
 assert.equal(parser.parse(Array(200).fill('2 bolsas de cemento').join('\n')).length,200);
+
+for (const [line, unit, query] of [["3 par Guantes", "par", "Guantes"], ["2 pares de guantes", "pares", "guantes"], ["4 cartuchos de Sikaflex", "cartuchos", "Sikaflex"]]) {
+ const row = parser.parseLine(line); assert.equal(row.unit, unit); assert.equal(row.query, query);
+}
