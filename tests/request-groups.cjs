@@ -1,0 +1,10 @@
+const assert=require('node:assert/strict'),fs=require('node:fs'),vm=require('node:vm');
+const source=fs.readFileSync('docs/propuesta/admin/admin.js','utf8');
+const context={};vm.createContext(context);vm.runInContext(source.slice(source.indexOf(' function materialGroups('),source.indexOf(' function requestMaterialRows(')),context);
+const items=[{productId:1},{productId:2,availability:'Agotado'},{pending:true,suggestions:[{id:3}]},{productId:null},{pending:true,original:'<material>'}];
+const grouped=context.materialGroups(items);
+assert.deepEqual(Array.from(grouped,g=>g[1].length),[1,1,1,2]);
+assert.equal(new Set(grouped.flatMap(g=>Array.from(g[1]))).size,items.length);
+assert.equal(context.materialGroups([]).length,0);
+assert.equal(grouped[3][1][1].original,'<material>');
+console.log('Grouping preserves every item and distinguishes unmatched from out of stock.');

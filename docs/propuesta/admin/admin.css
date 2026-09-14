@@ -11,3 +11,5 @@ body{background:var(--paper)}.admin-header{background:var(--brand);padding:18px 
 .admin-tabs{flex-wrap:wrap;row-gap:0}
 .fx-panel>*{min-width:0}
 @media(max-width:640px){.admin-tabs{column-gap:16px}.admin-tabs button{font-size:14px}}
+
+.request-lines .request-group th{background:#eef3e5;color:#263a33;padding:14px 12px;text-align:left;border-top:2px solid #90a36b;font-size:14px;}
