@@ -25,17 +25,17 @@ function saveComplaint(array $v,string $key,string $hash): array {
         $packet=array_merge($v,['reference'=>$ref,'created_at'=>now(),'status'=>'Recibido','response'=>'','responseSentAt'=>'','responseEvidence'=>'','version'=>0,'privacyVersion'=>'2026-09-15']);
         query('INSERT INTO complaints(reference,idempotency_key,body_hash,data,created_at,version) VALUES(?,?,?,?,?,0)',[$ref,$key,$hash,jsonValue($packet),$packet['created_at']]);
         query('UPDATE complaint_sequence SET next_number=next_number+1 WHERE id=1');
-        db()->commit();return $packet;
+        queueComplaintMail($packet);db()->commit();return $packet;
     }catch(Throwable $e){if(db()->inTransaction())db()->rollBack();throw $e;}
 }
 function submitComplaint(): never {
     $key=$_SERVER['HTTP_IDEMPOTENCY_KEY']??'';if(!preg_match('/^[a-zA-Z0-9-]{32,80}$/D',$key))fail('Identificador de envío inválido.');
     $raw=rawBody(45000);$hash=hash('sha256',$raw);$key=hash('sha256',$key);
     $prior=query('SELECT body_hash,data FROM complaints WHERE idempotency_key=?',[$key])->fetch();
-    if($prior){if(!hash_equals($prior['body_hash'],$hash))fail('El contenido cambió. Inicia un nuevo registro.',409);respond(['complaint'=>json_decode($prior['data'],true)]);}
+    if($prior){if(!hash_equals($prior['body_hash'],$hash))fail('El contenido cambió. Inicia un nuevo registro.',409);$packet=json_decode($prior['data'],true);respond(['complaint'=>$packet,'copyStatus'=>complaintCopyStatus($packet)]);}
     $v=json_decode($raw,true,32,JSON_THROW_ON_ERROR);if(!is_array($v))fail('Revisa el formulario.');
     $v=validateComplaint($v);throttle('complaints',3600,10);
-    $packet=saveComplaint($v,$key,$hash);try{notifyComplaint($packet);}catch(Throwable $e){error_log('Complaint notification failed: '.$packet['reference']);}respond(['complaint'=>$packet],201);
+    $packet=saveComplaint($v,$key,$hash);try{deliverComplaintMail($packet['reference']);}catch(Throwable $e){error_log('Complaint mail pending: '.$packet['reference']);}respond(['complaint'=>$packet,'copyStatus'=>complaintCopyStatus($packet)],201);
 }
 function complaintRoutes(string $path,string $method): never {
     requirePermission('complaints');
@@ -56,10 +56,40 @@ function complaintRoutes(string $path,string $method): never {
     fail('Ruta no disponible.',404);
 }
 
-function notifyComplaint(array $packet): bool {
-    $subject='Nuevo registro '.$packet['reference'].' - Libro de reclamaciones';
-    $body="Se ha registrado una nueva hoja en el Libro de reclamaciones de Albañil.\n\nNúmero: ".$packet['reference']."\n\nIngresa al panel para revisar el caso y atenderlo: https://albanil.pe".config()['base_path']."/admin/#reclamos\n\nPlazo máximo de respuesta al consumidor: 15 días hábiles improrrogables.\n";
-    $ok=mail('reclamos@albanil.pe','=?UTF-8?B?'.base64_encode($subject).'?=',$body,"From: Albañil <reclamos@albanil.pe>\r\nMIME-Version: 1.0\r\nContent-Type: text/plain; charset=UTF-8",'-freclamos@albanil.pe');
-    if(!$ok)error_log('Complaint notification pending: '.$packet['reference']);
-    return $ok;
+function queueComplaintMail(array $p): void {
+    foreach (empty($p['email'])?['store']:['store','consumer'] as $kind)
+        query('INSERT IGNORE INTO complaint_mail(reference,kind) VALUES(?,?)',[$p['reference'],$kind]);
+}
+function complaintCopyStatus(array $p): string {
+    if(empty($p['email']))return 'no_email';
+    return query("SELECT accepted_at FROM complaint_mail WHERE reference=? AND kind='consumer'",[$p['reference']])->fetchColumn()?'accepted':'pending';
+}
+function complaintCopyBody(array $p): string {
+    $labels=['reference'=>'Número de hoja','created_at'=>'Fecha de registro (UTC)','name'=>'Nombre del consumidor','documentType'=>'Tipo de documento','document'=>'Documento','address'=>'Domicilio','phone'=>'Teléfono','email'=>'Correo electrónico','representative'=>'Padre, madre o representante','goodType'=>'Bien contratado','description'=>'Descripción del bien','kind'=>'Tipo de registro','detail'=>'Detalle del reclamo o queja','request'=>'Pedido del consumidor','responseChannel'=>'Medio elegido para la respuesta'];
+    $body="ALBAÑIL HOME CENTER EIRL — LIBRO DE RECLAMACIONES\nRUC 20608137328\nAv. Mariscal Castilla 3022, Paradero Volvo, El Tambo - Huancayo\n\nCOPIA DE TU HOJA DE RECLAMACIÓN\n\n";
+    foreach($labels as $key=>$label)$body.=$label.': '.($p[$key]??'')."\n\n";
+    $body.='Menor de edad: '.(!empty($p['minor'])?'Sí':'No')."\nMonto reclamado: ".$p['currency'].' '.number_format((float)$p['amount'],2,'.','')."\n\n";
+    return $body."Esta copia confirma el registro; no constituye la respuesta a tu reclamo. Conserva el número de hoja para hacer seguimiento.\nPlazo máximo de respuesta: 15 días hábiles improrrogables.\nPresentar un reclamo no impide acudir a otras vías de solución ni es requisito previo para denunciar ante Indecopi.\nContacto: reclamos@albanil.pe\n";
+}
+function deliverComplaintMail(?string $reference=null, ?callable $sender=null): int {
+    // Serialize sends across immediate requests and cron; do not resend accepted messages.
+    if((int)query("SELECT GET_LOCK('albanil_complaint_mail',0)")->fetchColumn()!==1)return 0;
+    $sent=0;
+    try {
+        $sql='SELECT m.reference,m.kind,m.attempts,c.data FROM complaint_mail m JOIN complaints c ON c.reference=m.reference WHERE m.accepted_at IS NULL AND m.next_attempt<=?';$params=[time()];
+        if($reference!==null){$sql.=' AND m.reference=?';$params[]=$reference;}
+        $rows=query($sql.' ORDER BY m.next_attempt LIMIT 20',$params)->fetchAll();
+        foreach($rows as $row){
+            $p=json_decode($row['data'],true,32,JSON_THROW_ON_ERROR);$consumer=$row['kind']==='consumer';
+            $to=$consumer?($p['email']??''):'reclamos@albanil.pe';
+            if(!filter_var($to,FILTER_VALIDATE_EMAIL))continue;
+            $subject=($consumer?'Copia de tu hoja ':'Nuevo registro ').$p['reference'].' - Libro de reclamaciones';
+            $body=$consumer?complaintCopyBody($p):"Nueva hoja: ".$p['reference']."\nRevisa el caso en https://albanil.pe".config()['base_path']."/admin/#reclamos\nPlazo máximo de respuesta: 15 días hábiles improrrogables.\n";
+            $headers="From: =?UTF-8?B?".base64_encode('Albañil')."?= <reclamos@albanil.pe>\r\nReply-To: reclamos@albanil.pe\r\nMIME-Version: 1.0\r\nContent-Type: text/plain; charset=UTF-8\r\nContent-Transfer-Encoding: base64";
+            query('UPDATE complaint_mail SET attempts=attempts+1,next_attempt=? WHERE reference=? AND kind=?',[time()+min(86400,300*(2**min(8,(int)$row['attempts']))),$row['reference'],$row['kind']]);
+            $ok=$sender?$sender($to,$subject,$body):mail($to,'=?UTF-8?B?'.base64_encode($subject).'?=',chunk_split(base64_encode($body),76,"\r\n"),$headers,'-freclamos@albanil.pe');
+            if($ok){query('UPDATE complaint_mail SET accepted_at=? WHERE reference=? AND kind=?',[now(),$row['reference'],$row['kind']]);$sent++;}
+        }
+    } finally {query("SELECT RELEASE_LOCK('albanil_complaint_mail')");}
+    return $sent;
 }

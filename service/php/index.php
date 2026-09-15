@@ -3,6 +3,7 @@ declare(strict_types=1);
 require __DIR__.'/lib.php';
 require __DIR__.'/products.php';
 require __DIR__.'/complaints.php';
+require __DIR__.'/retention.php';
 header('Cache-Control: no-store');header('X-Content-Type-Options: nosniff');header('Referrer-Policy: no-referrer');
 try {
     $method=$_SERVER['REQUEST_METHOD'];$origin=$_SERVER['HTTP_ORIGIN']??'';

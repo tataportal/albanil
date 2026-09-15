@@ -135,7 +135,7 @@ function submitRequest(): never {
     }
     $ref='ALB-'.gmdate('Ymd').'-'.strtoupper(bin2hex(random_bytes(6)));
     $metadata=array_map(function($f){unset($f['data']);return $f;},$v['attachments']);
-    $packet=['reference'=>$ref,'created_at'=>now(),'customer'=>$v['customer'],'items'=>$items,'attachments'=>$metadata,'status'=>'Nueva','agent'=>'','notes'=>'','version'=>0];
+    $packet=['reference'=>$ref,'created_at'=>now(),'customer'=>$v['customer'],'items'=>$items,'attachments'=>$metadata,'status'=>'Nueva','agent'=>'','notes'=>'','version'=>0,'retentionClass'=>'no_sale','lastCustomerContact'=>'','privacyVersion'=>'2026-09-15-retention'];
     $sum=summary($packet);if(strlen(jsonValue($packet).jsonValue($sum))>1800000)fail('El texto es demasiado extenso. Adjunta el documento original.');
     $written=[];
     try {
@@ -170,7 +170,7 @@ function requestRoutes(string $path,string $method): never {
     if($method==='PATCH'){
         $v=input();if(!in_array($v['status']??null,['Nueva','En atención','Cotización parcial','Cotizada','Terminada','Cerrada'],true))fail('Estado inválido.');
         if(($v['version']??null)!==$p['version'])fail('Actualiza la solicitud antes de guardar.',409);
-        $before=$p;$p['status']=$v['status'];$p['agent']=text($v['agent']??'',100);$p['notes']=text($v['notes']??'',4000);$p['updatedBy']=$GLOBALS['actor']['username'];$p['updatedAt']=now();$p['version']++;
+        $before=$p;$p=updateRetention($p,$v);$p['status']=$v['status'];$p['agent']=text($v['agent']??'',100);$p['notes']=text($v['notes']??'',4000);$p['updatedBy']=$GLOBALS['actor']['username'];$p['updatedAt']=now();$p['version']++;
         db()->beginTransaction();$q=query('UPDATE requests SET data=?,summary=?,version=version+1 WHERE reference=? AND version=?',[jsonValue($p),jsonValue(summary($p)),$p['reference'],$v['version']]);
         if(!$q->rowCount())fail('Otro asesor actualizó la solicitud. Actualiza el panel.',409);audit('request',$p['reference'],$before,$p);db()->commit();respond($p);
     }

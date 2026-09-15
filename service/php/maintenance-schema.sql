@@ -1,0 +1,3 @@
+CREATE TABLE IF NOT EXISTS complaint_mail (reference VARCHAR(40) NOT NULL, kind VARCHAR(12) NOT NULL, attempts INT NOT NULL DEFAULT 0, accepted_at VARCHAR(30) NULL, next_attempt BIGINT NOT NULL DEFAULT 0, PRIMARY KEY(reference,kind)) ENGINE=InnoDB;
+CREATE TABLE IF NOT EXISTS retention_file_queue (id CHAR(32) PRIMARY KEY) ENGINE=InnoDB;
+CREATE TABLE IF NOT EXISTS retention_totals (month CHAR(7) PRIMARY KEY, requests_count INT NOT NULL DEFAULT 0) ENGINE=InnoDB;

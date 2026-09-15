@@ -33,7 +33,7 @@ for asset in ['logo_pro.jpg','favicon.png']:
 s=(target/'settings.js').read_text().replace("api:'https://albanil-settings.tatayamigos.workers.dev'", "api:location.origin+'/nueva'")
 (target/'settings.js').write_text(s)
 api=target/'api';api.mkdir()
-for name in ['index.php','lib.php','products.php','complaints.php','complaints-schema.sql','schema.sql','.htaccess']:shutil.copy2(ROOT/'service/php'/name,api/name)
+for name in ['index.php','lib.php','products.php','complaints.php','retention.php','maintenance-schema.sql','complaints-schema.sql','schema.sql','.htaccess']:shutil.copy2(ROOT/'service/php'/name,api/name)
 (target/'.htaccess').write_text('''Options -Indexes
 DirectoryIndex index.html
 AddHandler application/x-httpd-ea-php83 .php
