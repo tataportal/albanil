@@ -87,3 +87,6 @@
 @media(prefers-reduced-motion:reduce){.peru-department.is-served.is-current{transition:none}}
 
 .coverage-region-list{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px 16px;max-width:none}.coverage-region-list button{margin:0;padding:10px 14px}.coverage-region-list button span{font-size:22px}.coverage-region-list button small{font-size:13px}@media(max-width:639px){.coverage-region-list{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.coverage-region-list button{padding:10px}.coverage-region-list button span{font-size:19px}.coverage-region-list button:first-child small{font-size:13px}}
+
+/* Banner supplied for the Nosotros opening; preserve the complete artwork. */
+.company-banner{background:#449ddc}.company-banner>img{display:block;width:100%;height:auto}
