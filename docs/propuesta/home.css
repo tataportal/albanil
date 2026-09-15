@@ -149,3 +149,10 @@
  .intake-table td:nth-child(2):before{content:'Cantidad';display:block;font-size:13px;margin-bottom:5px}.intake-table td:nth-child(3):before{content:'Unidad';display:block;font-size:13px;margin-bottom:5px}
  .intake-table textarea{min-width:0;min-height:65px}.intake-table small{overflow-wrap:anywhere}
 }
+
+/* Business contact details and official social profiles. */
+.site-footer .footer-main{display:grid;grid-template-columns:1.3fr 1fr 1.2fr;align-items:start;gap:32px;padding-block:36px}
+.footer-location address{font-style:normal;line-height:1.65;color:#e0ede7;margin-top:12px}.footer-contact{display:flex;flex-direction:column;align-items:flex-start;gap:10px}.footer-contact>a:first-child{font-size:20px;font-weight:600}.footer-company p{font-size:14px;line-height:1.65}.footer-company p+p{margin-top:6px}
+.footer-social{display:flex;gap:12px;margin-top:4px}.footer-social a{display:grid;place-items:center;width:44px;height:44px;border:1px solid #8da59b;border-radius:50%;transition:background .15s}.footer-social a:hover{background:#526f63}.footer-social svg{width:22px;height:22px;fill:currentColor}
+@media(max-width:800px){.site-footer .footer-main{grid-template-columns:1fr 1fr}.footer-company{grid-column:1/-1}}
+@media(max-width:520px){.site-footer .footer-main{grid-template-columns:1fr;gap:26px;padding-right:0;padding-bottom:68px}.footer-company{grid-column:auto}.footer-location address{font-size:15px}}
