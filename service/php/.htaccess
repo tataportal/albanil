@@ -1,0 +1,8 @@
+Options -Indexes
+RewriteEngine On
+RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+RewriteRule ^(health|catalog|exchange-rate|login|logout|products(?:/[0-9]+(?:/image)?)?|requests(?:/ALB-[A-Z0-9-]+(?:/files/[a-f0-9]{32})?)?)$ index.php [END]
+<FilesMatch "^(lib\.php|products\.php|schema\.sql)$">
+Require all denied
+</FilesMatch>
+LimitRequestBody 33554432

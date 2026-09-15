@@ -31,3 +31,11 @@ __pycache__/
 !service/cloud/schema.sql
 !service/cloud/README.md
 service/cloud/.wrangler/
+
+# Client-owned PHP service source; configuration remains outside the public release.
+!service/php/
+!service/php/*.php
+!service/php/*.sql
+!service/php/*.py
+!service/php/*.md
+!service/php/.htaccess

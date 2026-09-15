@@ -13,3 +13,5 @@ body{background:var(--paper)}.admin-header{background:var(--brand);padding:18px 
 @media(max-width:640px){.admin-tabs{column-gap:16px}.admin-tabs button{font-size:14px}}
 
 .request-lines .request-group th{background:#eef3e5;color:#263a33;padding:14px 12px;text-align:left;border-top:2px solid #90a36b;font-size:14px;}
+
+#new-product-dialog{width:min(720px,94vw);max-height:90vh;overflow:auto}#new-product-preview{object-fit:contain;margin:16px 0}#new-product-form>label{display:grid;gap:8px;margin:16px 0}#new-product{margin-bottom:16px}#new-product-error{color:#9e2424}
