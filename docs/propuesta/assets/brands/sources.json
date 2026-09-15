@@ -1,0 +1,32 @@
+[
+  {
+    "file": "truper.svg",
+    "asset": "https://www.truper.com/skin/frontend/glam/default/images/header_logo_truper.svg",
+    "source": "https://www.truper.com/acerca-de-truper"
+  },
+  {
+    "file": "cemento-andino.png",
+    "asset": "https://www.cementoandino.com.pe/images/logo-header.png",
+    "source": "https://www.cementoandino.com.pe/"
+  },
+  {
+    "file": "quikrete-peru.png",
+    "asset": "https://www.quikreteperu.com/img/logo-quikrete-peru.png",
+    "source": "https://www.quikreteperu.com/empresa.php"
+  },
+  {
+    "file": "ladrillos-piramide.svg",
+    "asset": "https://www.ladrillospiramide.com/wp-content/uploads/2023/12/Logo-Piramide.svg",
+    "source": "https://www.ladrillospiramide.com/"
+  },
+  {
+    "file": "ladrillos-fortes.png",
+    "asset": "https://www.ladrillosfortes.com/assets/logo-fortes-BnvdOh2y.png",
+    "source": "https://www.ladrillosfortes.com/"
+  },
+  {
+    "file": "pavco-wavin.png",
+    "asset": "https://mediahub.wavin.com/transform/034e06ea-edb2-4dfc-863c-15d3e713defb/Pavco_Wavin_logo_Blue",
+    "source": "https://wavin.com/pe"
+  }
+]
