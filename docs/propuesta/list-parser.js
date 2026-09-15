@@ -2,7 +2,7 @@
 (function (root) {
   'use strict';
   const stop = new Set(['de','del','para','con','en','el','la','los','las','un','una','tipo']);
-  const aliases = {tripley:'triplay',cementos:'cemento',ladrillos:'ladrillo',cables:'cable',tubos:'tubo',fierros:'fierro',varillas:'fierro',varilla:'fierro',pulgadas:'',pulgada:'',pulg:'',pvc:'pvc',und:'',unidades:'',unidad:'',metros:'',metro:'',mm:'mm'};
+  const aliases = {brocas:'broca',tuberia:'tubo',tuberias:'tubo',curvas:'curva',planchas:'plancha',tripley:'triplay',cementos:'cemento',ladrillos:'ladrillo',cables:'cable',tubos:'tubo',fierros:'fierro',varillas:'fierro',varilla:'fierro',pulgadas:'',pulgada:'',pulg:'',pvc:'pvc',und:'',unidades:'',unidad:'',metros:'',metro:'',mm:'mm'};
   const amount = String.raw`\d+(?:[.,]\d+)?`;
   const units = String.raw`metros?\s+c[úu]bicos?|metros?\s+cuadrados?|m(?:³|²|3|2|\^[23])|millares?|millar|und\.?|unid\.?|unidades?|uds\.?|kg|kilos?|m|metros?|bolsas?|sacos?|rollos?|cajas?|l|litros?|gal[oó]n(?:es)?|par(?:es)?|envases?|cartuchos?|juegos?|pzas\.?|piezas?`;
   const namedUnits = `${units}|planchas?|tubos?|tarros?|baldes?|latas?|frascos?|bidones?|paquetes?|barras?|paneles?|hojas?|par(?:es)?`;
@@ -80,9 +80,15 @@
     const words = pipeUse ? requested.filter(w=>!['pvc','fria','frio'].includes(w)) : requested;
     if (!words.length) return [];
     const numbers = words.filter(w=>/^\d/.test(w));
+    const materialWord=words.find(w=>/^[a-z]/.test(w)&&!['mm','cm','kg'].includes(w));
     return products.map(product => {
       const haystack = new Set(tokens(`${product.title} ${product.brand} ${product.category}`));
       const title = new Set(tokens(product.title));
+      // Matching dimensions alone must not turn a drill bit into a screw.
+      if(materialWord&&!haystack.has(materialWord))return null;
+      const productHead=tokens(product.title).find(w=>!tokens(product.brand).includes(w)&&!['juego','set','kit'].includes(w));
+      if(['broca','tornillo'].includes(materialWord)&&productHead!==materialWord)return null;
+      if(words.some(w=>['madera','metal'].includes(w)&&!haystack.has(w)))return null;
       if (pipe && !title.has('tubo')) return null;
       if (pipeUse && words.some(w=>['agua','desague'].includes(w) && !title.has(w))) return null;
       if (pipe && requested.some(w=>['fria','frio'].includes(w)) && title.has('caliente')) return null;

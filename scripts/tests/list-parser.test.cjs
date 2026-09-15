@@ -103,3 +103,7 @@ assert.equal(parser.parse(Array(200).fill('2 bolsas de cemento').join('\n')).len
 for (const [line, unit, query] of [["3 par Guantes", "par", "Guantes"], ["2 pares de guantes", "pares", "guantes"], ["4 cartuchos de Sikaflex", "cartuchos", "Sikaflex"]]) {
  const row = parser.parseLine(line); assert.equal(row.unit, unit); assert.equal(row.query, query);
 }
+
+assert.deepEqual(parser.search('BROCAS DE 1 1/2" MADERA',[{id:1,title:'TORNILLO AUTOPERFORANTE 10 X 1 1/2" PUNTA FINA P/MADERA',brand:'',category:''}]),[]);
+
+assert.deepEqual(parser.search('BROCAS DE 1 1/2" MADERA',products),[]);

@@ -367,6 +367,7 @@
       if(!requestBuilder)requestBuilder=createAlbanilRequest({getItems:requestItems,service:service||!!window.AlbanilSettings?.api,escape,notify});
       if(service && !document.querySelector('.featured-group'))document.querySelectorAll('.featured-slide').forEach((slide,index)=>{slide.innerHTML=catalog.featured.slice(index*6,index*6+6).map(id=>card(byId.get(id))).join('');});
       window.AlbanilIntakeBridge = {summary:getQuoteSummary,draft:()=>listBuilder.draft(),products:catalog.products};
+      document.dispatchEvent(new Event('albanil-list-change'));
       restore(); renderRoute();
       document.querySelectorAll('[data-add]').forEach((button) => { button.disabled = false; });
     } catch {
