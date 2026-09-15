@@ -57,7 +57,8 @@
   {
     "file": "holcim.svg",
     "source": "https://www.holcim.com.pe/",
-    "asset": "https://www.holcim.com.pe/themes/custom/corporate/components/header/images/holcim_logo_color.svg"
+    "asset": "https://www.holcim.com.pe/themes/custom/corporate/components/header/images/holcim_logo_color.svg",
+    "note": "Wordmark SVG en azul oscuro para contraste sobre fondo blanco; símbolo original conservado."
   },
   {
     "file": "marcas-cliente.png",
