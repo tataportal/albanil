@@ -20,3 +20,7 @@
 @media(max-width:900px){.coverage-map-layout{gap:24px}.coverage-region-list button span{font-size:22px}.coverage-peru svg{max-height:540px}}
 @media(max-width:639px){.coverage-map-layout{grid-template-columns:1fr;gap:16px;padding-block:40px}.coverage-peru{grid-row:2}.coverage-peru svg{max-height:490px}.coverage-map-copy>p:not(.company-kicker){font-size:17px}.coverage-region-list{grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:22px}.coverage-region-list button{padding:10px 8px;border-left:0;border-bottom:3px solid #607e6e}.coverage-region-list button span{font-size:17px}.coverage-region-list button small{font-size:12px}.coverage-region-list button.is-current{border-bottom-color:var(--brand)}.coverage-region-list button:first-child small{font-size:11px}.coverage-peru figcaption{gap:20px}}
 @media(prefers-reduced-motion:reduce){.peru-department,.coverage-region-list button{transition:none}}
+
+/* Only the active department lights up; the previous one clears immediately. */
+.peru-department.is-served{transition:none}.peru-department.is-served.is-current{transition:fill .8s ease,stroke .8s ease}
+@media(prefers-reduced-motion:reduce){.peru-department.is-served.is-current{transition:none}}
