@@ -118,7 +118,7 @@ function validateSubmission(array $v): array {
         if(!is_array($i))fail('Material inválido.');$qty=$i['quantity']??null;$pid=$i['productId']??null;$unit=text($i['unit']??'',30);
         if($qty!==null&&(!(is_int($qty)||is_float($qty))||!is_finite((float)$qty)||$qty<=0||$qty>999999||abs($qty*100-round($qty*100))>1e-7))fail('Cantidad inválida.');
         if($pid!==null&&!is_int($pid))fail('Producto inválido.');
-        if($qty!==null&&$unit!==''&&!in_array(strtolower($unit),['m','metro','metros','kg','kilogramo','kilogramos','litro','litros','l','m2','m3'])&&(float)$qty!==floor((float)$qty))fail('Esta unidad requiere cantidades enteras.');
+        if($qty!==null&&$unit!==''&&!preg_match('/^(?:m|m[²³23]|m\^[23]|metros?|metros? (?:cuadrados?|c[uú]bicos?)|kg|kilos?|kilogramos?|g|gramos?|t|toneladas?|l|litros?|ml|mililitros?|gal[oó]n(?:es)?)$/iu',trim($unit))&&(float)$qty!==floor((float)$qty))fail('Esta unidad requiere cantidades enteras.');
         $suggestions=is_array($i['suggestionIds']??null)?array_slice(array_values(array_filter($i['suggestionIds'],'is_int')),0,3):[];
         $items[]=['productId'=>$pid,'query'=>text($i['query']??null,500,true),'quantity'=>$qty,'unit'=>$unit,'original'=>text($i['original']??'',2000),'source'=>text($i['source']??'',260),'suggestionIds'=>$suggestions];
     }

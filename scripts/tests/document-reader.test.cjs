@@ -20,3 +20,5 @@ r=D.pdfPages([[...head,...split]]);assert.equal(r.rows[0].quantity,'');assert.ma
 assert.equal(D.pdfPages([[item('No hay tabla',100,400)]]).warnings.length,1);
 assert.equal(D.excelRows(sheet([['ITEM','CANT','UND','MATERIAL'],...Array.from({length:500},(_,i)=>[i+1,2,'und','Clavos'])])).rows.length,500);
 console.log('Document reader: column mapping, quantities, metadata, wrapped rows, page continuation, missing quantities and 500 items passed.');
+const branded=row(1,680,5,'PINTURA LATEX BLANCA');branded.push(item('CPP',397,680,8));
+assert.equal(D.pdfPages([[...head,...branded]]).rows[0].query,'PINTURA LATEX BLANCA · CPP');

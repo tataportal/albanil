@@ -18,7 +18,7 @@
     return validQuantity(raw.replace(',','.')) && !/[.,]\d{3,}$/.test(raw) ? Number(raw.replace(',','.')) : '';
   }
   function tokens(value) {
-    return String(value).replace(/½/g,'1/2').replace(/¾/g,'3/4').replace(/¼/g,'1/4').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/(\d)\s*\/\s*(\d)/g,'$1/$2').replace(/(\d),(\d)/g,'$1.$2').match(/[a-z]+\d*[a-z]*|\d+(?:[/.]\d+)?/g)?.map(t => aliases[t] ?? t).filter(t => t && !stop.has(t)) || [];
+    return String(value).replace(/½/g,'1/2').replace(/¾/g,'3/4').replace(/¼/g,'1/4').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/\bn[°º]\s*(?=\d)/g,'').replace(/(\d)\s*\/\s*(\d)/g,'$1/$2').replace(/(\d),(\d)/g,'$1.$2').match(/[a-z]+\d*[a-z]*|\d+(?:[/.]\d+)?/g)?.map(t => aliases[t] ?? t).filter(t => t && !stop.has(t)) || [];
   }
   function validQuantity(value) {
     return value !== '' && value !== null && Number.isFinite(Number(value)) && Number(value) >= 0.01 && Number(value) <= 999999 && Math.abs(Number(value) * 100 - Math.round(Number(value) * 100)) < 0.00001;
@@ -88,12 +88,15 @@
   }
   function search(query, products, limit = 6) {
     const exact=exactCode(query,products);if(exact.length)return exact.slice(0,limit);
-    const requested = [...new Set(tokens(query))];
+    const matchQuery=String(query).replace(/\s*·\s*(?:prioridad|entregar|entrega|urgente|para el|para lunes|observaciones?)\b.*$/i,'');
+    const requested = [...new Set(tokens(matchQuery))];
     // Public pipe titles omit PVC and cold-water qualifiers. Offer candidates
     // by use and exact diameter, without claiming those missing specs match.
     const pipe = requested.includes('tubo');
     const pipeUse = pipe && (requested.includes('agua') || requested.includes('desague'));
-    const words = pipeUse ? requested.filter(w=>!['pvc','fria','frio'].includes(w)) : requested;
+    const materialTerms=['tecnopor','triplay','fenolico'];
+    const base=materialTerms.some(w=>requested.includes(w))?requested.filter(w=>!['plancha','hoja'].includes(w)):requested.includes('lija')?requested.filter(w=>!['pliego','pliegos','hoja','hojas'].includes(w)):requested;
+    const words = pipeUse ? base.filter(w=>!['pvc','fria','frio'].includes(w)) : base;
     if (!words.length) return [];
     const numbers = words.filter(w=>/^\d/.test(w));
     const materialWord=words.find(w=>/^[a-z]/.test(w)&&!['mm','cm','kg'].includes(w));
@@ -114,7 +117,14 @@
       return {product,score:hits/words.length*100 + words.filter(w=>tokens(product.title).includes(w)).length};
     }).filter(Boolean).sort((a,b)=>b.score-a.score || a.product.id-b.product.id).slice(0,limit).map(item=>item.product);
   }
-  const api = {catalogSearch,tokens,validQuantity,fractionalUnit,validOrderQuantity,displayLine,parseLine,parse,search,upgradeDraftRow};
+  function requestQuantityError(value,unit=''){
+    if(value===''||value==null)return '';
+    const n=Number(String(value).replace(',','.'));
+    if(!validQuantity(n))return 'Ingresa una cantidad de 0.01 a 999999, con máximo dos decimales.';
+    if(unit.trim()&&!validOrderQuantity(n,unit))return 'Esta unidad requiere cantidades enteras.';
+    return '';
+  }
+  const api = {requestQuantityError,catalogSearch,tokens,validQuantity,fractionalUnit,validOrderQuantity,displayLine,parseLine,parse,search,upgradeDraftRow};
   if (typeof module !== 'undefined' && module.exports) module.exports = api;
   else root.AlbanilListParser = api;
 })(globalThis);

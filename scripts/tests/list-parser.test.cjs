@@ -107,3 +107,16 @@ for (const [line, unit, query] of [["3 par Guantes", "par", "Guantes"], ["2 pare
 assert.deepEqual(parser.search('BROCAS DE 1 1/2" MADERA',[{id:1,title:'TORNILLO AUTOPERFORANTE 10 X 1 1/2" PUNTA FINA P/MADERA',brand:'',category:''}]),[]);
 
 assert.deepEqual(parser.search('BROCAS DE 1 1/2" MADERA',products),[]);
+{
+ const P=require('../../docs/propuesta/list-parser.js');
+ const items=[{id:1,title:'tecnopor de 1" x 120cm x 240 cm',brand:'',category:'TECNOPOR'},{id:2,title:'tecnopor de 2" x 120cm x 240 cm',brand:'',category:'TECNOPOR'}];
+ assert.deepEqual(P.search('PLANCHAS DE TECNOPOR 1"',items).map(p=>p.id),[1]);
+ assert.equal(P.requestQuantityError('1.54','UND'),'Esta unidad requiere cantidades enteras.');
+ assert.equal(P.requestQuantityError('1,54','metros'),'');
+ assert.notEqual(P.requestQuantityError('1.234','kg'),'');
+ assert.equal(P.requestQuantityError('','UND'),'');
+}
+
+assert.equal(require('../../docs/propuesta/list-parser.js').search('PLANCHAS DE TECNOPOR 1" · PRIORIDAD PARA LUNES',[{id:1,title:'tecnopor de 1" x 120cm x 240cm',category:'TECNOPOR',brand:''}]).length,1);
+
+assert.equal(require('../../docs/propuesta/list-parser.js').search('LIJA N°80 PLIEGO',[{id:1,title:'Lija de fierro 80',brand:'ASA',category:'LIJAS Y ABRASIVOS'}]).length,1);

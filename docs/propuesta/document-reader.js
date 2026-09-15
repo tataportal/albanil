@@ -64,7 +64,9 @@
     const a=anchors[j],top=j?(anchors[j-1].y+a.y)/2:a.y+gap/2,bottom=j<anchors.length-1?(a.y+anchors[j+1].y)/2:a.y-gap/2;
     const band=items.filter(i=>i.y<=top&&i.y>bottom&&center(i)>c.descStart);
     const join=xs=>xs.sort((a,b)=>Math.abs(a.y-b.y)>2?b.y-a.y:a.x-b.x).map(i=>i.text).join(' ');
-    const query=join(band.filter(i=>center(i)<c.descEnd));
+    const description=join(band.filter(i=>center(i)<c.descEnd));
+    const extra=join(band.filter(i=>i.x>=c.unitEnd&&!footer(i.text)));
+    const query=[description,extra].filter(Boolean).join(' · ');
     if(!/[a-záéíóúñ]/i.test(query)){warnings.push(`Página ${p+1}, ítem ${a.text}: revisar el original.`);continue;}
     const qtyText=join(band.filter(i=>center(i)>=c.qtyStart&&center(i)<c.qtyEnd));
     const unit=join(band.filter(i=>center(i)>=c.qtyEnd&&center(i)<c.unitEnd));
