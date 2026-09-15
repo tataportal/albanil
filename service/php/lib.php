@@ -51,7 +51,7 @@ function userAccount(string $name): ?array {
     foreach($c['users']??[] as $u)if(mb_strtolower($u['username'])===$key&&($u['active']??true))return $u;
     return null;
 }
-function userPermissions(array $u): array {return match($u['role']){'admin'=>['requests','products','exchange'],'quotations'=>['requests'],'catalog'=>['products','exchange'],default=>[]};}
+function userPermissions(array $u): array {return match($u['role']){'admin'=>['requests','products','exchange','complaints'],'quotations'=>['requests'],'catalog'=>['products','exchange'],default=>[]};}
 function publicUser(array $u): array {return ['username'=>$u['username'],'role'=>$u['role'],'permissions'=>userPermissions($u)];}
 function requirePermission(string $permission): void {if(!in_array($permission,userPermissions($GLOBALS['actor']),true))fail('No tienes permiso para esta sección.',403);}
 function sessionHash(): string {

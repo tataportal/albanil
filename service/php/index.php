@@ -2,6 +2,7 @@
 declare(strict_types=1);
 require __DIR__.'/lib.php';
 require __DIR__.'/products.php';
+require __DIR__.'/complaints.php';
 header('Cache-Control: no-store');header('X-Content-Type-Options: nosniff');header('Referrer-Policy: no-referrer');
 try {
     $method=$_SERVER['REQUEST_METHOD'];$origin=$_SERVER['HTTP_ORIGIN']??'';
@@ -14,6 +15,7 @@ try {
     if($path==='/exchange-rate'&&$method==='GET')respond(rate());
     if($path==='/catalog'&&$method==='GET')respond(catalog());
     if($path==='/requests'&&$method==='POST')submitRequest();
+    if($path==='/complaints'&&$method==='POST')submitComplaint();
     if($path==='/login'&&$method==='POST'){
         $v=input(2048);throttle('login',900,8);$password=text($v['password']??'',200);$c=config();
         $u=userAccount(text($v['username']??'',100));
@@ -34,6 +36,7 @@ try {
     if($path==='/exchange-rate'&&$method==='PATCH')changeRate();
     if(preg_match('#^/products/(\d+)$#D',$path,$m)&&$method==='PATCH')changeProduct((int)$m[1]);
     if(str_starts_with($path,'/requests'))requestRoutes($path,$method);
+    if(str_starts_with($path,'/complaints'))complaintRoutes($path,$method);
     fail('Ruta no disponible.',404);
 } catch(Throwable $e){
     try { if(db()->inTransaction())db()->rollBack(); } catch(Throwable $ignored){}

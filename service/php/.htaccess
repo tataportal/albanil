@@ -1,8 +1,8 @@
 Options -Indexes
 RewriteEngine On
 RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
-RewriteRule ^(me|health|catalog|exchange-rate|login|logout|products(?:/[0-9]+(?:/image)?)?|requests(?:/ALB-[A-Z0-9-]+(?:/files/[a-f0-9]{32})?)?)$ index.php [END]
-<FilesMatch "^(lib\.php|products\.php|schema\.sql)$">
+RewriteRule ^(complaints(?:/LR-WEB-[0-9]+)?|me|health|catalog|exchange-rate|login|logout|products(?:/[0-9]+(?:/image)?)?|requests(?:/ALB-[A-Z0-9-]+(?:/files/[a-f0-9]{32})?)?)$ index.php [END]
+<FilesMatch "^(lib\.php|products\.php|complaints\.php|complaints-schema\.sql|schema\.sql)$">
 Require all denied
 </FilesMatch>
 LimitRequestBody 33554432

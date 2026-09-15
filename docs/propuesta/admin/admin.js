@@ -57,12 +57,12 @@
   const [p,r,fx]=await Promise.all([permitted('products')?api('products'):Promise.resolve({products:[]}),permitted('requests')?api('requests'):Promise.resolve({requests:[]}),permitted('exchange')?api('exchange-rate'):Promise.resolve({rate:null,version:0,updated_at:null})]);
   products=p.products;requests=r.requests;exchangeRate=fx;
   $('#new-product').hidden=!permitted('products')||!(await api('health').catch(()=>({}))).productCreation;
-  renderProducts();renderRequests();renderFX();
+  renderProducts();renderRequests();renderFX();await AlbanilComplaintsAdmin.refresh(api,currentUser);
  }
  async function enter(data){token=data.token||'';csrf=data.csrf||'';currentUser=data.user||null;await refresh();$('#login-view').hidden=true;$('#workspace').hidden=false;$('#logout').hidden=false;showSection();message(currentUser?'Sesión: '+currentUser.username:'');}
  $('#login-form').addEventListener('submit',async e=>{e.preventDefault();const button=e.target.querySelector('button');button.disabled=true;try{await enter(await api('login',{method:'POST',body:JSON.stringify({username:$('#username').value.trim(),password:$('#password').value})}));$('#password').value='';}catch(err){message(err.message);}finally{button.disabled=false;}});
  $('#logout').addEventListener('click',async()=>{try{await api('logout',{method:'POST',body:'{}'});location.reload();}catch(e){message(e.message);}});
- const sections={requests:{title:'Solicitudes',hash:'solicitudes'},products:{title:'Productos y stock',hash:'productos'},exchange:{title:'Tipo de cambio',hash:'tipo-cambio'}};
+ const sections={requests:{title:'Solicitudes',hash:'solicitudes'},products:{title:'Productos y stock',hash:'productos'},exchange:{title:'Tipo de cambio',hash:'tipo-cambio'},complaints:{title:'Libro de reclamaciones',hash:'reclamos'}};
  function showSection(){
   const selected=Object.keys(sections).find(key=>permitted(key)&&sections[key].hash===location.hash.slice(1))||Object.keys(sections).find(permitted)||'requests';
   for(const [key,section] of Object.entries(sections))$('#'+key+'-view').hidden=key!==selected;
