@@ -79,7 +79,7 @@ function changeRate(): never {
     $after=['rate'=>$v['rate'],'version'=>$v['version']+1,'updated_at'=>$stamp];audit('exchange_rate','1',$before,$after);db()->commit();respond($after);
 }
 function changeProduct(int $id): never {
-    $v=input();$all=catalog();$current=null;foreach($all['products'] as $p)if($p['id']===$id){$current=$p;break;}
+    $v=input(8*1024*1024);$all=catalog();$current=null;foreach($all['products'] as $p)if($p['id']===$id){$current=$p;break;}
     if(!$current)fail('Producto no encontrado.',404);
     if(!is_int($v['version']??null)||$v['version']!==$current['version'])fail('El producto cambió. Actualiza el panel.',409);
     $units=['unidad','par','caja','bolsa','rollo','tubo','plancha','tarro','millar','metro','kg','litro','m2','m3','varilla','envase','saco','hoja','cartucho','lata','galon','juego'];
@@ -90,11 +90,23 @@ function changeProduct(int $id): never {
     if($stock!==null&&(!is_numeric($stock)||!is_finite((float)$stock)||$stock<0||$stock>999999||(!in_array($v['unit'],['metro','kg','litro','m2','m3'])&&(float)$stock!==floor((float)$stock))))fail('Existencias inválidas para esta unidad.');
     $state=$v['state']??($current['state']??'ACTIVO');if(!in_array($state,['ACTIVO','INACTIVO'],true))fail('Estado inválido.');
     $edit=['state'=>$state,'sku'=>text($v['sku']??'',80),'unit'=>$v['unit'],'price'=>$price===null?null:(float)$price,'stock'=>$stock===null?null:(float)$stock,'currency'=>$v['currency'],'tax'=>$v['tax'],'availability'=>$stock===null?'Por confirmar':($stock>0?'Disponible':'Agotado'),'dataUpdatedAt'=>now()];
+    foreach(['title'=>200,'brand'=>100,'specifications'=>2000,'category'=>120] as $field=>$max)if(array_key_exists($field,$v))$edit[$field]=text($v[$field],$max,in_array($field,['title','category'],true));
+    if(isset($edit['category'])){
+        if(!in_array($edit['category'],array_column($all['categories'],'name'),true))fail('Selecciona una categoría del catálogo.');
+        $edit['group']='';foreach($all['groups'] as $g)if(in_array($edit['category'],$g['types']??[],true)){$edit['group']=$g['id'];break;}
+    }
+    if(array_key_exists('photo',$v)){
+        $photo=productPhoto($v['photo']);$dir=dirname(__DIR__,3).'/nueva-private/product-images';
+        if(!is_dir($dir)&&!mkdir($dir,0700,true))fail('No se pudo guardar la foto.',503);
+        $file=$dir.'/'.$photo['hash'];if(!is_file($file)){if(file_put_contents($file,$photo['bytes'],LOCK_EX)!==strlen($photo['bytes']))fail('No se pudo guardar la foto.',503);chmod($file,0600);}
+        $edit['photoHash']=$photo['hash'];$edit['photoMime']=$photo['mime'];
+        $edit['image']=$edit['imageSmall']='api/products/'.$id.'/image?v='.$photo['hash'];
+    }
     db()->beginTransaction();$row=query('SELECT version FROM product_overrides WHERE id=? FOR UPDATE',[$id])->fetch();
     if(($row?(int)$row['version']:0)!==$v['version'])fail('Otro usuario modificó el producto. Actualiza el panel.',409);
     if($row){$stored=json_decode(query('SELECT data FROM product_overrides WHERE id=?',[$id])->fetchColumn(),true);query('UPDATE product_overrides SET data=?,version=version+1 WHERE id=?',[jsonValue(array_merge($stored,$edit)),$id]);}
     else query('INSERT INTO product_overrides(id,data,version) VALUES(?,?,1)',[$id,jsonValue($edit)]);
-    $after=array_merge($current,$edit,['version'=>$v['version']+1]);audit('product',(string)$id,$current,$after);db()->commit();respond($after);
+    $after=array_merge($current,$edit,['version'=>$v['version']+1]);audit('product',(string)$id,$current,$after);db()->commit();foreach(['photoHash','photoMime'] as $field)unset($after[$field]);respond($after);
 }
 function validateSubmission(array $v): array {
     if(($v['consent']??null)!==true||!is_array($v['customer']??null)||!is_array($v['items']??null)||!array_is_list($v['items'])||count($v['items'])>500)fail('Revisa tus datos y materiales.');
