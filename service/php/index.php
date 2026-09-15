@@ -16,14 +16,19 @@ try {
     if($path==='/requests'&&$method==='POST')submitRequest();
     if($path==='/login'&&$method==='POST'){
         $v=input(2048);throttle('login',900,8);$password=text($v['password']??'',200);$c=config();
-        $hash=hash_pbkdf2('sha256',$password,hex2bin($c['admin_salt']),600000,64,false);
-        if(($v['username']??'')!==$c['admin_username']||!hash_equals($c['admin_hash'],$hash))fail('Usuario o contraseña incorrectos.',401);
+        $u=userAccount(text($v['username']??'',100));
+        $hash=hash_pbkdf2('sha256',$password,hex2bin($u['salt']??$c['admin_salt']),600000,64,false);
+        if(!$u||!hash_equals($u['hash'],$hash))fail('Usuario o contraseña incorrectos.',401);
         $token=bin2hex(random_bytes(32));query('DELETE FROM sessions WHERE expires_at<?',[time()]);query('DELETE FROM attempts WHERE expires_at<?',[time()]);
-        query('INSERT INTO sessions(token_hash,expires_at) VALUES(?,?)',[hash('sha256',$token),time()+8*3600]);respond(['token'=>$token]);
+        query('INSERT INTO sessions(token_hash,expires_at,username) VALUES(?,?,?)',[hash('sha256',$token),time()+8*3600,$u['username']]);respond(['token'=>$token,'user'=>publicUser($u)]);
     }
     if(preg_match('#^/products/(\d+)/image$#D',$path,$m)&&$method==='GET')productImage((int)$m[1]);
     $session=sessionHash();
     if($path==='/logout'&&$method==='POST'){query('DELETE FROM sessions WHERE token_hash=?',[$session]);respond(['ok'=>true]);}
+    if($path==='/me'&&$method==='GET')respond(publicUser($GLOBALS['actor']));
+    if(str_starts_with($path,'/products'))requirePermission('products');
+    if($path==='/exchange-rate')requirePermission('exchange');
+    if(str_starts_with($path,'/requests'))requirePermission('requests');
     if($path==='/products'&&$method==='POST')createProduct();
     if($path==='/products'&&$method==='GET')respond(['products'=>catalog()['products']]);
     if($path==='/exchange-rate'&&$method==='PATCH')changeRate();

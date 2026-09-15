@@ -36,7 +36,7 @@ function input(int $max=10000): array { $v=json_decode(rawBody($max),true,64,JSO
 function text($s, int $max, bool $required=false): string {
     if(!is_string($s)||mb_strlen($s)>$max||($required&&trim($s)===''))fail('Revisa los campos de la solicitud.');return trim($s);
 }
-function audit(string $entity,string $id,$before,$after): void { query('INSERT INTO audit(entity,entity_id,before_data,after_data,created_at) VALUES(?,?,?,?,?)',[$entity,$id,jsonValue($before),jsonValue($after),now()]); }
+function audit(string $entity,string $id,$before,$after): void { query('INSERT INTO audit(entity,entity_id,before_data,after_data,created_at,actor_username) VALUES(?,?,?,?,?,?)',[$entity,$id,jsonValue($before),jsonValue($after),now(),$GLOBALS['actor']['username']??null]); }
 function throttle(string $action,int $window,int $limit): void {
     query('DELETE FROM attempts WHERE expires_at<? LIMIT 1000',[time()]);
     $key=hash_hmac('sha256',$action.':'.($_SERVER['REMOTE_ADDR']??'unknown').':'.intdiv(time(),$window),config()['rate_secret']);
@@ -45,9 +45,19 @@ function throttle(string $action,int $window,int $limit): void {
     if($count>$limit)fail('Demasiados intentos. Vuelve a intentarlo más tarde.',429);
 }
 function bearer(): string { return preg_replace('/^Bearer /','',$_SERVER['HTTP_AUTHORIZATION']??$_SERVER['REDIRECT_HTTP_AUTHORIZATION']??''); }
+function userAccount(string $name): ?array {
+    $c=config();$key=mb_strtolower(trim($name));
+    if($key===mb_strtolower($c['admin_username']))return ['username'=>$c['admin_username'],'role'=>'admin','salt'=>$c['admin_salt'],'hash'=>$c['admin_hash']];
+    foreach($c['users']??[] as $u)if(mb_strtolower($u['username'])===$key&&($u['active']??true))return $u;
+    return null;
+}
+function userPermissions(array $u): array {return match($u['role']){'admin'=>['requests','products','exchange'],'quotations'=>['requests'],'catalog'=>['products','exchange'],default=>[]};}
+function publicUser(array $u): array {return ['username'=>$u['username'],'role'=>$u['role'],'permissions'=>userPermissions($u)];}
+function requirePermission(string $permission): void {if(!in_array($permission,userPermissions($GLOBALS['actor']),true))fail('No tienes permiso para esta sección.',403);}
 function sessionHash(): string {
     $token=bearer();if(!preg_match('/^[a-f0-9]{64}$/D',$token))fail('Inicia sesión para continuar.',401);
-    $hash=hash('sha256',$token);if(!query('SELECT token_hash FROM sessions WHERE token_hash=? AND expires_at>?',[$hash,time()])->fetch())fail('Inicia sesión para continuar.',401);return $hash;
+    $hash=hash('sha256',$token);$row=query('SELECT username FROM sessions WHERE token_hash=? AND expires_at>?',[$hash,time()])->fetch();
+    $u=$row?userAccount($row['username']??''):null;if(!$u)fail('Inicia sesión para continuar.',401);$GLOBALS['actor']=$u;return $hash;
 }
 function rate(): array { $r=query('SELECT rate,version,updated_at FROM exchange_rate WHERE id=1')->fetch();if(!$r)fail('Servicio no disponible.',503);$r['rate']=(float)$r['rate'];$r['version']=(int)$r['version'];return $r; }
 function catalog(): array {
@@ -160,7 +170,7 @@ function requestRoutes(string $path,string $method): never {
     if($method==='PATCH'){
         $v=input();if(!in_array($v['status']??null,['Nueva','En atención','Cotización parcial','Cotizada','Terminada','Cerrada'],true))fail('Estado inválido.');
         if(($v['version']??null)!==$p['version'])fail('Actualiza la solicitud antes de guardar.',409);
-        $before=$p;$p['status']=$v['status'];$p['agent']=text($v['agent']??'',100);$p['notes']=text($v['notes']??'',4000);$p['version']++;
+        $before=$p;$p['status']=$v['status'];$p['agent']=text($v['agent']??'',100);$p['notes']=text($v['notes']??'',4000);$p['updatedBy']=$GLOBALS['actor']['username'];$p['updatedAt']=now();$p['version']++;
         db()->beginTransaction();$q=query('UPDATE requests SET data=?,summary=?,version=version+1 WHERE reference=? AND version=?',[jsonValue($p),jsonValue(summary($p)),$p['reference'],$v['version']]);
         if(!$q->rowCount())fail('Otro asesor actualizó la solicitud. Actualiza el panel.',409);audit('request',$p['reference'],$before,$p);db()->commit();respond($p);
     }
