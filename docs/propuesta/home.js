@@ -193,9 +193,7 @@
       requestBuilder?.render(); document.title='Solicitud de cotización | Albañil';
       if(focus){$('#request-page-title').focus({preventScroll:true});$('#request-view').scrollIntoView({behavior:'instant'});}
     } else if (isCatalog) {
-      const terms = normalize(query).split(/\s+/).filter(Boolean);
-      const exactReference=catalog.products.find(p=>String(p.reference||p.id).toLowerCase()===query.trim().toLowerCase());
-      const matches = catalog.products.filter((p) => (!exactReference || p.id===exactReference.id) && (!group || p.group === group) && (!sector || sector.types.includes(p.category)) && terms.every((word) => p.search.includes(word)));
+      const matches = AlbanilListParser.catalogSearch(query,catalog.products).filter(p=>(!group || p.group === group) && (!sector || sector.types.includes(p.category)));
       filtered = matches.filter((p) => !category || p.category === category);
       renderCategoryChips(params, sector?.types || catalog.groups.find((item) => item.id === group)?.types, matches);
       if (params.get('orden') === 'nombre') filtered.sort((a, b) => a.title.localeCompare(b.title, 'es'));

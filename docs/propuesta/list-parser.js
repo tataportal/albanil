@@ -2,7 +2,7 @@
 (function (root) {
   'use strict';
   const stop = new Set(['de','del','para','con','en','el','la','los','las','un','una','tipo']);
-  const aliases = {brocas:'broca',tuberia:'tubo',tuberias:'tubo',curvas:'curva',planchas:'plancha',tripley:'triplay',cementos:'cemento',ladrillos:'ladrillo',cables:'cable',tubos:'tubo',fierros:'fierro',varillas:'fierro',varilla:'fierro',pulgadas:'',pulgada:'',pulg:'',pvc:'pvc',und:'',unidades:'',unidad:'',metros:'',metro:'',mm:'mm'};
+  const aliases = {amoladoras:'amoladora',guantes:'guante',lijas:'lija',paneles:'panel',focos:'foco',clavos:'clavo',tornillos:'tornillo',autoperforantes:'autoperforante',plasticos:'plastico',fenolicos:'fenolico',herramientas:'herramienta',accesorios:'accesorio',pinturas:'pintura',tanques:'tanque',bombas:'bomba',llaves:'llave',winchas:'wincha',discos:'disco',brocas:'broca',tuberia:'tubo',tuberias:'tubo',curvas:'curva',planchas:'plancha',tripley:'triplay',cementos:'cemento',ladrillos:'ladrillo',cables:'cable',tubos:'tubo',fierros:'fierro',varillas:'fierro',varilla:'fierro',pulgadas:'',pulgada:'',pulg:'',pvc:'pvc',und:'',unidades:'',unidad:'',metros:'',metro:'',mm:'mm'};
   const amount = String.raw`\d+(?:[.,]\d+)?`;
   const units = String.raw`metros?\s+c[úu]bicos?|metros?\s+cuadrados?|m(?:³|²|3|2|\^[23])|millares?|millar|und\.?|unid\.?|unidades?|uds\.?|kg|kilos?|m|metros?|bolsas?|sacos?|rollos?|cajas?|l|litros?|gal[oó]n(?:es)?|par(?:es)?|envases?|cartuchos?|juegos?|pzas\.?|piezas?`;
   const namedUnits = `${units}|planchas?|tubos?|tarros?|baldes?|latas?|frascos?|bidones?|paquetes?|barras?|paneles?|hojas?|par(?:es)?`;
@@ -71,7 +71,23 @@
     if (lines.length > 500) throw new Error('Puedes revisar hasta 500 renglones por vez. Divide tu lista en dos partes.');
     return lines.map(parseLine);
   }
+  function exactCode(query, products) {
+    const q=String(query).trim().toLowerCase();
+    if(!q)return [];
+    const publicCodes=products.filter(p=>[p.reference,p.sku].some(v=>v!=null&&String(v).trim().toLowerCase()===q));
+    return publicCodes.length?publicCodes:products.filter(p=>String(p.id).toLowerCase()===q);
+  }
+  function catalogSearch(query, products, limit=Infinity) {
+    const q=String(query).trim();if(!q)return products.slice(0,limit);
+    const exact=exactCode(q,products);if(exact.length)return exact.slice(0,limit);
+    const words=[...new Set(tokens(q))];if(!words.length)return [];
+    return products.filter(p=>{
+      const haystack=tokens([p.title,p.brand,p.category,p.reference,p.sku,p.id].filter(v=>v!=null).join(' '));
+      return words.every(w=>haystack.some(t=>t===w||(/^[a-z]{3,}$/.test(w)&&t.startsWith(w))));
+    }).slice(0,limit);
+  }
   function search(query, products, limit = 6) {
+    const exact=exactCode(query,products);if(exact.length)return exact.slice(0,limit);
     const requested = [...new Set(tokens(query))];
     // Public pipe titles omit PVC and cold-water qualifiers. Offer candidates
     // by use and exact diameter, without claiming those missing specs match.
@@ -98,7 +114,7 @@
       return {product,score:hits/words.length*100 + words.filter(w=>tokens(product.title).includes(w)).length};
     }).filter(Boolean).sort((a,b)=>b.score-a.score || a.product.id-b.product.id).slice(0,limit).map(item=>item.product);
   }
-  const api = {tokens,validQuantity,fractionalUnit,validOrderQuantity,displayLine,parseLine,parse,search,upgradeDraftRow};
+  const api = {catalogSearch,tokens,validQuantity,fractionalUnit,validOrderQuantity,displayLine,parseLine,parse,search,upgradeDraftRow};
   if (typeof module !== 'undefined' && module.exports) module.exports = api;
   else root.AlbanilListParser = api;
 })(globalThis);

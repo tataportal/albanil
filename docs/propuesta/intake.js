@@ -63,7 +63,7 @@
  async function prepare({review=true}={}){
   if(busy||sending)return;await ready;const bridge=window.AlbanilIntakeBridge;if(!bridge){note('El catálogo todavía está cargando. Inténtalo nuevamente.');return;}
   const raw=$('#paste-list').value.trim();let rows=collectRows();
-  for(const r of rows){const found=/[a-záéíóúñ]{2}/i.test(r.material)?AlbanilListParser.search(r.material,bridge.products,3):[];r.status=r.productId?'Producto seleccionado':found.length?'Coincidencias por revisar':'El asesor buscará este material';r.suggestions=found.map(p=>({id:p.id,title:p.title,brand:p.brand}));}
+  for(const r of rows){const found=AlbanilListParser.search(r.material,bridge.products,3);r.status=r.productId?'Producto seleccionado':found.length?'Coincidencias por revisar':'El asesor buscará este material';r.suggestions=found.map(p=>({id:p.id,title:p.title,brand:p.brand}));}
   if(!rows.length&&!files.length){note('Escribe materiales, agrega productos o carga un archivo primero.');$('#paste-list').focus();return;}
   if(rows.length>500){note('La extracción supera 500 renglones. Reduce el texto o quita el archivo y envíalo directamente al asesor; no se ha descartado información.');return;}
   $('#intake-saved').hidden=true;$('#intake-register-form').hidden=!receiver;$('#intake-register-error').textContent='';

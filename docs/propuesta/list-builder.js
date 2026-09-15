@@ -13,9 +13,10 @@
   $('#paste-form').addEventListener('submit',event=>event.preventDefault());
     function searchManual() {
       const query=$('#builder-search').value.trim();
-      if(!query){$('#manual-results').innerHTML='';$('#manual-count').textContent='Busca por producto, marca o medida.';return;}
-      const found=parser.search(query,products,12);
-      $('#manual-count').textContent=found.length?`${found.length} coincidencias. Revisa el producto y su presentación.`:'No encontramos coincidencias. Prueba otro nombre o deja el material pendiente desde «Pegar mi lista».';
+      if(!query){$('#manual-results').innerHTML='';$('#manual-count').textContent='Busca por producto, marca o medida.';const more=$('#manual-mode>a');more.href='?ver=todo';more.textContent='Ver catálogo completo →';return;}
+      const matches=parser.catalogSearch(query,products),found=matches.slice(0,12);
+      const more=$('#manual-mode>a');more.href='?q='+encodeURIComponent(query);more.textContent=matches.length>12?`Ver los ${matches.length} resultados →`:'Ver resultados en el catálogo →';
+      $('#manual-count').textContent=found.length?`${found.length} de ${matches.length} ${matches.length===1?'resultado':'resultados'}. Revisa el producto y su presentación.`:'No encontramos coincidencias. Prueba otro nombre o deja el material pendiente desde «Pegar mi lista».';
       $('#manual-results').innerHTML=found.map(p=>`<article class="manual-product"><a href="?producto=${p.id}" data-product="${p.id}"><img src="${escape(p.image)}" width="64" height="64" alt="${escape(p.title)}"></a><div><p class="product-brand">${escape(p.brand || 'Albañil')}</p><h3><a href="?producto=${p.id}" data-product="${p.id}">${escape(p.title)}</a></h3><p class="manual-reference">Ref. ${escape(p.reference||p.id)} · ${price(p)}</p></div><div class="manual-add"><label class="sr-only" for="manual-qty-${p.id}">Cantidad de ${escape(p.title)}</label><input id="manual-qty-${p.id}" type="number" min="${parser.fractionalUnit(p.unit)?0.01:1}" max="999999" step="${parser.fractionalUnit(p.unit)?0.01:1}" value="1" inputmode="${parser.fractionalUnit(p.unit)?'decimal':'numeric'}"><button class="secondary-button" type="button" data-manual-add="${p.id}">Agregar</button></div></article>`).join('');
     }
     $('#builder-search-form').addEventListener('submit',event=>{event.preventDefault();searchManual();});

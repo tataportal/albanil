@@ -22,7 +22,7 @@
  }
  function renderProducts(){
   const q=normalize($('#product-search').value).trim(),state=$('#stock-filter').value;
-  const found=products.filter(p=>(!q||q.split(/\s+/).every(word=>normalize(`${p.id} ${p.reference||''} ${p.sku||''} ${p.title} ${p.brand||''} ${p.category||''}`).includes(word)))&&(!state||p.availability===state));
+  const found=AlbanilListParser.catalogSearch(q,products).filter(p=>!state||p.availability===state);
   $('#product-count').textContent=`${Math.min(limit,found.length)} de ${found.length} productos`;
   $('#product-rows').innerHTML=found.slice(0,limit).map(p=>`<tr><td><div class="table-product"><img src="../${esc(p.image)}" alt="" width="50" height="50"><div><strong>${esc(p.title)}</strong><small>${p.state==='INACTIVO'?'Oculto · ':''}${esc(p.brand)} · ${p.sku?`SKU ${esc(p.sku)}`:`Ref. ${esc(p.reference||p.id)}`}</small></div></div></td><td>${money(p)}${p.currency==='USD'?`<small>En la web: ${AlbanilPricing.label(AlbanilPricing.apply(p,exchangeRate.rate))}</small>`:''}<small>${esc(p.unit||'')}</small></td><td>${p.stock===null?'—':esc(p.stock)}</td><td><span class="availability" data-state="${esc(p.availability)}">${esc(p.availability==='Por confirmar'?'Stock sin registrar':p.availability)}</span></td><td><button class="secondary-button" data-edit="${p.id}" aria-label="Editar ${esc(p.title)}">Editar</button></td></tr>`).join('')||'<tr><td colspan="5">No encontramos productos con esos filtros.</td></tr>';
   $('#more-products').hidden=limit>=found.length;$('#more-products').textContent=`Ver ${Math.min(30,found.length-limit)} más`;
@@ -47,8 +47,8 @@
  });
  const pending=r=>!['Terminada','Cerrada','Cotizada'].includes(r.status)&&(r.status==='Cotización parcial'||r.items.some(i=>i.pending||i.quantity===null)||!r.items.length);
  function renderRequests(){
-  const q=normalize($('#request-search').value),state=$('#request-filter').value;
-  const found=requests.filter(r=>(!state||(state==='pending'?pending(r):r.status===state))&&normalize(`${r.reference} ${r.customer.name} ${r.customer.phone} ${r.customer.company}`).includes(q));
+  const q=normalize($('#request-search').value).trim(),state=$('#request-filter').value;
+  const found=requests.filter(r=>(!state||(state==='pending'?pending(r):r.status===state))&&q.split(/\s+/).filter(Boolean).every(word=>normalize(`${r.reference} ${r.customer.name} ${r.customer.phone} ${String(r.customer.phone||'').replace(/\D/g,'')} ${r.customer.company||''} ${r.agent||''}`).includes(word)));
   $('#stat-new').textContent=requests.filter(r=>r.status==='Nueva').length;$('#stat-active').textContent=requests.filter(r=>r.status==='En atención').length;$('#stat-pending').textContent=requests.filter(pending).length;$('#request-count').textContent=`${found.length} solicitudes · ordenadas por llegada`;
   $('#new-count').textContent=requests.filter(r=>r.status==='Nueva').length||'';
   $('#request-rows').innerHTML=found.map(r=>`<article class="request-row"><div><p>${esc(r.reference)} · ${esc(new Date(r.created_at).toLocaleString('es-PE'))}</p><h2>${esc(r.customer.name)}</h2><p>${r.items.length} materiales · ${(r.attachments||[]).length} archivos · ${esc(r.status)}${r.agent?' · '+esc(r.agent):' · Sin asignar'}</p></div><button class="secondary-button" data-request="${esc(r.reference)}" aria-label="Ver solicitud ${esc(r.reference)}">Ver solicitud →</button></article>`).join('')||'<p class="admin-intro">No hay solicitudes para mostrar.</p>';
