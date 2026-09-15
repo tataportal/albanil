@@ -26,7 +26,9 @@
   $('#builder-summary-empty').hidden=!!(rows.length||files.length||typed);
   $('#builder-summary-items').innerHTML=rows.slice(0,5).map(r=>`<li><span>${esc(r.material)}</span><strong>${esc(r.quantity)} ${esc(r.unit)}</strong></li>`).join('');
   $('#builder-summary-more').textContent=rows.length>5?`Y ${rows.length-5} materiales más.`:'';
-  $('#intake-prepare').disabled=busy||sending||!window.AlbanilIntakeBridge||!(rows.length||files.length||typed);
+  const unavailable=busy||sending||!window.AlbanilIntakeBridge||!(rows.length||files.length||typed);
+  $('#intake-prepare').disabled=unavailable;
+  $('#intake-register-form button[type=submit]').disabled=unavailable;
  }
  document.addEventListener('albanil-list-change',syncSummary);
  async function extract(item){
@@ -58,7 +60,7 @@
   }note(errors.join(' '));}finally{busy=false;event.target.value='';renderFiles();}
  });
  $('#intake-files').addEventListener('click',e=>{const b=e.target.closest('[data-file-remove]');if(!b||busy)return;files=files.filter(f=>f.id!==b.dataset.fileRemove);persist();renderFiles();});
- async function prepare(){
+ async function prepare({review=true}={}){
   if(busy||sending)return;await ready;const bridge=window.AlbanilIntakeBridge;if(!bridge){note('El catálogo todavía está cargando. Inténtalo nuevamente.');return;}
   const raw=$('#paste-list').value.trim();let rows=collectRows();
   for(const r of rows){const found=/[a-záéíóúñ]{2}/i.test(r.material)?AlbanilListParser.search(r.material,bridge.products,3):[];r.status=r.productId?'Producto seleccionado':found.length?'Coincidencias por revisar':'El asesor buscará este material';r.suggestions=found.map(p=>({id:p.id,title:p.title,brand:p.brand}));}
@@ -68,8 +70,9 @@
   packet={reference:'ALB-'+crypto.randomUUID().slice(0,8).toUpperCase(),rows,files:[...files],raw};
   renderPreview();
   $('#intake-share').hidden=!(navigator.share&&navigator.canShare);$('#intake-copy-text').hidden=true;$('#intake-whatsapp-short').hidden=true;$('#intake-delivery-status').textContent='Todavía no se ha enviado a la tienda.';
-  document.querySelectorAll('dialog[open]').forEach(d=>d.close());$('#intake-dialog').showModal();
-  if(receiver){$('#intake-share').hidden=true;$('#intake-manual-actions').hidden=true;$('#intake-transfer-note').hidden=true;$('#intake-manual-instructions').hidden=true;$('#intake-delivery-status').textContent='Guarda la solicitud para obtener un número. Los archivos quedarán incluidos.';}
+  if(review){document.querySelectorAll('dialog[open]').forEach(d=>d.close());$('#intake-dialog').showModal();}
+  if(receiver){$('#intake-share').hidden=true;$('#intake-manual-actions').hidden=true;$('#intake-transfer-note').hidden=true;$('#intake-manual-instructions').hidden=true;$('#intake-delivery-status').textContent='Los cambios se guardan en tu lista. Completa tus datos en la página para enviarla.';}
+  return true;
  }
  function renderPreview(){
   const rowGroups=[['Productos seleccionados',[]],['Coincidencias por revisar',[]],['Sin coincidencia en el catálogo · el asesor gestionará la búsqueda',[]]];
@@ -90,11 +93,13 @@
  $('#intake-whatsapp').addEventListener('click',e=>{const text=message();if(encodeURIComponent(text).length>6000){e.preventDefault();$('#intake-copy').click();$('#intake-whatsapp-short').hidden=false;$('#intake-delivery-status').textContent='Por el tamaño de la lista, copia la solicitud y pégala en el chat. Adjunta allí tus archivos originales.';return;}e.currentTarget.href='https://wa.me/51968406042?text='+encodeURIComponent(text);});
 
  const register=$('#intake-register-form');
+ register.hidden=!receiver;
  register.elements.delivery.addEventListener('change',()=>{register.elements.destination.required=register.elements.delivery.value==='entrega';});
  function encodeFile(blob){return new Promise((resolve,reject)=>{const reader=new FileReader();reader.onload=()=>resolve(reader.result.split(',')[1]);reader.onerror=()=>reject(Error('No se pudo leer un archivo. Vuelve a cargarlo.'));reader.readAsDataURL(blob);});}
  register.addEventListener('submit',async event=>{
-  event.preventDefault();if(sending||!packet||!register.reportValidity())return;sending=true;const button=register.querySelector('button[type=submit]');button.disabled=true;button.textContent='Guardando solicitud…';$('#intake-register-error').textContent='';
-  const inputs=[...$('#intake-rows').querySelectorAll('input,textarea')];inputs.forEach(i=>i.disabled=true);
+  event.preventDefault();if(sending||busy||!register.reportValidity())return;
+  if(!await prepare({review:false})||sending)return;sending=true;const button=register.querySelector('button[type=submit]');button.disabled=true;button.textContent='Guardando solicitud…';$('#intake-register-error').textContent='';
+  const inputs=[...document.querySelectorAll('#intake-rows input,#intake-rows textarea,#list-view input,#list-view textarea,#list-view select,#list-view button')].filter(i=>!register.contains(i));const previouslyDisabled=new Map(inputs.map(i=>[i,i.disabled]));inputs.forEach(i=>i.disabled=true);
   try{
    const values=Object.fromEntries(new FormData(register));const customer={name:values.name,phone:values.phone,company:values.company||'',delivery:values.delivery,destination:values.destination||''};
    if(!packet.rows.length&&!packet.files.length)throw Error('Agrega al menos un material o archivo.');
@@ -108,8 +113,8 @@
    if(typeof result.reference!=='string'||!/^ALB-[A-Z0-9-]+$/.test(result.reference))throw Error('No recibimos el número de solicitud. Intenta guardar nuevamente.');
    packet.reference=result.reference;$('#intake-saved-reference').textContent=result.reference;$('#intake-saved-whatsapp').href='https://wa.me/51968406042?text='+encodeURIComponent(`Hola, quiero dar seguimiento a mi solicitud de cotización N.º ${result.reference}. Mi lista y archivos están registrados en la plataforma. ¿Me puede atender un asesor?`);
    register.hidden=true;$('#intake-saved').hidden=false;$('#intake-delivery-status').textContent='Solicitud guardada. Continúa por WhatsApp con el número de referencia.';$('#intake-saved').scrollIntoView({block:'nearest'});
-  }catch(error){$('#intake-register-error').textContent=error.message;inputs.forEach(i=>i.disabled=false);}
-  finally{sending=false;button.disabled=false;button.textContent='Guardar solicitud';}
+  }catch(error){$('#intake-register-error').textContent=error.message;inputs.forEach(i=>i.disabled=previouslyDisabled.get(i));}
+  finally{sending=false;inputs.forEach(i=>i.disabled=previouslyDisabled.get(i));button.textContent='Enviar solicitud al asesor';syncSummary();}
  });
- if(['127.0.0.1','localhost'].includes(location.hostname))fetch('/api/health').then(r=>r.ok?r.json():null).then(data=>{if(data?.requests){receiver=true;$('#intake-transfer-note').hidden=true;$('#intake-manual-instructions').hidden=true;$('#intake-manual-actions').hidden=true;$('#intake-register-form').hidden=!packet;}}).catch(()=>{});
+ if(['127.0.0.1','localhost'].includes(location.hostname))fetch('/api/health').then(r=>r.ok?r.json():null).then(data=>{if(data?.requests){receiver=true;$('#intake-transfer-note').hidden=true;$('#intake-manual-instructions').hidden=true;$('#intake-manual-actions').hidden=true;$('#intake-register-form').hidden=false;}}).catch(()=>{});
 })();
