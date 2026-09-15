@@ -101,15 +101,15 @@
 #home-content .sector-card:nth-child(even){border-top-color:var(--olive)}
 .sector-card>.icon{color:var(--teal)}
 #home-content .sector-card:hover{background:var(--hover)}
-#home-content .sourcing-help{background:var(--aqua);color:#263c35;border:0;border-radius:6px;padding:28px 30px;margin-top:32px}
-#home-content .sourcing-help p{color:#304d45}
-#home-content .sourcing-help .secondary-button{background:#fff;color:#263c35;border-color:#5a756e}
+:is(#home-content,#list-view) .sourcing-help{background:var(--aqua);color:#263c35;border:0;border-radius:6px;padding:28px 30px;margin-top:32px}
+:is(#home-content,#list-view) .sourcing-help p{color:#304d45}
+:is(#home-content,#list-view) .sourcing-help .secondary-button{background:#fff;color:#263c35;border-color:#5a756e}
 .step-number{background:var(--olive);color:#17220c}
 .site-footer{background:#3f5a50;color:#fff;border-top:4px solid var(--olive)}
 .site-footer .footer-main p,.site-footer .footer-note{color:#e0ede7}
 .site-footer .footer-note{border-color:#668579}
 .add-button{border-color:#9eaf83}
-@media(max-width:639px){#home-content .sourcing-help{padding:24px 20px}.order-hero{box-shadow:none}}
+@media(max-width:639px){:is(#home-content,#list-view) .sourcing-help{padding:24px 20px}.order-hero{box-shadow:none}}
 
 /* The hero presents the list tool; both entry points open the same builder. */
 .order-hero{min-height:355px}.hero-copy h1{font-size:clamp(35px,3.7vw,56px)}
