@@ -117,7 +117,7 @@
 @media(max-width:639px){.order-hero{min-height:0}.hero-copy h1 br{display:none}}
 
 /* Both supplied banners include lettering; keep one accessible HTML heading. */
-.order-hero-banner{position:relative;display:block;aspect-ratio:1803/509;min-height:0;padding:0;overflow:hidden;border:0;background:#526c2b url('assets/banner2.webp') center/cover no-repeat}
+.order-hero-banner{position:relative;display:block;aspect-ratio:1803/509;min-height:0;padding:0;overflow:hidden;border:0;background:#526c2b url('assets/banner-2-linked.webp') center/cover no-repeat}
 .order-hero-banner .hero-copy h1,.order-hero-banner .hero-copy>p{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
 .order-hero-banner .hero-actions{position:absolute;left:3.2%;bottom:4%;margin:0}
 @media(max-width:1023px){
@@ -129,3 +129,5 @@
 .site-footer .footer-main{gap:20px;padding-block:30px;padding-right:72px}
 .site-footer .footer-email{font-size:14px;text-decoration:underline;text-underline-offset:4px}
 @media(max-width:639px){.site-footer .footer-main{gap:12px}}
+
+.order-hero-banner .banner-link{position:absolute;inset:0;display:block;border-radius:inherit}.order-hero-banner .banner-link:focus-visible{outline:3px solid #263c35;outline-offset:-5px}.banner-mobile-cta{display:none}@media(max-width:1023px){.banner-mobile-cta{display:flex;justify-content:space-between;position:absolute;left:22px;right:22px;bottom:20px;padding:18px 26px;background:var(--brand);color:#263c35;font-size:21px;font-weight:600;border-radius:4px;box-shadow:0 3px 0 #40584f}}
