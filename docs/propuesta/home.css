@@ -121,7 +121,7 @@
 .order-hero-banner .hero-copy h1,.order-hero-banner .hero-copy>p{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap}
 .order-hero-banner .hero-actions{position:absolute;left:3.2%;bottom:4%;margin:0}
 @media(max-width:1023px){
- .order-hero-banner{aspect-ratio:902/817;background-image:url('assets/list-banner-mobile.webp')}
+ .order-hero-banner{aspect-ratio:902/981;background-image:url('assets/banner-mobile-2.webp')}
  .order-hero-banner .hero-actions{left:22px;right:22px;bottom:20px}
  .order-hero-banner .order-start{width:100%}
 }
@@ -130,7 +130,7 @@
 .site-footer .footer-email{font-size:14px;text-decoration:underline;text-underline-offset:4px}
 @media(max-width:639px){.site-footer .footer-main{gap:12px}}
 
-.order-hero-banner .banner-link{position:absolute;inset:0;display:block;border-radius:inherit}.order-hero-banner .banner-link:focus-visible{outline:3px solid #263c35;outline-offset:-5px}.banner-mobile-cta{display:none}@media(max-width:1023px){.banner-mobile-cta{display:flex;justify-content:space-between;position:absolute;left:22px;right:22px;bottom:20px;padding:18px 26px;background:var(--brand);color:#263c35;font-size:21px;font-weight:600;border-radius:4px;box-shadow:0 3px 0 #40584f}}
+.order-hero-banner .banner-link{position:absolute;inset:0;display:block;border-radius:inherit}.order-hero-banner .banner-link:focus-visible{outline:3px solid #263c35;outline-offset:-5px}
 
 /* One input area, one summary, one review action. */
 #upload-mode{padding:30px;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius)}
