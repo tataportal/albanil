@@ -64,5 +64,15 @@
     "file": "marcas-cliente.png",
     "source": "Imagen de marcas proporcionada por el cliente, 15 septiembre 2026",
     "note": "Tumi se muestra con una ventana CSS del original sin editar. Beferplast no se muestra."
+  },
+  {
+    "file": "brochas-tumi-cliente.png",
+    "source": "Logo proporcionado por el cliente, 15 septiembre 2026",
+    "note": "Archivo original completo, sin recorte ni recreación."
+  },
+  {
+    "file": "cemento-andino-cliente.png",
+    "source": "Logo proporcionado por el cliente, 15 septiembre 2026",
+    "note": "Archivo original completo, sin recorte ni recreación."
   }
 ]

@@ -98,11 +98,13 @@
 .company-brands-wrap .brands-featured img{height:108px;max-width:230px;width:100%;object-fit:contain}
 .company-brands-wrap .about-brands .brands-secondary{grid-template-columns:repeat(6,minmax(0,1fr));gap:28px;margin-top:52px;padding-top:34px;border-top:1px solid var(--line,#dbe3de)}
 .company-brands-wrap .brands-secondary img{height:54px;max-width:145px;object-fit:contain}
-.company-brands-wrap .brand-tumi{position:relative;overflow:hidden;width:165px;max-width:100%;aspect-ratio:113/66}
-.company-brands-wrap .brand-tumi img{position:absolute;display:block;width:421.23894%;max-width:none;height:auto;left:-86.72566%;top:-557.57576%;object-fit:initial}
-@media(max-width:800px){.company-brands-wrap .about-brands .brands-featured{grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 24px}.company-brands-wrap .brands-featured li{grid-column:auto;min-height:90px}.company-brands-wrap .brands-featured li:nth-child(5){grid-column:auto}.company-brands-wrap .brands-featured li:last-child{grid-column:1/-1;justify-self:center;width:50%}.company-brands-wrap .brands-featured img{height:86px}.company-brands-wrap .brand-tumi img{height:auto}.company-brands-wrap .about-brands .brands-secondary{grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}.company-brands-wrap .brands-secondary img{height:45px}}
-@media(max-width:420px){.company-brands-wrap .brands-featured img{height:72px}.company-brands-wrap .brand-tumi{width:125px}.company-brands-wrap .brand-tumi img{height:auto}.company-brands-wrap .brands-secondary img{height:36px}}
+
+
+@media(max-width:800px){.company-brands-wrap .about-brands .brands-featured{grid-template-columns:repeat(2,minmax(0,1fr));gap:28px 24px}.company-brands-wrap .brands-featured li{grid-column:auto;min-height:90px}.company-brands-wrap .brands-featured li:nth-child(5){grid-column:auto}.company-brands-wrap .brands-featured li:last-child{grid-column:1/-1;justify-self:center;width:50%}.company-brands-wrap .brands-featured img{height:86px}.company-brands-wrap .about-brands .brands-secondary{grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}.company-brands-wrap .brands-secondary img{height:45px}}
+@media(max-width:420px){.company-brands-wrap .brands-featured img{height:72px}.company-brands-wrap .brands-secondary img{height:36px}}
 
 .company-brands-wrap .brand-sider{position:relative;overflow:hidden;width:230px;max-width:100%;aspect-ratio:215/65}.company-brands-wrap .brand-sider img{position:absolute;width:211.62791%;max-width:none;height:auto;left:-111.62791%;top:0;object-fit:initial}
 
 .company-services-heading h2.company-kicker{font-size:11px;line-height:1.4;letter-spacing:2px;margin:0}
+
+.company-brands-wrap .brands-secondary img.brand-andino{height:86px;width:86px;max-width:100%;object-fit:contain}
