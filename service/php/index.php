@@ -2,6 +2,7 @@
 declare(strict_types=1);
 require __DIR__.'/lib.php';
 require __DIR__.'/products.php';
+require __DIR__.'/banners.php';
 require __DIR__.'/complaints.php';
 require __DIR__.'/retention.php';
 header('Cache-Control: no-store');header('X-Content-Type-Options: nosniff');header('Referrer-Policy: no-referrer');
@@ -26,7 +27,10 @@ try {
         query('INSERT INTO sessions(token_hash,expires_at,username) VALUES(?,?,?)',[hash('sha256',$token),time()+8*3600,$u['username']]);respond(['token'=>$token,'user'=>publicUser($u)]);
     }
     if(preg_match('#^/products/(\d+)/image$#D',$path,$m)&&$method==='GET')productImage((int)$m[1]);
+    if($path==='/banners'&&$method==='GET')respond(bannerList());
+    if(preg_match('#^/banner-images/([a-f0-9]{64})$#D',$path,$m)&&$method==='GET')bannerImage($m[1]);
     $session=sessionHash();
+    if(preg_match('#^/banners/([a-z-]+)$#D',$path,$m)&&$method==='PATCH')saveBanner($m[1]);
     if($path==='/logout'&&$method==='POST'){query('DELETE FROM sessions WHERE token_hash=?',[$session]);respond(['ok'=>true]);}
     if($path==='/me'&&$method==='GET')respond(publicUser($GLOBALS['actor']));
     if(str_starts_with($path,'/products'))requirePermission('products');

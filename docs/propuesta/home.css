@@ -168,3 +168,6 @@
 #list-view #builder-summary-items,#list-view #builder-summary-more{display:none}#list-view #intake-prepare{background:transparent;border:1px solid #9cafa5;color:var(--ink)}
 @media(min-width:901px) and (max-width:1023px){#list-view .builder-layout{grid-template-columns:minmax(0,1fr) 330px}}
 @media(max-width:900px){#list-view .builder-layout{grid-template-columns:1fr}}
+
+.order-hero-banner{background-image:var(--banner-desktop,url('assets/banner-2-linked.webp'));aspect-ratio:var(--banner-ratio,1803/509)}
+@media(max-width:700px){.order-hero-banner{background-image:var(--banner-mobile,url('assets/banner-mobile-2.webp'));aspect-ratio:var(--banner-mobile-ratio,902/981)}}
