@@ -35,8 +35,8 @@
 .company-service-grid article{border-top:3px solid var(--brand);padding-top:18px}
 .company-service-grid h3{font-size:22px;line-height:1.2;margin-bottom:12px}
 .company-service-grid p{font-size:16px;line-height:1.6;color:var(--muted)}
-.company-promise{background:var(--brand);color:#263c35;padding-block:60px}
-.company-promise h2{font-size:clamp(46px,7vw,100px);font-weight:700;line-height:1;letter-spacing:-2.5px;margin:0;max-width:1100px}
+.company-promise{background:var(--brand);color:#263c35;padding-block:60px;text-align:center}
+.company-promise h2{font-size:clamp(46px,7vw,100px);font-weight:700;line-height:1;letter-spacing:-2.5px;margin:0 auto;max-width:1100px}
 .company-promise p{font-size:21px;line-height:1.5;margin-top:24px}
 .company-coverage{background:#263c35;color:white}
 .company-coverage .company-kicker{color:#c7d4ce;margin-bottom:20px}
@@ -104,3 +104,5 @@
 @media(max-width:420px){.company-brands-wrap .brands-featured img{height:72px}.company-brands-wrap .brand-tumi{width:125px}.company-brands-wrap .brand-tumi img{height:auto}.company-brands-wrap .brands-secondary img{height:36px}}
 
 .company-brands-wrap .brand-sider{position:relative;overflow:hidden;width:230px;max-width:100%;aspect-ratio:215/65}.company-brands-wrap .brand-sider img{position:absolute;width:211.62791%;max-width:none;height:auto;left:-111.62791%;top:0;object-fit:initial}
+
+.company-services-heading h2.company-kicker{font-size:11px;line-height:1.4;letter-spacing:2px;margin:0}
