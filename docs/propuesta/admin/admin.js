@@ -21,8 +21,8 @@
   if(!response.ok)throw new Error(data.error||'No pudimos completar la operación.');return data;
  }
  function renderProducts(){
-  const q=normalize($('#product-search').value),state=$('#stock-filter').value;
-  const found=products.filter(p=>(!q||normalize(`${p.id} ${p.reference||''} ${p.sku} ${p.title} ${p.brand}`).includes(q))&&(!state||p.availability===state));
+  const q=normalize($('#product-search').value).trim(),state=$('#stock-filter').value;
+  const found=products.filter(p=>(!q||q.split(/\s+/).every(word=>normalize(`${p.id} ${p.reference||''} ${p.sku||''} ${p.title} ${p.brand||''} ${p.category||''}`).includes(word)))&&(!state||p.availability===state));
   $('#product-count').textContent=`${Math.min(limit,found.length)} de ${found.length} productos`;
   $('#product-rows').innerHTML=found.slice(0,limit).map(p=>`<tr><td><div class="table-product"><img src="../${esc(p.image)}" alt="" width="50" height="50"><div><strong>${esc(p.title)}</strong><small>${p.state==='INACTIVO'?'Oculto · ':''}${esc(p.brand)} · ${p.sku?`SKU ${esc(p.sku)}`:`Ref. ${esc(p.reference||p.id)}`}</small></div></div></td><td>${money(p)}${p.currency==='USD'?`<small>En la web: ${AlbanilPricing.label(AlbanilPricing.apply(p,exchangeRate.rate))}</small>`:''}<small>${esc(p.unit||'')}</small></td><td>${p.stock===null?'—':esc(p.stock)}</td><td><span class="availability" data-state="${esc(p.availability)}">${esc(p.availability==='Por confirmar'?'Stock sin registrar':p.availability)}</span></td><td><button class="secondary-button" data-edit="${p.id}" aria-label="Editar ${esc(p.title)}">Editar</button></td></tr>`).join('')||'<tr><td colspan="5">No encontramos productos con esos filtros.</td></tr>';
   $('#more-products').hidden=limit>=found.length;$('#more-products').textContent=`Ver ${Math.min(30,found.length-limit)} más`;
