@@ -28,5 +28,40 @@
     "file": "pavco-wavin.png",
     "asset": "https://mediahub.wavin.com/transform/034e06ea-edb2-4dfc-863c-15d3e713defb/Pavco_Wavin_logo_Blue",
     "source": "https://wavin.com/pe"
+  },
+  {
+    "file": "milwaukee.svg",
+    "source": "https://www.milwaukeetool.com/",
+    "note": "SVG oficial del encabezado."
+  },
+  {
+    "file": "total.png",
+    "source": "proveedores/DIPTICO 2026.cdr.zip",
+    "note": "Logo incrustado del panel de marcas."
+  },
+  {
+    "file": "rodillos-toro.png",
+    "source": "proveedores/DIPTICO 2026.cdr.zip",
+    "note": "Logo incrustado del panel de marcas."
+  },
+  {
+    "file": "stanley.png",
+    "source": "https://pe.stanleytools.global/",
+    "asset": "https://pe.stanleytools.global/sites/g/files/xnuzat431/files/stanley%402x.png"
+  },
+  {
+    "file": "siderperu.png",
+    "source": "https://www.siderperu.com.pe/",
+    "asset": "https://www.siderperu.com.pe/themes/custom/pe_gerdau/images/menu/logo-siderperu-vermelho.png"
+  },
+  {
+    "file": "holcim.svg",
+    "source": "https://www.holcim.com.pe/",
+    "asset": "https://www.holcim.com.pe/themes/custom/corporate/components/header/images/holcim_logo_color.svg"
+  },
+  {
+    "file": "marcas-cliente.png",
+    "source": "Imagen de marcas proporcionada por el cliente, 15 septiembre 2026",
+    "note": "Tumi se muestra con una ventana CSS del original sin editar. Beferplast no se muestra."
   }
 ]
