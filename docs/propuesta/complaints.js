@@ -1,7 +1,7 @@
 'use strict';
 (()=>{
  const form=document.querySelector('#complaint-form'),error=document.querySelector('#complaint-error');let key='',lastBody='',receipt=null;
- if(location.hostname==='tataportal.github.io'){location.replace('https://albanil.pe/nueva/reclamaciones.html');return;}
+ if(location.hostname==='tataportal.github.io'){location.replace('https://albanil.pe/nueva/reclamaciones');return;}
  const api=new URL('api/complaints',location.href).href;
  function minor(){document.querySelector('#representative-label').hidden=!form.elements.minor.checked;form.elements.representative.required=form.elements.minor.checked;}
  form.elements.minor.addEventListener('change',minor);

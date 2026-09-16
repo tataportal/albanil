@@ -34,13 +34,7 @@ s=(target/'settings.js').read_text().replace("api:'https://albanil-settings.tata
 (target/'settings.js').write_text(s)
 api=target/'api';api.mkdir()
 for name in ['index.php','lib.php','products.php','complaints.php','retention.php','maintenance-schema.sql','complaints-schema.sql','schema.sql','.htaccess']:shutil.copy2(ROOT/'service/php'/name,api/name)
-(target/'.htaccess').write_text('''Options -Indexes
-DirectoryIndex index.html
-AddHandler application/x-httpd-ea-php83 .php
-<IfModule mod_headers.c>
-Header always set X-Content-Type-Options "nosniff"
-</IfModule>
-''')
+shutil.copy2(ROOT/'docs/propuesta/.htaccess',target/'.htaccess')
 (target/'.user.ini').write_text('''display_errors = Off
 log_errors = On
 error_log = /home/albanil/nueva-private/php-error.log

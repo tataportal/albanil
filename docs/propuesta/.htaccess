@@ -1,0 +1,14 @@
+Options -Indexes -MultiViews
+DirectoryIndex index.html
+AddHandler application/x-httpd-ea-php83 .php
+RewriteEngine On
+# Redirect only explicit browser requests, not the internal HTML rewrite.
+RewriteCond %{THE_REQUEST} \s/+[^?\s]*\.html(?:[?\s]) [NC]
+RewriteRule ^(nosotros|privacidad|reclamaciones)\.html$ /nueva/$1 [R=301,L,NE]
+RewriteCond %{THE_REQUEST} \s/+[^?\s]*index\.html(?:[?\s]) [NC]
+RewriteRule ^(admin/)?index\.html$ /nueva/$1 [R=301,L,NE]
+RewriteRule ^(nosotros|privacidad|reclamaciones)/$ /nueva/$1 [R=301,L,NE]
+RewriteRule ^(nosotros|privacidad|reclamaciones)$ $1.html [END]
+<IfModule mod_headers.c>
+Header always set X-Content-Type-Options "nosniff"
+</IfModule>
