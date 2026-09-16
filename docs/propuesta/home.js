@@ -46,6 +46,7 @@
       const saved = JSON.parse(localStorage.getItem(IMPORT_STORE) || '[]');
       imported = Array.isArray(saved) ? saved.filter(row=>row && typeof row.id==='string' && typeof row.original==='string' && AlbanilListParser.validQuantity(row.quantity)).map(row=>({id:row.id,original:row.original,query:String(row.query || row.original),unit:String(row.unit || ''),quantity:Number(row.quantity),productId:byId.has(Number(row.productId)) ? Number(row.productId) : null})) : [];
     } catch { imported = []; }
+    if(window.AlbanilIntakeBridge)window.AlbanilIntakeBridge.restored=true;
     renderQuote();
   }
   function updateCount() {
@@ -57,7 +58,19 @@
     });
   }
   function getQuoteSummary() {
-    return [...Object.entries(quote).map(([id,quantity])=>({productId:Number(id),title:byId.get(Number(id))?.title || '',quantity,unit:byId.get(Number(id))?.unit||''})), ...imported.map(row=>({productId:row.productId??null,title:byId.get(row.productId)?.title || row.query,quantity:row.quantity,unit:row.unit}))];
+    return [...Object.entries(quote).map(([id,quantity])=>({sourceKey:'product:'+id,productId:Number(id),title:byId.get(Number(id))?.title || '',quantity,unit:byId.get(Number(id))?.unit||''})), ...imported.map(row=>({sourceKey:'import:'+row.id,productId:row.productId??null,title:byId.get(row.productId)?.title || row.query,quantity:row.quantity,unit:row.unit}))];
+  }
+  function updateListItem(sourceKey,change) {
+    if(sourceKey.startsWith('product:')){
+      const id=sourceKey.slice(8),product=byId.get(Number(id));if(!product||quote[id]==null)return false;
+      if(change.removed)delete quote[id];
+      else if(change.quantity!==undefined){if(!validQuantity(change.quantity,product.unit))return false;quote[id]=roundQuantity(change.quantity);}
+    }else if(sourceKey.startsWith('import:')){
+      const id=sourceKey.slice(7),row=imported.find(r=>r.id===id);if(!row)return false;
+      if(change.removed)imported=imported.filter(r=>r.id!==id);
+      else {if(change.quantity!==undefined){if(!validQuantity(change.quantity,change.unit||row.unit))return false;row.quantity=roundQuantity(change.quantity);}if(change.unit!==undefined)row.unit=change.unit;if(change.material!==undefined){row.query=change.material;row.productId=null;}}
+    }else return false;
+    persist();return true;
   }
   function openDialog(name) {
     const target = $(`#${name}-dialog`);
@@ -98,7 +111,7 @@
     return `inputmode="${fraction?'decimal':'numeric'}" min="${fraction?0.01:1}" max="999999" step="${fraction?0.01:1}"`;
   }
   function requestItems() {
-    return [...Object.entries(quote).map(([id,quantity])=>({productId:Number(id),title:byId.get(Number(id)).title,quantity,unit:byId.get(Number(id)).unit||'',original:''})), ...imported.map(row=>({productId:row.productId,title:byId.get(row.productId)?.title||row.query,quantity:row.quantity,unit:row.unit||byId.get(row.productId)?.unit||'',original:row.original}))];
+    return [...Object.entries(quote).map(([id,quantity])=>({sourceKey:'product:'+id,productId:Number(id),title:byId.get(Number(id)).title,quantity,unit:byId.get(Number(id)).unit||'',original:''})), ...imported.map(row=>({productId:row.productId,title:byId.get(row.productId)?.title||row.query,quantity:row.quantity,unit:row.unit||byId.get(row.productId)?.unit||'',original:row.original}))];
   }
   function card(product) {
     return `<article class="product-card"><a class="product-image" href="?producto=${product.id}" data-product="${product.id}"><img src="${escape(product.image)}" alt="${escape(product.title)}" width="480" height="480" loading="lazy"></a><div class="product-body"><p class="product-brand">${escape(product.brand || 'Albañil')}</p><h3><a href="?producto=${product.id}" data-product="${product.id}">${escape(product.title)}</a></h3><p class="product-price">${productPrice(product)}</p>${product.availability?`<p class="product-stock">${escape(product.availability==='Por confirmar'?'Consultar stock':product.availability)}</p>`:''}<button class="add-button" data-add="${product.id}" aria-label="Agregar a mi lista: ${escape(product.title)}">${icon('plus')} Agregar a mi lista</button></div></article>`;
@@ -364,7 +377,7 @@
       if (!listBuilder) listBuilder = createAlbanilListBuilder({products:catalog.products,addProduct,escape,notify,getSummary:getQuoteSummary,addImported(rows){imported.push(...rows);persist();renderQuote();}});
       if(!requestBuilder)requestBuilder=createAlbanilRequest({getItems:requestItems,service:service||!!window.AlbanilSettings?.api,escape,notify});
       if(service && !document.querySelector('.featured-group'))document.querySelectorAll('.featured-slide').forEach((slide,index)=>{slide.innerHTML=catalog.featured.slice(index*6,index*6+6).map(id=>card(byId.get(id))).join('');});
-      window.AlbanilIntakeBridge = {summary:getQuoteSummary,draft:()=>listBuilder.draft(),products:catalog.products};
+      window.AlbanilIntakeBridge = {summary:getQuoteSummary,update:updateListItem,draft:()=>listBuilder.draft(),products:catalog.products};
       document.dispatchEvent(new Event('albanil-list-change'));
       restore(); renderRoute();
       document.querySelectorAll('[data-add]').forEach((button) => { button.disabled = false; });

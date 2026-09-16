@@ -20,9 +20,18 @@
  const ready=new Promise(resolve=>{const req=indexedDB.open('albanil-intake-v1',1);req.onupgradeneeded=()=>req.result.createObjectStore('files',{keyPath:'id'});req.onsuccess=()=>{db=req.result;const r=db.transaction('files').objectStore('files').getAll();r.onsuccess=async()=>{files=r.result;busy=true;renderFiles();try{for(const f of files){if(f.readerVersion!==3)await extract(f);}persist();}finally{busy=false;renderFiles();resolve();}};r.onerror=resolve;};req.onerror=()=>{note('Mantén esta pestaña abierta para conservar tus archivos.');resolve();};});
  function persist(){if(!db)return;const tx=db.transaction('files','readwrite'),s=tx.objectStore('files');s.clear();files.forEach(f=>s.put(f));tx.onerror=()=>note('No se pudo guardar el archivo en este navegador. Conserva esta pestaña abierta.');}
  function renderFiles(){ $('#intake-files').innerHTML=files.map(f=>`<li><span><strong>${esc(f.name)}</strong><small>${esc(f.status)}</small>${f.warnings?.length?`<details><summary>Revisar lectura (${f.warnings.length})</summary>${f.warnings.map(w=>`<p>${esc(w)}</p>`).join('')}</details>`:''}</span><button type="button" class="text-link" data-file-remove="${f.id}" ${busy?'disabled':''}>Quitar</button></li>`).join('');syncSummary(); }
+ let migratedCatalogEdits=false;
  function collectRows(){
   const bridge=window.AlbanilIntakeBridge;
-  const rows=(bridge?.summary()||[]).map(r=>({_key:'catalog:'+JSON.stringify([r.productId,r.title,r.quantity,r.unit]),productId:r.productId??null,material:r.title,quantity:r.quantity,unit:r.unit||'',source:'Catálogo',status:r.productId?'Producto seleccionado':'Por identificar'}));
+  // Fold older drawer-only edits into the underlying list, then retire them.
+  if(!migratedCatalogEdits&&bridge?.restored){
+  for(const r of bridge.summary()){
+   const oldKey='catalog:'+JSON.stringify([r.productId,r.title,r.quantity,r.unit]),edit=edits.get(oldKey);
+   if(edit&&r.sourceKey&&bridge.update?.(r.sourceKey,edit)){edits.delete(oldKey);saveEdits();}
+  }
+  for(const key of edits.keys())if(key.startsWith('catalog:'))edits.delete(key);saveEdits();migratedCatalogEdits=true;
+  }
+  const rows=(bridge?.summary()||[]).map(r=>({_key:r.sourceKey||'catalog:'+JSON.stringify([r.productId,r.title,r.quantity,r.unit]),sourceKey:r.sourceKey,productId:r.productId??null,material:r.title,quantity:r.quantity,unit:r.unit||'',source:'Catálogo',status:r.productId?'Producto seleccionado':'Por identificar'}));
   const raw=$('#paste-list').value.trim(),draft=bridge?.draft?.();
   const sources=[{name:'Texto pegado',id:'text',rows:raw?(draft?.length?draft:raw.split(/\r?\n/).filter(s=>s.trim()).map(AlbanilListParser.parseLine)):[]},...files.map(f=>({name:f.name,id:f.id,rows:f.rows||[]}))];
   for(const source of sources)for(const [i,r] of source.rows.entries()){
@@ -125,8 +134,8 @@
  }
  $('#intake-prepare').addEventListener('click',prepare);
  document.addEventListener('click',e=>{if(e.target.closest('[data-intake-prepare]'))prepare();});
- $('#intake-rows').addEventListener('click',e=>{const b=e.target.closest('[data-intake-remove]');if(!b||sending||!$('#intake-saved').hidden)return;const r=packet.rows[Number(b.dataset.intakeRemove)];edits.set(r._key,{removed:true});saveEdits();packet.rows.splice(Number(b.dataset.intakeRemove),1);renderPreview();syncSummary();});
- $('#intake-rows').addEventListener('input',e=>{const i=e.target.dataset.intakeIndex,f=e.target.dataset.field;if(i!==undefined&&f){const r=packet.rows[+i];r[f]=e.target.value;const edit={...edits.get(r._key),[f]:e.target.value};if(f==='material'){r.productId=null;r.suggestions=[];edit.productId=null;}r.status='Editado por el cliente';edits.set(r._key,edit);saveEdits();validateRows();updateAmounts();syncSummary();}});
+ $('#intake-rows').addEventListener('click',e=>{const b=e.target.closest('[data-intake-remove]');if(!b||sending||!$('#intake-saved').hidden)return;const r=packet.rows[Number(b.dataset.intakeRemove)];if(r.sourceKey&&window.AlbanilIntakeBridge.update(r.sourceKey,{removed:true}))edits.delete(r._key);else edits.set(r._key,{removed:true});saveEdits();packet.rows.splice(Number(b.dataset.intakeRemove),1);renderPreview();syncSummary();});
+ $('#intake-rows').addEventListener('input',e=>{const i=e.target.dataset.intakeIndex,f=e.target.dataset.field;if(i!==undefined&&f){const r=packet.rows[+i];r[f]=e.target.value;const edit={...edits.get(r._key),[f]:e.target.value};if(f==='material'){r.productId=null;r.suggestions=[];edit.productId=null;}r.status='Editado por el cliente';if(r.sourceKey&&window.AlbanilIntakeBridge.update(r.sourceKey,edit))edits.delete(r._key);else edits.set(r._key,edit);saveEdits();validateRows();updateAmounts();syncSummary();}});
 
 
  function message(){return ['Hola, quisiera cotizar esta lista:',packet.reference,'',...packet.rows.map((r,i)=>`${i+1}. ${r.quantity||'Cantidad no indicada'} ${r.unit||''} | ${r.material}${r.suggestions?.length?'\n   Posibles coincidencias: '+r.suggestions.map(p=>p.title).join('; '):''}`),'',...packet.files.map(f=>`Archivo: ${f.name} (${f.status})`)].join('\n');}
