@@ -42,12 +42,7 @@
  function syncSummary(){
   const rows=collectRows(),typed=$('#paste-list').value.trim();
   document.dispatchEvent(new CustomEvent('albanil-list-count',{detail:rows.length||files.length}));
-  $('#builder-summary-count').textContent=`${rows.length} ${rows.length===1?'material':'materiales'} · ${files.length} ${files.length===1?'archivo':'archivos'}`;
-  $('#builder-summary-empty').hidden=!!(rows.length||files.length||typed);
-  $('#builder-summary-items').innerHTML=rows.slice(0,5).map(r=>`<li><span>${esc(r.material)}</span><strong>${esc(r.quantity)} ${esc(r.unit)}</strong></li>`).join('');
-  $('#builder-summary-more').textContent=rows.length>5?`Y ${rows.length-5} materiales más.`:'';
   const unavailable=!!savedSend()?.reference||busy||sending||!window.AlbanilIntakeBridge||!(rows.length||files.length||typed);
-  $('#intake-prepare').disabled=unavailable;
   $('#intake-register-form button[type=submit]').disabled=unavailable;
  }
  document.addEventListener('albanil-list-change',syncSummary);
@@ -75,7 +70,7 @@
   return {rows:[],warnings:[]};
  }
  $('#intake-upload').addEventListener('change',async event=>{
-  if(busy||sending)return;await ready;busy=true;note('');const errors=[];$('#intake-prepare').disabled=true;
+  if(busy||sending)return;await ready;busy=true;note('');const errors=[];
   try{for(const file of event.target.files){if(files.length>=5){errors.push('Máximo 5 archivos. Quita uno antes de agregar otro.');break;}if(file.size>10*1024*1024||files.reduce((s,f)=>s+f.blob.size,0)+file.size>20*1024*1024){errors.push('Máximo 10 MB por archivo y 20 MB en total.');continue;}if(!/\.(pdf|xlsx?|csv|jpe?g|png|webp)$/i.test(file.name)){errors.push('Usa PDF, Excel, CSV, JPG, PNG o WebP.');continue;}
    if(files.some(f=>f.name===file.name&&f.blob.size===file.size&&f.blob.lastModified===file.lastModified)){errors.push(file.name+': ya está adjunto.');continue;}
    const item={id:crypto.randomUUID(),name:file.name,blob:file,text:'',status:'Leyendo…'};files.push(item);renderFiles();note(`Leyendo ${file.name}…`);
@@ -132,7 +127,6 @@
    if(error&&first<0)first=i;
   }return first;
  }
- $('#intake-prepare').addEventListener('click',prepare);
  document.addEventListener('click',e=>{if(e.target.closest('[data-intake-prepare]'))prepare();});
  $('#intake-rows').addEventListener('click',e=>{const b=e.target.closest('[data-intake-remove]');if(!b||sending||!$('#intake-saved').hidden)return;const r=packet.rows[Number(b.dataset.intakeRemove)];if(r.sourceKey&&window.AlbanilIntakeBridge.update(r.sourceKey,{removed:true}))edits.delete(r._key);else edits.set(r._key,{removed:true});saveEdits();packet.rows.splice(Number(b.dataset.intakeRemove),1);renderPreview();syncSummary();});
  $('#intake-rows').addEventListener('input',e=>{const i=e.target.dataset.intakeIndex,f=e.target.dataset.field;if(i!==undefined&&f){const r=packet.rows[+i];r[f]=e.target.value;const edit={...edits.get(r._key),[f]:e.target.value};if(f==='material'){r.productId=null;r.suggestions=[];edit.productId=null;}r.status='Editado por el cliente';if(r.sourceKey&&window.AlbanilIntakeBridge.update(r.sourceKey,edit))edits.delete(r._key);else edits.set(r._key,edit);saveEdits();validateRows();updateAmounts();syncSummary();}});
