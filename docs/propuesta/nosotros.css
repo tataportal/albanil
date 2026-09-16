@@ -108,3 +108,9 @@
 .company-services-heading h2.company-kicker{font-size:11px;line-height:1.4;letter-spacing:2px;margin:0}
 
 .company-brands-wrap .brands-secondary img.brand-andino{height:86px;width:86px;max-width:100%;object-fit:contain}
+
+/* Eight principal brands: Sika next to Milwaukee. */
+.company-brands-wrap .brands-featured li:nth-child(5){grid-column:span 2}.company-brands-wrap .brands-secondary img.brand-crons{background:#17211e;padding:8px;box-sizing:content-box}
+@media(max-width:800px){.company-brands-wrap .brands-featured li:nth-child(5),.company-brands-wrap .brands-featured li:last-child{grid-column:auto;width:auto;justify-self:stretch}}
+
+.company-brands-wrap .brands-secondary img[src$="/cpp.svg"]{background:#c9252b;padding:8px 12px;box-sizing:content-box}

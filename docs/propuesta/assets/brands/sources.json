@@ -74,5 +74,27 @@
     "file": "cemento-andino-cliente.png",
     "source": "Logo proporcionado por el cliente, 15 septiembre 2026",
     "note": "Archivo original completo, sin recorte ni recreación."
+  },
+  {
+    "file": "sika.svg",
+    "source": "https://per.sika.com/"
+  },
+  {
+    "file": "cpp.svg",
+    "source": "https://www.cpp.com.pe/"
+  },
+  {
+    "file": "crons.webp",
+    "source": "https://pinturascrons.com/"
+  },
+  {
+    "file": "aceros-arequipa.svg",
+    "source": "https://www.acerosarequipa.com/",
+    "note": "SVG oficial blanco en azul para fondo blanco."
+  },
+  {
+    "file": "truper-wordmark.svg",
+    "source": "https://www.truper.com/",
+    "note": "Wordmark TRUPER del SVG oficial, sin los paths de GRUPO."
   }
 ]

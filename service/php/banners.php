@@ -3,8 +3,8 @@ declare(strict_types=1);
 function bannerDefaults(): array {return [
  'home-desktop'=>['label'=>'Inicio · escritorio','url'=>'assets/banner-2-linked.webp','width'=>1803,'height'=>509,'version'=>0],
  'home-mobile'=>['label'=>'Inicio · celular','url'=>'assets/banner-mobile-2.webp','width'=>902,'height'=>981,'version'=>0],
- 'nosotros-desktop'=>['label'=>'Nosotros · escritorio','url'=>'assets/banner-nosotros-3.webp','width'=>2000,'height'=>1000,'version'=>0],
- 'nosotros-mobile'=>['label'=>'Nosotros · celular','url'=>'assets/banner-nosotros-3.webp','width'=>2000,'height'=>1000,'version'=>0]];}
+ 'nosotros-desktop'=>['label'=>'Nosotros · escritorio','url'=>'assets/banner-nosotros-4.webp','width'=>2000,'height'=>1000,'version'=>0],
+ 'nosotros-mobile'=>['label'=>'Nosotros · celular','url'=>'assets/banner-nosotros-4.webp','width'=>2000,'height'=>1000,'version'=>0]];}
 function bannerDir(): string {return dirname(__DIR__,3).'/nueva-private/banners';}
 function bannerList(): array {$file=bannerDir().'/manifest.json';$stored=is_file($file)?json_decode(file_get_contents($file),true,64,JSON_THROW_ON_ERROR):[];return array_replace(bannerDefaults(),$stored);}
 function saveBanner(string $key): never {
