@@ -11,7 +11,7 @@ function boot(fetcher,quantity=2){
  const register=node('#intake-register-form');register.elements=Object.fromEntries(Object.entries(values).map(([k,v])=>[k,{...node('element-'+k),value:v}]));
  const doc={querySelector:node,querySelectorAll:()=>[],addEventListener(){},dispatchEvent(){}};
  const sandbox={URLSearchParams,CustomEvent:class{constructor(type,opts){this.type=type;this.detail=opts?.detail}},console,Map,Set,Promise,Number,String,JSON,Uint8Array,TextEncoder,crypto:webcrypto,localStorage:storage(persistent),sessionStorage:storage(contacts),document:doc,location:{hostname:'albanil.pe',reload(){}},navigator:{locks:{request:async(_,fn)=>fn()}},indexedDB:{open(){const req={};queueMicrotask(()=>req.onerror());return req}},FormData:class{constructor(){}*[Symbol.iterator](){yield*Object.entries(values)}},fetch:fetcher,AlbanilListParser:require('../../docs/propuesta/list-parser.js')};
- sandbox.window={AlbanilSettings:{api:'https://albanil.pe/nueva'},AlbanilIntakeBridge:{summary:()=>[{productId:1,title:'Tornillos',quantity,unit:'unidad'}],products:[]},addEventListener(){},dispatchEvent(){}};
+ sandbox.window={AlbanilPricing:require('../../docs/propuesta/pricing.js'),AlbanilSettings:{api:'https://albanil.pe/nueva'},AlbanilIntakeBridge:{summary:()=>[{productId:1,title:'Tornillos',quantity,unit:'unidad'}],products:[]},addEventListener(){},dispatchEvent(){}};
  vm.runInNewContext(code,sandbox);
  return {nodes,node,submit:()=>register.handlers.submit({preventDefault(){}})};
 }

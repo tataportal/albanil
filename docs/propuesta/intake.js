@@ -97,12 +97,23 @@
    const p=r.productId?products.find(p=>String(p.id)===String(r.productId)):null;
    const quantity=`<label class="cart-quantity">Cantidad<input aria-label="Cantidad renglón ${i+1}" data-intake-index="${i}" inputmode="${AlbanilListParser.fractionalUnit(r.unit)?'decimal':'numeric'}" data-field="quantity" value="${esc(r.quantity)}" aria-describedby="intake-quantity-error-${i}"><small id="intake-quantity-error-${i}" role="alert"></small></label>`;
    const remove=`<button class="text-link intake-row-remove" type="button" data-intake-remove="${i}" aria-label="Quitar ${esc(r.material)}">×</button>`;
-   if(p)return `<article class="cart-item">${p.image?`<img src="${esc(p.image)}" alt="" width="80" height="80">`:'<span class="cart-no-image">Sin foto</span>'}<div class="cart-product"><h4>${esc(r.material)}</h4><small class="cart-code">Código: ${esc(p.reference||p.sku||p.id)}</small></div>${quantity}${remove}</article>`;
+   if(p)return `<article class="cart-item">${p.image?`<img src="${esc(p.image)}" alt="" width="80" height="80">`:'<span class="cart-no-image">Sin foto</span>'}<div class="cart-product"><h4>${esc(r.material)}</h4><small class="cart-code">Código: ${esc(p.reference||p.sku||p.id)}</small><p class="cart-unit-price">${p.pricePEN==null?'Consultar precio':`S/ ${Number(p.pricePEN).toFixed(2)} / ${esc(p.unit)}`}</p><p class="cart-line-total" id="cart-line-total-${i}"></p></div>${quantity}${remove}</article>`;
    return `<article class="cart-item cart-material"><div class="cart-product"><label>Material<textarea aria-label="Material renglón ${i+1}" data-intake-index="${i}" maxlength="500" data-field="material">${esc(r.material)}</textarea></label><details><summary>Texto original</summary><p>${esc(r.original||r.material)}</p></details>${remove}</div><div class="cart-fields">${quantity}<label>Unidad<input aria-label="Unidad renglón ${i+1}" data-intake-index="${i}" maxlength="30" data-field="unit" value="${esc(r.unit)}" placeholder="Completar"></label></div></article>`;
   }).join('')}</section>`).join('');
   $('#intake-overview').textContent=`${packet.rows.length} ${packet.rows.length===1?'material':'materiales'}${files.length?` · ${files.length} archivos adjuntos`:''}`;
-  validateRows();
+  validateRows();updateAmounts();
   $('#intake-manual').textContent=files.filter(f=>!f.rows?.length||f.warnings?.length).map(f=>`${f.name}: revisión manual del original.`).join(' ');
+ }
+ function updateAmounts(){
+  const products=window.AlbanilIntakeBridge?.products||[];let cents=0,pending=0;
+  for(const [i,r] of (packet?.rows||[]).entries()){
+   const p=r.productId?products.find(p=>String(p.id)===String(r.productId)):null;
+   const amount=AlbanilListParser.requestQuantityError(r.quantity,r.unit)?null:window.AlbanilPricing.lineTotal(p,r.quantity,r.unit);
+   if(amount===null)pending++;else cents+=Math.round(amount*100);
+   const line=$(`#cart-line-total-${i}`);if(line)line.textContent=amount===null?'Importe pendiente':`Subtotal: S/ ${amount.toFixed(2)}`;
+  }
+  const extra=files.filter(f=>!f.rows?.length).length;
+  $('#cart-amounts').innerHTML=`<div class="cart-total"><strong>${pending||extra?'Subtotal de materiales con precio':'Total de materiales'}</strong><strong>S/ ${(cents/100).toFixed(2)}</strong></div><p>Flete no incluido.</p>${pending?`<p>${pending} ${pending===1?'material pendiente':'materiales pendientes'} de cotizar, fuera de este importe.</p>`:''}${extra?'<p>Los archivos pendientes de lectura no están incluidos en este importe.</p>':''}`;
  }
  function validateRows(){
   let first=-1;for(const [i,r] of (packet?.rows||[]).entries()){
@@ -115,7 +126,7 @@
  $('#intake-prepare').addEventListener('click',prepare);
  document.addEventListener('click',e=>{if(e.target.closest('[data-intake-prepare]'))prepare();});
  $('#intake-rows').addEventListener('click',e=>{const b=e.target.closest('[data-intake-remove]');if(!b||sending||!$('#intake-saved').hidden)return;const r=packet.rows[Number(b.dataset.intakeRemove)];edits.set(r._key,{removed:true});saveEdits();packet.rows.splice(Number(b.dataset.intakeRemove),1);renderPreview();syncSummary();});
- $('#intake-rows').addEventListener('input',e=>{const i=e.target.dataset.intakeIndex,f=e.target.dataset.field;if(i!==undefined&&f){const r=packet.rows[+i];r[f]=e.target.value;const edit={...edits.get(r._key),[f]:e.target.value};if(f==='material'){r.productId=null;r.suggestions=[];edit.productId=null;}r.status='Editado por el cliente';edits.set(r._key,edit);saveEdits();validateRows();syncSummary();}});
+ $('#intake-rows').addEventListener('input',e=>{const i=e.target.dataset.intakeIndex,f=e.target.dataset.field;if(i!==undefined&&f){const r=packet.rows[+i];r[f]=e.target.value;const edit={...edits.get(r._key),[f]:e.target.value};if(f==='material'){r.productId=null;r.suggestions=[];edit.productId=null;}r.status='Editado por el cliente';edits.set(r._key,edit);saveEdits();validateRows();updateAmounts();syncSummary();}});
 
 
  function message(){return ['Hola, quisiera cotizar esta lista:',packet.reference,'',...packet.rows.map((r,i)=>`${i+1}. ${r.quantity||'Cantidad no indicada'} ${r.unit||''} | ${r.material}${r.suggestions?.length?'\n   Posibles coincidencias: '+r.suggestions.map(p=>p.title).join('; '):''}`),'',...packet.files.map(f=>`Archivo: ${f.name} (${f.status})`)].join('\n');}

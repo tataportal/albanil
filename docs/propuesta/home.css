@@ -189,3 +189,5 @@
 @keyframes list-slide-in{from{transform:translateX(100%)}to{transform:translateX(0)}}
 @media(prefers-reduced-motion:reduce){#intake-dialog[open]{animation:none}}
 @media(max-width:520px){#intake-dialog{padding:20px 16px}.cart-item{gap:8px}}
+
+#intake-dialog .cart-unit-price{font-size:13px;font-weight:400;color:var(--muted);margin:8px 0 4px}#intake-dialog .cart-line-total{font-size:14px;margin:0}#cart-amounts{flex:none;padding:18px 0;border-top:1px solid var(--line)}.cart-total{display:flex;align-items:baseline;justify-content:space-between;gap:20px;font-size:19px}#cart-amounts p{font-size:13px;color:var(--muted);margin-top:8px}#intake-dialog #intake-delivery-status{padding-top:10px;border:0}

@@ -8,3 +8,10 @@ for(const rate of [null,'',true,0,-1,Infinity,NaN,101,3.12345]){assert.equal(p.v
 assert.equal(p.pen({price:null,currency:'USD'},3.75),null);
 assert.equal(p.label(p.apply({price:20,currency:'USD'},null)),'Precio a consultar');
 console.log('USD/PEN: conversion, rounding, missing rate and PEN preservation passed.');
+
+const pricingTotals=require('../../docs/propuesta/pricing.js');
+assert.equal(pricingTotals.lineTotal({pricePEN:1.1,unit:'unidad'},3,'unidad'),3.3);
+assert.equal(pricingTotals.lineTotal({pricePEN:2.35,unit:'metro'},1.5,'metro'),3.53);
+assert.equal(pricingTotals.lineTotal({pricePEN:null,unit:'unidad'},3,'unidad'),null);
+assert.equal(pricingTotals.lineTotal({pricePEN:1.1,unit:'unidad'},1,'millar'),null);
+assert.equal(pricingTotals.lineTotal({pricePEN:1.1,unit:'unidad'},'','unidad'),null);

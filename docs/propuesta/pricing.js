@@ -11,6 +11,12 @@
  }
  const apply=(p,rate)=>({...p,pricePEN:pen(p,rate),exchangeRate:p.currency==='USD'&&validRate(rate)?Number(rate):null});
  const label=p=>p.pricePEN==null?'Precio a consultar':`S/ ${Number(p.pricePEN).toFixed(2)}`;
- const api={validRate,pen,apply,label,demoKey};
+ function lineTotal(product,quantity,unit){
+  const q=Number(quantity),price=product?.pricePEN;
+  const normalized=v=>String(v||'').trim().toLowerCase();
+  if(!product||price==null||!Number.isFinite(Number(price))||Number(price)<0||!Number.isFinite(q)||q<=0||!normalized(unit)||normalized(unit)!==normalized(product.unit))return null;
+  return Math.round(Math.round(Number(price)*100)*q)/100;
+ }
+ const api={validRate,pen,apply,label,lineTotal,demoKey};
  if(typeof module!=='undefined')module.exports=api;else root.AlbanilPricing=api;
 })(typeof window!=='undefined'?window:this);
