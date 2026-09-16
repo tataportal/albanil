@@ -1,7 +1,7 @@
 Options -Indexes
 RewriteEngine On
 RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
-RewriteRule ^(banners(?:/[a-z-]+)?|banner-images/[a-f0-9]{64}|complaints(?:/LR-WEB-[0-9]+)?|me|health|catalog|exchange-rate|login|logout|products(?:/[0-9]+(?:/image)?)?|requests(?:/ALB-[A-Z0-9-]+(?:/files/[a-f0-9]{32})?)?)$ index.php [END]
+RewriteRule ^(banners(?:/[a-z-]+)?|banner-images/[a-f0-9]{64}|complaints(?:/LR-WEB-[0-9]+)?|me|health|catalog|exchange-rate|login|logout|products(?:/[0-9]+(?:/image)?)?|requests(?:/(?:ALB-[A-Z0-9-]+|[0-9]{6}-[0-9]{5,})(?:/files/[a-f0-9]{32})?)?)$ index.php [END]
 <FilesMatch "^(banners\.php|retention\.php|maintenance-schema\.sql|lib\.php|products\.php|complaints\.php|complaints-schema\.sql|schema\.sql)$">
 Require all denied
 </FilesMatch>

@@ -133,6 +133,14 @@ function validateSubmission(array $v): array {
     if($total>20*1024*1024)fail('Máximo 20 MB de archivos por solicitud.');return compact('customer','items','attachments');
 }
 function summary(array $p): array {$s=$p;$s['items']=array_map(fn($i)=>['pending'=>$i['pending'],'quantity'=>$i['quantity']],$p['items']);return $s;}
+function nextRequestReference(): string {
+    // Called inside the request transaction; a row lock serializes each month's counter.
+    $period=(new DateTimeImmutable('now',new DateTimeZone('America/Lima')))->format('Ym');
+    query('INSERT INTO request_sequence(period,last_number) VALUES(?,0) ON DUPLICATE KEY UPDATE last_number=last_number',[$period]);
+    $number=(int)query('SELECT last_number FROM request_sequence WHERE period=? FOR UPDATE',[$period])->fetchColumn()+1;
+    query('UPDATE request_sequence SET last_number=? WHERE period=?',[$number,$period]);
+    return $period.'-'.str_pad((string)$number,5,'0',STR_PAD_LEFT);
+}
 function submitRequest(): never {
     $key=$_SERVER['HTTP_IDEMPOTENCY_KEY']??'';if(!preg_match('/^[a-zA-Z0-9-]{16,80}$/D',$key))fail('Identificador de envío inválido.');
     $raw=rawBody(30*1024*1024);$hash=hash('sha256',$raw);$keyHash=hash('sha256',$key);
@@ -145,13 +153,13 @@ function submitRequest(): never {
         $suggestions=[];foreach($i['suggestionIds'] as $id)if(isset($products[$id]))$suggestions[]=['id'=>$id,'title'=>$products[$id]['title']];
         $items[]=array_merge($i,['title'=>$p['title']??$i['query'],'productId'=>$p['id']??null,'pending'=>!$p,'brand'=>$p['brand']??'','sku'=>$p['sku']??'','saleUnit'=>$p['unit']??'','price'=>$price,'currency'=>$currency,'pricePEN'=>$price===null?null:($currency==='USD'?round($price*$fx,2):$price),'exchangeRate'=>$currency==='USD'?$fx:null,'availability'=>$p['availability']??'','suggestions'=>$suggestions]);
     }
-    $ref='ALB-'.gmdate('Ymd').'-'.strtoupper(bin2hex(random_bytes(6)));
+    $ref='';
     $metadata=array_map(function($f){unset($f['data']);return $f;},$v['attachments']);
     $packet=['reference'=>$ref,'created_at'=>now(),'customer'=>$v['customer'],'items'=>$items,'attachments'=>$metadata,'status'=>'Nueva','agent'=>'','notes'=>'','version'=>0,'retentionClass'=>'no_sale','lastCustomerContact'=>'','privacyVersion'=>'2026-09-15-retention'];
     $sum=summary($packet);if(strlen(jsonValue($packet).jsonValue($sum))>1800000)fail('El texto es demasiado extenso. Adjunta el documento original.');
     $written=[];
     try {
-        db()->beginTransaction();query('INSERT INTO requests(reference,idempotency_key,body_hash,data,summary,version,created_at) VALUES(?,?,?,?,?,0,?)',[$ref,$keyHash,$hash,jsonValue($packet),jsonValue($sum),$packet['created_at']]);
+        db()->beginTransaction();$ref=nextRequestReference();$packet['reference']=$ref;$sum['reference']=$ref;query('INSERT INTO requests(reference,idempotency_key,body_hash,data,summary,version,created_at) VALUES(?,?,?,?,?,0,?)',[$ref,$keyHash,$hash,jsonValue($packet),jsonValue($sum),$packet['created_at']]);
         foreach($v['attachments'] as $file){
             $bytes=base64_decode($file['data'],true);if($bytes===false||strlen($bytes)!==$file['size'])fail('Archivo inválido.');
             $path=config()['uploads'].'/'.$file['id'];$fp=fopen($path,'xb');if(!$fp)throw new RuntimeException('Storage unavailable');$written[]=$path;chmod($path,0600);
@@ -171,12 +179,12 @@ function requestRoutes(string $path,string $method): never {
     if($path==='/requests'&&$method==='GET'){
         $rows=[];foreach(query('SELECT summary,version FROM requests ORDER BY created_at DESC') as $r){$p=json_decode($r['summary'],true);$p['version']=(int)$r['version'];$rows[]=$p;}respond(['requests'=>$rows]);
     }
-    if(preg_match('#^/requests/(ALB-[A-Z0-9-]+)/files/([a-f0-9]{32})$#D',$path,$m)&&$method==='GET'){
+    if(preg_match('#^/requests/((?:ALB-[A-Z0-9-]+|[0-9]{6}-[0-9]{5,}))/files/([a-f0-9]{32})$#D',$path,$m)&&$method==='GET'){
         $f=query('SELECT * FROM request_files WHERE reference=? AND id=?',[$m[1],$m[2]])->fetch();if(!$f)fail('Archivo no encontrado.',404);
         $file=config()['uploads'].'/'.$f['id'];if(!is_file($file)||filesize($file)!==(int)$f['size'])fail('Archivo no disponible.',503);
         header('Content-Type: application/octet-stream');header("Content-Disposition: attachment; filename*=UTF-8''".rawurlencode($f['name']));header('Content-Length: '.$f['size']);readfile($file);exit;
     }
-    if(!preg_match('#^/requests/(ALB-[A-Z0-9-]+)$#D',$path,$m))fail('Ruta no disponible.',404);
+    if(!preg_match('#^/requests/((?:ALB-[A-Z0-9-]+|[0-9]{6}-[0-9]{5,}))$#D',$path,$m))fail('Ruta no disponible.',404);
     $r=query('SELECT data,version FROM requests WHERE reference=?',[$m[1]])->fetch();if(!$r)fail('Solicitud no encontrada.',404);
     $p=json_decode($r['data'],true);$p['version']=(int)$r['version'];if($method==='GET')respond($p);
     if($method==='PATCH'){
