@@ -86,14 +86,21 @@
   renderPreview();
   $('#intake-share').hidden=!(navigator.share&&navigator.canShare);$('#intake-copy-text').hidden=true;$('#intake-whatsapp-short').hidden=true;$('#intake-delivery-status').textContent='Todavía no se ha enviado a la tienda.';
   if(review){document.querySelectorAll('dialog[open]').forEach(d=>d.close());$('#intake-dialog').showModal();}
-  if(receiver){$('#intake-share').hidden=true;$('#intake-manual-actions').hidden=true;$('#intake-transfer-note').hidden=true;$('#intake-manual-instructions').hidden=true;$('#intake-delivery-status').textContent='Los cambios se guardan en tu lista. Completa tus datos en la página para enviarla.';}
+  if(receiver){$('#intake-share').hidden=true;$('#intake-manual-actions').hidden=true;$('#intake-transfer-note').hidden=true;$('#intake-manual-instructions').hidden=true;$('#intake-delivery-status').textContent='Tus cambios se guardan automáticamente.';}
   return true;
  }
  function renderPreview(){
   const rowGroups=[['Productos seleccionados',[]],['Coincidencias por revisar',[]],['Sin coincidencia en el catálogo · el asesor gestionará la búsqueda',[]]];
   packet.rows.forEach((r,i)=>rowGroups[r.productId?0:r.suggestions?.length?1:2][1].push({r,i}));
-  $('#intake-rows').innerHTML=rowGroups.filter(([,group])=>group.length).map(([title,group])=>`<tr><th colspan="5" scope="colgroup">${esc(title)} (${group.length})</th></tr>`+group.map(({r,i})=>`<tr><td>${i+1}</td><td><input aria-label="Cantidad renglón ${i+1}" data-intake-index="${i}" inputmode="decimal" data-field="quantity" value="${esc(r.quantity)}" placeholder="Completar" aria-describedby="intake-quantity-error-${i}"><small id="intake-quantity-error-${i}" role="alert"></small></td><td><input aria-label="Unidad renglón ${i+1}" data-intake-index="${i}" maxlength="30" data-field="unit" value="${esc(r.unit)}" placeholder="Completar"></td><td><textarea aria-label="Material renglón ${i+1}" data-intake-index="${i}" maxlength="500" data-field="material">${esc(r.material)}</textarea><small>${esc(r.source)}</small><details><summary>Ver texto original</summary><small>${esc(r.original||r.material)}</small></details><button class="text-link intake-row-remove" type="button" data-intake-remove="${i}">Quitar material</button></td><td>${esc(r.status)}${r.suggestions?.length?'<small>'+r.suggestions.map(p=>esc(p.title)).join('<br>')+'</small>':''}</td></tr>`).join('')).join('');
-  $('#intake-overview').textContent=`${packet.rows.length} renglones · ${files.length} archivos originales. Puedes corregir cantidades o materiales antes de continuar.`;
+  const products=window.AlbanilIntakeBridge?.products||[];
+  $('#intake-rows').innerHTML=rowGroups.filter(([,group])=>group.length).map(([title,group])=>`<section class="cart-group"><h3>${esc(title)} <span>(${group.length})</span></h3>${group.map(({r,i})=>{
+   const p=r.productId?products.find(p=>String(p.id)===String(r.productId)):null;
+   const quantity=`<label class="cart-quantity">Cantidad<input aria-label="Cantidad renglón ${i+1}" data-intake-index="${i}" inputmode="${AlbanilListParser.fractionalUnit(r.unit)?'decimal':'numeric'}" data-field="quantity" value="${esc(r.quantity)}" aria-describedby="intake-quantity-error-${i}"><small id="intake-quantity-error-${i}" role="alert"></small></label>`;
+   const remove=`<button class="text-link intake-row-remove" type="button" data-intake-remove="${i}" aria-label="Quitar ${esc(r.material)}">×</button>`;
+   if(p)return `<article class="cart-item">${p.image?`<img src="${esc(p.image)}" alt="" width="80" height="80">`:'<span class="cart-no-image">Sin foto</span>'}<div class="cart-product"><h4>${esc(r.material)}</h4></div>${quantity}${remove}</article>`;
+   return `<article class="cart-item cart-material"><div class="cart-product"><label>Material<textarea aria-label="Material renglón ${i+1}" data-intake-index="${i}" maxlength="500" data-field="material">${esc(r.material)}</textarea></label><details><summary>Texto original</summary><p>${esc(r.original||r.material)}</p></details>${remove}</div><div class="cart-fields">${quantity}<label>Unidad<input aria-label="Unidad renglón ${i+1}" data-intake-index="${i}" maxlength="30" data-field="unit" value="${esc(r.unit)}" placeholder="Completar"></label></div></article>`;
+  }).join('')}</section>`).join('');
+  $('#intake-overview').textContent=`${packet.rows.length} ${packet.rows.length===1?'material':'materiales'}${files.length?` · ${files.length} archivos adjuntos`:''}`;
   validateRows();
   $('#intake-manual').textContent=files.filter(f=>!f.rows?.length||f.warnings?.length).map(f=>`${f.name}: revisión manual del original.`).join(' ');
  }
