@@ -32,6 +32,7 @@
  }
  function syncSummary(){
   const rows=collectRows(),typed=$('#paste-list').value.trim();
+  document.dispatchEvent(new CustomEvent('albanil-list-count',{detail:rows.length||files.length}));
   $('#builder-summary-count').textContent=`${rows.length} ${rows.length===1?'material':'materiales'} · ${files.length} ${files.length===1?'archivo':'archivos'}`;
   $('#builder-summary-empty').hidden=!!(rows.length||files.length||typed);
   $('#builder-summary-items').innerHTML=rows.slice(0,5).map(r=>`<li><span>${esc(r.material)}</span><strong>${esc(r.quantity)} ${esc(r.unit)}</strong></li>`).join('');
@@ -41,6 +42,9 @@
   $('#intake-register-form button[type=submit]').disabled=unavailable;
  }
  document.addEventListener('albanil-list-change',syncSummary);
+ document.addEventListener('albanil-open-list',()=>prepare());
+ let openRequested=new URLSearchParams(location.search).has('revisar');
+ document.addEventListener('albanil-list-change',()=>{if(openRequested&&window.AlbanilIntakeBridge){openRequested=false;ready.then(()=>prepare());}});
  async function extract(item){
   item.rows=[];item.text='';item.warnings=[];item.status='Leyendo…';
   try{const result=await readFile({name:item.name,arrayBuffer:()=>item.blob.arrayBuffer()});item.rows=result.rows;item.warnings=result.warnings;item.text=result.rows.map(r=>r.original).join('\n');item.status=result.rows.length?`${result.rows.length} materiales leídos${result.warnings.length?' · revisar observaciones':''}`:'Original adjunto · revisión del asesor';}

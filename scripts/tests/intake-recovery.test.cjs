@@ -9,9 +9,9 @@ function boot(fetcher,quantity=2){
  function node(key){if(!nodes.has(key))nodes.set(key,{value:key==='#paste-list'?'':'' ,hidden:false,disabled:false,textContent:'',innerHTML:'',handlers:{},addEventListener(type,fn){this.handlers[type]=fn},setAttribute(){},setCustomValidity(v){this.validation=v},reportValidity(){return true},focus(){},scrollIntoView(){},showModal(){this.open=true},close(){this.open=false},querySelector(sel){return node(key+' '+sel)},contains(){return false}});return nodes.get(key)}
  node('#intake-saved').hidden=true;
  const register=node('#intake-register-form');register.elements=Object.fromEntries(Object.entries(values).map(([k,v])=>[k,{...node('element-'+k),value:v}]));
- const doc={querySelector:node,querySelectorAll:()=>[],addEventListener(){}};
- const sandbox={console,Map,Set,Promise,Number,String,JSON,Uint8Array,TextEncoder,crypto:webcrypto,localStorage:storage(persistent),sessionStorage:storage(contacts),document:doc,location:{hostname:'albanil.pe',reload(){}},navigator:{locks:{request:async(_,fn)=>fn()}},indexedDB:{open(){const req={};queueMicrotask(()=>req.onerror());return req}},FormData:class{constructor(){}*[Symbol.iterator](){yield*Object.entries(values)}},fetch:fetcher,AlbanilListParser:require('../../docs/propuesta/list-parser.js')};
- sandbox.window={AlbanilSettings:{api:'https://albanil.pe/nueva'},AlbanilIntakeBridge:{summary:()=>[{productId:1,title:'Tornillos',quantity,unit:'unidad'}],products:[]},addEventListener(){}};
+ const doc={querySelector:node,querySelectorAll:()=>[],addEventListener(){},dispatchEvent(){}};
+ const sandbox={URLSearchParams,CustomEvent:class{constructor(type,opts){this.type=type;this.detail=opts?.detail}},console,Map,Set,Promise,Number,String,JSON,Uint8Array,TextEncoder,crypto:webcrypto,localStorage:storage(persistent),sessionStorage:storage(contacts),document:doc,location:{hostname:'albanil.pe',reload(){}},navigator:{locks:{request:async(_,fn)=>fn()}},indexedDB:{open(){const req={};queueMicrotask(()=>req.onerror());return req}},FormData:class{constructor(){}*[Symbol.iterator](){yield*Object.entries(values)}},fetch:fetcher,AlbanilListParser:require('../../docs/propuesta/list-parser.js')};
+ sandbox.window={AlbanilSettings:{api:'https://albanil.pe/nueva'},AlbanilIntakeBridge:{summary:()=>[{productId:1,title:'Tornillos',quantity,unit:'unidad'}],products:[]},addEventListener(){},dispatchEvent(){}};
  vm.runInNewContext(code,sandbox);
  return {nodes,node,submit:()=>register.handlers.submit({preventDefault(){}})};
 }
