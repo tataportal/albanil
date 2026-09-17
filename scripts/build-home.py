@@ -115,6 +115,9 @@ for incoming in consolidated['products']:
         CATEGORIES.append({'id':max(c['id'] for c in CATEGORIES)+1,'name':current['category'],'url':'','icon':'wood'})
         next(g for g in GROUPS if g['id']=='techos')['types'].append(current['category'])
         SECTORS[0]['types'].append(current['category'])
+approved_ids={p['id'] for p in consolidated['products']}
+products=[p for p in products if p['id'] in approved_ids]
+FEATURED=[pid for pid in FEATURED if pid in approved_ids]
 for product in products:
     product.setdefault('reference',str(product['id']))
     # Unlisted products retain their links, but outdated snapshot prices are not republished.

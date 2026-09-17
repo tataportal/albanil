@@ -8,6 +8,10 @@ out=args.output.resolve();out.mkdir(parents=True,exist_ok=True);target=out/'nuev
 if target.exists():shutil.rmtree(target)
 shutil.copytree(ROOT/'docs/propuesta',target,ignore=shutil.ignore_patterns('*test*','demo*','.DS_Store'))
 catalog=json.loads(args.snapshot.read_text())['catalog']
+approved_ids={p['id'] for p in json.loads((ROOT/'scripts/consolidated-products.json').read_text())['products']}
+catalog['products']=[p for p in catalog['products'] if p['id'] in approved_ids or p.get('createdInPanel')]
+allowed_ids={p['id'] for p in catalog['products']}
+catalog['featured']=[pid for pid in catalog['featured'] if pid in allowed_ids]
 def shared(path):
  clean=unquote(urlsplit(path).path)
  if not clean.startswith('../'):return path

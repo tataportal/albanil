@@ -1,12 +1,14 @@
 const assert=require('node:assert/strict'),fs=require('node:fs');
 const parser=require('../../docs/propuesta/list-parser.js');
 const products=JSON.parse(fs.readFileSync('docs/propuesta/catalog.json')).products;
+const approved=JSON.parse(fs.readFileSync('scripts/consolidated-products.json')).products;
+assert.deepEqual(products.map(p=>p.id).sort((a,b)=>a-b),approved.map(p=>p.id).sort((a,b)=>a-b),'Only approved products belong in the base catalog');
 for(const p of products){
  assert(parser.catalogSearch(p.title,products).some(r=>r.id===p.id),`Missing title: ${p.title}`);
  if(p.reference)assert(parser.catalogSearch(p.reference,products).some(r=>r.id===p.id),`Missing ref: ${p.reference}`);
  assert(parser.catalogSearch(p.category,products).some(r=>r.id===p.id),`Missing category: ${p.category}`);
 }
-for(const q of ['ladrillo','ladrillos',' LADRILLO ','ladri'])assert.equal(parser.catalogSearch(q,products).length,14,q);
+for(const q of ['ladrillo','ladrillos',' LADRILLO ','ladri'])assert.equal(parser.catalogSearch(q,products).length,products.filter(p=>p.category==='LADRILLOS').length,q);
 assert(parser.catalogSearch('fortes ladrillo',products).some(p=>p.id===84));
 for(const [a,b] of [['amoladora','amoladoras'],['guante','guantes'],['lija','lijas'],['panel led','paneles led'],['fierro','fierros'],['triplay','tripley']])assert.deepEqual(parser.catalogSearch(a,products).map(p=>p.id),parser.catalogSearch(b,products).map(p=>p.id),a);
 assert.equal(parser.catalogSearch('340-2',products).length,1);

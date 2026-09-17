@@ -64,7 +64,7 @@ assert.deepEqual(constructionRows.map(r=>[r.query,r.quantity,r.unit]),[
  ['Tubos de PVC para agua fría 1/2 pulgada',1,'tubo'],['Pegamento para PVC',1,'tarro']
 ]);
 assert.deepEqual(parser.search(constructionRows[1].query,products).map(p=>p.id),[253,256]);
-assert.deepEqual(parser.search(constructionRows[2].query,products).map(p=>p.id),[257,258,259,260]);
+assert.deepEqual(parser.search(constructionRows[2].query,products).map(p=>p.id),[257,258,260]);
 assert.deepEqual(parser.search(constructionRows[0].query,products).map(p=>p.id),[100045]);
 assert.equal(parser.search(constructionRows[3].query,products).length,0); // Never replace PVC glue with ceramic adhesive.
 for(const [i,row] of constructionRows.entries()) {
