@@ -29,7 +29,7 @@
     const img=document.createElement('img');img.src=p.imageSmall||p.image;img.alt='';img.width=48;img.height=48;img.addEventListener('error',()=>{img.hidden=true;},{once:true});
     const text=document.createElement('span'),title=document.createElement('strong'),code=document.createElement('small');title.textContent=p.title;code.textContent=`Código ${p.reference||p.id}${p.brand?' · '+p.brand:''}`;text.append(title,code);a.append(img,text);panel.append(a);
    });
-   if(matches.length){const more=document.createElement('a');more.href=`${base}?q=${encodeURIComponent(q)}`;more.className='header-search-all';more.textContent=`Ver los ${matches.length} resultados →`;panel.append(more);}
+   if(matches.length){const more=document.createElement('a');more.href=`${base}?q=${encodeURIComponent(q)}`;more.className='header-search-all';more.textContent=matches.length===1?'Ver el resultado →':`Ver los ${matches.length} resultados →`;panel.append(more);}
   }catch{if(ticket===revision)note('No pudimos cargar los productos. Intenta nuevamente.');}
  }
  input.addEventListener('input',()=>{revision++;clearTimeout(timer);if(!input.value.trim())close();else timer=setTimeout(show,120);});
